@@ -1,0 +1,92 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj": {}
+  },
+  "projects": {
+    "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj",
+        "projectName": "Book Library .NET Core WPF App",
+        "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj",
+        "packagesPath": "C:\\Users\\leoni\\.nuget\\packages\\",
+        "outputPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\leoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj": {
+                "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj",
+        "projectName": "Book Library EF Core Proxy Class Library",
+        "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}
