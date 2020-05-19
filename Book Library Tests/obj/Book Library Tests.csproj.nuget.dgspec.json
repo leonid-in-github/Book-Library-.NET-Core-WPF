@@ -1,28 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Tests\\Book Library Tests.csproj": {}
+    "D:\\GitHub\\Book-Library-.NET-Core-WPF-Solution\\Book Library Tests\\Book Library Tests.csproj": {}
   },
   "projects": {
-    "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj": {
+    "D:\\GitHub\\Book-Library-.NET-Core-WPF-Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj",
+        "projectUniqueName": "D:\\GitHub\\Book-Library-.NET-Core-WPF-Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj",
         "projectName": "Book Library EF Core Proxy Class Library",
-        "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj"
+        "projectPath": "D:\\GitHub\\Book-Library-.NET-Core-WPF-Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj"
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Tests\\Book Library Tests.csproj": {
+    "D:\\GitHub\\Book-Library-.NET-Core-WPF-Solution\\Book Library Tests\\Book Library Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Tests\\Book Library Tests.csproj",
+        "projectUniqueName": "D:\\GitHub\\Book-Library-.NET-Core-WPF-Solution\\Book Library Tests\\Book Library Tests.csproj",
         "projectName": "Book Library Tests",
-        "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Tests\\Book Library Tests.csproj",
+        "projectPath": "D:\\GitHub\\Book-Library-.NET-Core-WPF-Solution\\Book Library Tests\\Book Library Tests.csproj",
         "packagesPath": "C:\\Users\\leoni\\.nuget\\packages\\",
-        "outputPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Tests\\obj\\",
+        "outputPath": "D:\\GitHub\\Book-Library-.NET-Core-WPF-Solution\\Book Library Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\leoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,8 +38,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj": {
-                "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj"
+              "D:\\GitHub\\Book-Library-.NET-Core-WPF-Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj": {
+                "projectPath": "D:\\GitHub\\Book-Library-.NET-Core-WPF-Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj"
               }
             }
           }
