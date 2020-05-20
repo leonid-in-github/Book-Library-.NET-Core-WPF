@@ -20,37 +20,27 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginWindow : BookLibraryWindow
     {
         public LoginWindow()
         {
             InitializeComponent();
             SetupWindow();
-            this.CenterWindowOnScreen();
 
             btnLogin.Click += btnLogin_Click;
             btnRegistration.Click += btnRegistration_Click;
-            loginTextBox.KeyUp += TextBox_KeyUp;
-            loginPasswordBox.KeyUp += TextBox_KeyUp;
+            tbLogin.KeyUp += TextBox_KeyUp;
+            tbPassword.KeyUp += TextBox_KeyUp;
 
             this.Closing += LoginWindow_Closing;
-        }
-
-        private void SetupWindow()
-        {
-            Background = WindowsPropertiesProvider.LoginBackground;
-            Icon = WindowsPropertiesProvider.DefaultIcon;
         }
         
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
-                var login = loginTextBox.Text;
-                var password = loginPasswordBox.Password;
-
-                //var login = "test";
-                //var password = "test";
+                var login = tbLogin.Text;
+                var password = tbPassword.Password;
 
                 var actualAccountId = dbBookLibraryProxy.Account.Login(login, password);
 
@@ -69,30 +59,17 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
 
                     Message.Content = "Incorrect login or password.";
                 }
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
-
-
-            
+            });
         }
 
         private void btnRegistration_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 this.Hide();
                 var registrationWindow = new RegistrationWindow(this);
                 registrationWindow.Show();
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
+            });
         }
 
         private void LoginWindow_Closing(object sender, CancelEventArgs e)
@@ -115,6 +92,13 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                 btnLogin_Click(sender, e);
             }
             e.Handled = true;
+        }
+
+        private void SetupWindow()
+        {
+            this.CenterWindowOnScreen();
+            Background = WindowsPropertiesProvider.LoginBackground;
+            Icon = WindowsPropertiesProvider.DefaultIcon;
         }
 
         private LinearGradientBrush LoginGridAlertBackground

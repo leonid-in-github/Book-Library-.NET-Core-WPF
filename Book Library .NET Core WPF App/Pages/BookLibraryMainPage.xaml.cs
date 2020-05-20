@@ -24,7 +24,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
     /// <summary>
     /// Interaction logic for BookLibraryMainPage.xaml
     /// </summary>
-    public partial class BookLibraryMainPage : Page
+    public partial class BookLibraryMainPage : BookLibraryPage
     {
         public BookLibraryMainPage()
         {
@@ -53,49 +53,33 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         protected void OnLoad(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 pageModel.UserName = AppUser.GetInstance().Login;
                 var books = dbBookLibraryProxy.Books.GetBooks();
                 pageModel.Books = books;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
+            });
         }
 
         private void btnUser_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 NavigationService.Navigate(new UserCabinetPage(this));
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
+            });
         }
 
         private void btnAddBook_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 NavigationService.Navigate(new AddBookPage(this));
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
-
+            });
         }
 
         private void btnEditBook_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 var book = BooksGrid.SelectedItem as DisplayBook;
                 if (book == null) return;
@@ -107,87 +91,75 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                     Id = book.ID
                 };
                 NavigationService.Navigate(new EditBookPage(this, editBook));
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
 
+            });
         }
 
         private void btnDeleteBook_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
-                var booksGridEnumerator = BooksGrid.SelectedItems.GetEnumerator();
-                while (booksGridEnumerator.MoveNext())
+                var messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    var bookId = (booksGridEnumerator.Current as DisplayBook)?.ID;
-                    if (bookId != null)
+                    var booksGridEnumerator = BooksGrid.SelectedItems.GetEnumerator();
+                    while (booksGridEnumerator.MoveNext())
                     {
-                        dbBookLibraryProxy.Books.DeleteBook((int)bookId);
+                        var bookId = (booksGridEnumerator.Current as DisplayBook)?.ID;
+                        if (bookId != null)
+                        {
+                            dbBookLibraryProxy.Books.DeleteBook((int)bookId);
+                        }
                     }
+                    var books = dbBookLibraryProxy.Books.GetBooks();
+                    pageModel.Books = books;
                 }
-                var books = dbBookLibraryProxy.Books.GetBooks();
-                pageModel.Books = books;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
-
+            });
         }
 
         private void Datagrid_Row_Click(object sender, SelectionChangedEventArgs e)
         {
-            //if (e.AddedItems.Count > 0)
-            //{
-            //    var enumerator = e.AddedItems.GetEnumerator();
-            //    enumerator.MoveNext();
-            //    if(enumerator.Current is DisplayBook)
-            //    {
-            //        var selectedItem = enumerator.Current as DisplayBook;
-            //        MessageBox.Show(selectedItem.Name, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-            //    }
-            //}
-            if (btnEditBook.IsEnabled == false || btnDeleteBook.IsEnabled == false)
+            TryCatchMessageTask(() =>
             {
-                btnEditBook.IsEnabled = true;
-                btnDeleteBook.IsEnabled = true;
-            }
-            if (BooksGrid.SelectedItems.Count == 0)
-            {
-                btnEditBook.IsEnabled = false;
-                btnDeleteBook.IsEnabled = false;
-            }
-            if (BooksGrid.SelectedItems.Count > 1)
-            {
-                btnEditBook.IsEnabled = false;
-            }
-
+                if (btnEditBook.IsEnabled == false || btnDeleteBook.IsEnabled == false)
+                {
+                    btnEditBook.IsEnabled = true;
+                    btnDeleteBook.IsEnabled = true;
+                }
+                if (BooksGrid.SelectedItems.Count == 0)
+                {
+                    btnEditBook.IsEnabled = false;
+                    btnDeleteBook.IsEnabled = false;
+                }
+                if (BooksGrid.SelectedItems.Count > 1)
+                {
+                    btnEditBook.IsEnabled = false;
+                }
+            });
         }
 
         private void Search_Text_Changed(object sender, TextChangedEventArgs e)
         {
-            var dataGridContext = DataContext as MainPageVM;
-            if (dataGridContext != null)
+            TryCatchMessageTask(() =>
             {
-                dataGridContext.Books = dbBookLibraryProxy.Books.GetBooks();
-                var searchBooksResult = dataGridContext.Books.Where(i => 
-                    i.Name.ToString().ToLower().Contains(tbSearch.Text.ToLower())
-                    ||
-                    i.Authors.ToString().ToLower().Contains(tbSearch.Text.ToLower())
-                    ||
-                    i.Year.ToString("M/d/yyyy h:mm:ss tt", CultureInfo.InvariantCulture).Contains(tbSearch.Text)
-                    ||
-                    i.Availability.ToString().ToLower().Contains(tbSearch.Text.ToLower())
-                    ||
-                    i.ID.ToString().ToLower().Contains(tbSearch.Text.ToLower())
-                ).OrderBy(a => a.Name).ToList();
-                dataGridContext.Books = searchBooksResult;
-            }
+                var dataGridContext = DataContext as MainPageVM;
+                if (dataGridContext != null)
+                {
+                    dataGridContext.Books = dbBookLibraryProxy.Books.GetBooks();
+                    var searchBooksResult = dataGridContext.Books.Where(i =>
+                        i.Name.ToString().ToLower().Contains(tbSearch.Text.ToLower())
+                        ||
+                        i.Authors.ToString().ToLower().Contains(tbSearch.Text.ToLower())
+                        ||
+                        i.Year.ToString("M/d/yyyy h:mm:ss tt", CultureInfo.InvariantCulture).Contains(tbSearch.Text)
+                        ||
+                        i.Availability.ToString().ToLower().Contains(tbSearch.Text.ToLower())
+                        ||
+                        i.ID.ToString().ToLower().Contains(tbSearch.Text.ToLower())
+                    ).OrderBy(a => a.Name).ToList();
+                    dataGridContext.Books = searchBooksResult;
+                }
+            });
         }
     }
 }

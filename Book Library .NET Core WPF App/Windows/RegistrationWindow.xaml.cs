@@ -18,28 +18,32 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
     /// <summary>
     /// Interaction logic for RegistrationWindow.xaml
     /// </summary>
-    public partial class RegistrationWindow : Window
+    public partial class RegistrationWindow : BookLibraryWindow
     {
         private Window _loginWindow;
 
         public RegistrationWindow(Window loginWindow)
         {
             InitializeComponent();
-            this.CenterWindowOnScreen();
+            SetupWindow();
 
             _loginWindow = loginWindow;
 
-            Background = WindowsPropertiesProvider.LoginBackground;
-            Icon = WindowsPropertiesProvider.DefaultIcon;
-
             btnRegister.Click += btnRegister_Click;
+
+            tbLogin.KeyUp += TextBox_KeyUp;
+            tbFirstName.KeyUp += TextBox_KeyUp;
+            tbLastName.KeyUp += TextBox_KeyUp;
+            tbEmail.KeyUp += TextBox_KeyUp;
+            pbPassword.KeyUp += TextBox_KeyUp;
+            pbConfirmPassword.KeyUp += TextBox_KeyUp;
 
             this.Closing += LoginWindow_Closing;
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 if (!ValidateEmptyInputData())
                 {
@@ -53,24 +57,28 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                     RegistrationGrid.Background = RegistrationGridAlertBackground;
                     return;
                 }
-                if(dbBookLibraryProxy.Account.Register(tbLogin.Text, pbPassword.Password, tbFirstName.Text, tbLastName.Text, tbEmail.Text) <= 0)
+                if (dbBookLibraryProxy.Account.Register(tbLogin.Text, pbPassword.Password, tbFirstName.Text, tbLastName.Text, tbEmail.Text) <= 0)
                 {
                     Message.Content = "Registration data base error";
                     RegistrationGrid.Background = RegistrationGridAlertBackground;
                     return;
                 }
                 this.Close();
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
+            });
         }
 
         private void LoginWindow_Closing(object sender, CancelEventArgs e)
         {
             _loginWindow.Show();
+        }
+
+        private void TextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnRegister_Click(sender, e);
+            }
+            e.Handled = true;
         }
 
         private bool ValidateEmptyInputData()
@@ -101,6 +109,13 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                 return true;
             }
             return false;
+        }
+
+        private void SetupWindow()
+        {
+            this.CenterWindowOnScreen();
+            Background = WindowsPropertiesProvider.LoginBackground;
+            Icon = WindowsPropertiesProvider.DefaultIcon;
         }
 
         private LinearGradientBrush RegistrationGridAlertBackground

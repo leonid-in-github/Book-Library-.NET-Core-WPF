@@ -18,7 +18,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
     /// <summary>
     /// Interaction logic for EditBookPage.xaml
     /// </summary>
-    public partial class EditBookPage : Page
+    public partial class EditBookPage : BookLibraryPage
     {
         private Page _previousPage;
 
@@ -45,20 +45,15 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 NavigationService.Navigate(_previousPage);
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
+            });
         }
 
         private void btnUpdateBook_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 if (tbBookName.Text != string.Empty && tbBookAuthors.Text != string.Empty && dpBookDate.SelectedDate != null)
                 {
@@ -68,16 +63,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                     dbBookLibraryProxy.Books.UpdateBook(_book);
                     NavigationService.Navigate(_previousPage);
                 }
-
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
-
+            });
         }
-
-
     }
 }

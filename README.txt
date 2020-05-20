@@ -1,5 +1,3 @@
-Solution not ended, you can register in database through Core MVC Solution or SQL Server stored procedure.
-
 Deploy
 1. Create data base in sql explorer.
 2. Publish Book Library Data Base project to created data base.

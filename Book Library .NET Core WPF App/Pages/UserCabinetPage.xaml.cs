@@ -17,7 +17,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
     /// <summary>
     /// Interaction logic for UserCabinetPage.xaml
     /// </summary>
-    public partial class UserCabinetPage : Page
+    public partial class UserCabinetPage : BookLibraryPage
     {
         private Page _previousPage;
 
@@ -38,41 +38,26 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 NavigationService.Navigate(_previousPage);
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
+            });
         }
 
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 NavigationService.Navigate(new ChangePasswordPage(this));
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
+            });
         }
 
         private void btnDeleteAccount_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 NavigationService.Navigate(new DeleteAccountPage(this));
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
+            });
         }
     }
 }

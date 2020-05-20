@@ -18,7 +18,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
     /// <summary>
     /// Interaction logic for AddBookPage.xaml
     /// </summary>
-    public partial class AddBookPage : Page
+    public partial class AddBookPage : BookLibraryPage
     {
         private Page _previousPage;
 
@@ -36,20 +36,15 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() => 
             {
                 NavigationService.Navigate(_previousPage);
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
+            });
         }
 
         private void btnAddBook_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 if (tbBookName.Text != string.Empty && tbBookAuthors.Text != string.Empty && dpBookDate.SelectedDate != null)
                 {
@@ -64,14 +59,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                     tbBookAuthors.Text = string.Empty;
                     NavigationService.Navigate(_previousPage);
                 }
-                
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
-
+            });
         }
 
     }

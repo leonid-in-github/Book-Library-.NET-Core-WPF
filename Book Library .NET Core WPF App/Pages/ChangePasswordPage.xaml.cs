@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -16,7 +17,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
     /// <summary>
     /// Interaction logic for ChangePasswordPage.xaml
     /// </summary>
-    public partial class ChangePasswordPage : Page
+    public partial class ChangePasswordPage : BookLibraryPage
     {
         private Page _previousPage;
 
@@ -27,19 +28,35 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             _previousPage = previousPage;
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
             btnBackward.Click += btnBackward_Click;
+            btnChangePassword.Click += btnChangePassword_Click;
         }
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            try
+            TryCatchMessageTask(() =>
             {
                 NavigationService.Navigate(_previousPage);
-            }
-            catch (Exception exc)
+            });
+        }
+
+        private void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            TryCatchMessageTask(() =>
             {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
+                if (string.Compare(pbNewPassword.Password, pbConfirmPassword.Password) == 0)
+                {
+                    if (dbBookLibraryProxy.Account.ChangeAccountPassword(AppUser.GetInstance().AccountId, pbPassword.Password, pbNewPassword.Password))
+                    {
+                        MessageBox.Show("Password changed", "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                        NavigationService.Navigate(_previousPage);
+                    }
+                    lblMasage.Content = "Can't change password with this password";
+                }
+                else
+                {
+                    lblMasage.Content = "Confirm password not correct";
+                }
+            });
         }
     }
 }
