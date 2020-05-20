@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Book_Library_.NET_Core_WPF_App.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -28,7 +29,9 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
 
-            btnBackward.Click += btnBackward_Click; 
+            btnBackward.Click += btnBackward_Click;
+
+            DataContext = new UserCabinetVM();
         }
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)

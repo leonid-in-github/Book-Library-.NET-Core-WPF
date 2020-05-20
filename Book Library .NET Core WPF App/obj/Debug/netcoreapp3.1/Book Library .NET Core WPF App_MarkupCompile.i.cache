@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\GitHub\Book-Library-.NET-Core-WPF-Solution\Book Library .NET Core WPF App\obj\Debug\netcoreapp3.1\
+E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library .NET Core WPF App\obj\Debug\netcoreapp3.1\
 Book_Library_.NET_Core_WPF_App
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-D:\GitHub\Book-Library-.NET-Core-WPF-Solution\Book Library .NET Core WPF App\App.xaml
+E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library .NET Core WPF App\App.xaml
 6-1580950823
 
-19-155230214
-212-940710141
+20-1344940205
+212-244719491
 MainWindow.xaml;Pages\AddBookPage.xaml;Pages\BookLibraryMainPage.xaml;Pages\EditBookPage.xaml;Pages\UserCabinetPage.xaml;Windows\LoginWindow.xaml;
 
 False

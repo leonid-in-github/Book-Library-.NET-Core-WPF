@@ -6,6 +6,8 @@ using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,6 +35,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             this.Loaded += OnLoad;
 
             BooksGrid.SelectionChanged += Datagrid_Row_Click;
+            tbSearch.TextChanged += Search_Text_Changed;
             btnUser.Click += btnUser_Click;
             btnAddBook.Click += btnAddBook_Click;
             btnEditBook.Click += btnEditBook_Click;
@@ -137,7 +140,6 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         }
 
-
         private void Datagrid_Row_Click(object sender, SelectionChangedEventArgs e)
         {
             //if (e.AddedItems.Count > 0)
@@ -165,6 +167,27 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                 btnEditBook.IsEnabled = false;
             }
 
+        }
+
+        private void Search_Text_Changed(object sender, TextChangedEventArgs e)
+        {
+            var dataGridContext = DataContext as MainPageVM;
+            if (dataGridContext != null)
+            {
+                dataGridContext.Books = dbBookLibraryProxy.Books.GetBooks();
+                var searchBooksResult = dataGridContext.Books.Where(i => 
+                    i.Name.ToString().ToLower().Contains(tbSearch.Text.ToLower())
+                    ||
+                    i.Authors.ToString().ToLower().Contains(tbSearch.Text.ToLower())
+                    ||
+                    i.Year.ToString("M/d/yyyy h:mm:ss tt", CultureInfo.InvariantCulture).Contains(tbSearch.Text)
+                    ||
+                    i.Availability.ToString().ToLower().Contains(tbSearch.Text.ToLower())
+                    ||
+                    i.ID.ToString().ToLower().Contains(tbSearch.Text.ToLower())
+                ).OrderBy(a => a.Name).ToList();
+                dataGridContext.Books = searchBooksResult;
+            }
         }
     }
 }
