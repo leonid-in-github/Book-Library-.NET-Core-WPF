@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library .NET Core WPF App\App.xaml
-8811586332
+9347691561
 
-22-1284713134
+23793327925
 212-244719491
-MainWindow.xaml;Pages\AddBookPage.xaml;Pages\BookLibraryMainPage.xaml;Pages\ChangePasswordPage.xaml;Pages\DeleteAccountPage.xaml;Pages\EditBookPage.xaml;Pages\UserCabinetPage.xaml;Windows\LoginWindow.xaml;
+MainWindow.xaml;Pages\AddBookPage.xaml;Pages\BookLibraryMainPage.xaml;Pages\ChangePasswordPage.xaml;Pages\DeleteAccountPage.xaml;Pages\EditBookPage.xaml;Pages\UserCabinetPage.xaml;Windows\LoginWindow.xaml;Windows\RegistrationWindow.xaml;
 
-True
+False
 

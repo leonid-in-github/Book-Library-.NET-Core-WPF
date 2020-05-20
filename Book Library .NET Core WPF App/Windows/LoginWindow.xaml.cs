@@ -29,6 +29,7 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
             this.CenterWindowOnScreen();
 
             btnLogin.Click += btnLogin_Click;
+            btnRegistration.Click += btnRegistration_Click;
             loginTextBox.KeyUp += TextBox_KeyUp;
             loginPasswordBox.KeyUp += TextBox_KeyUp;
 
@@ -77,6 +78,21 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
 
 
             
+        }
+
+        private void btnRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                var registrationWindow = new RegistrationWindow(this);
+                registrationWindow.Show();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                Application.Current.Shutdown();
+            }
         }
 
         private void LoginWindow_Closing(object sender, CancelEventArgs e)

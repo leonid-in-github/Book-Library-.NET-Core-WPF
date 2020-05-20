@@ -27,8 +27,9 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Label Content="Password:" Grid.Row="0" Grid.Column="0" Margin="0,0,0,3" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <TextBox x:Name="tbPassword" Grid.Column="1" Height="21" Margin="40,17,40,17" Text="" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <PasswordBox x:Name="pbPassword" Grid.Column="1" Height="21" Margin="40,17,40,17" Password="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Button x:Name="btnDeleteAccount" Content="Delete account" Grid.Row="1" HorizontalAlignment="Left" Margin="211,0,0,0" Width="106" Height="42" VerticalAlignment="Center" Grid.ColumnSpan="2" BorderBrush="{x:Null}" Background="#FFFF8F8F"/>
+            <Label x:Name="lblMasage" Content="" HorizontalAlignment="Center" Height="117" VerticalAlignment="Center" Width="211" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFFF2828" FontSize="18"/>
         </Grid>
 
     </Grid>
