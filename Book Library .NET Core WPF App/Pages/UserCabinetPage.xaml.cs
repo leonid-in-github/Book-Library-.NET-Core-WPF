@@ -30,6 +30,8 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
 
             btnBackward.Click += btnBackward_Click;
+            btnChangePassword.Click += btnChangePassword_Click;
+            btnDeleteAccount.Click += btnDeleteAccount_Click;
 
             DataContext = new UserCabinetVM();
         }
@@ -39,6 +41,32 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             try
             {
                 NavigationService.Navigate(_previousPage);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                NavigationService.Navigate(new ChangePasswordPage(this));
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void btnDeleteAccount_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                NavigationService.Navigate(new DeleteAccountPage(this));
             }
             catch (Exception exc)
             {

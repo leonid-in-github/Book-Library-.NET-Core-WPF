@@ -11,14 +11,14 @@
         <Grid.Background>
             <SolidColorBrush Color="Black" Opacity="0.5"/>
         </Grid.Background>
-        <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Margin="21,0,21,0" Width="744">
-            <Label Content="App User:" Height="50" VerticalAlignment="Center" FontSize="18" Foreground="#FF07D4A6" HorizontalAlignment="Left" Width="88" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Button x:Name="btnUser" Content="{Binding Path=UserName, Mode=OneWay}" HorizontalAlignment="Left" Height="50" Margin="88,0,0,0" VerticalAlignment="Center" Foreground="#FFFFD100" FontSize="18" HorizontalContentAlignment="Left" BorderBrush="{x:Null}">
-                <Button.Background>
-                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
-                </Button.Background>
-            </Button>
-            <Label Content="Search:" Height="50" Margin="213,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left">
+        <Label Content="App User:" Height="50" VerticalAlignment="Top" FontSize="18" Foreground="#FF07D4A6" HorizontalAlignment="Left" Width="88" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="21,0,0,0"/>
+        <Button x:Name="btnUser" Content="{Binding Path=UserName, Mode=OneWay}" HorizontalAlignment="Left" Height="50" Margin="109,0,0,0" VerticalAlignment="Top" Foreground="#FFFFD100" FontSize="18" HorizontalContentAlignment="Left" BorderBrush="{x:Null}">
+            <Button.Background>
+                <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+            </Button.Background>
+        </Button>
+        <Grid VerticalAlignment="Top" Margin="207,0,21,0" HorizontalAlignment="Right">
+            <Label Content="Search:" Height="50" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -28,22 +28,22 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <TextBox x:Name="tbSearch" Height="49" Text="" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="164" Foreground="#FFFFD200" Margin="280,0,0,0">
+            <TextBox x:Name="tbSearch" Height="50" Text="" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="164" Foreground="#FFFFD200" Margin="65,0,0,0">
                 <TextBox.Background>
                     <SolidColorBrush Color="White" Opacity="0"/>
                 </TextBox.Background>
             </TextBox>
-            <Button x:Name="btnAddBook" Content="Add" Height="50" Margin="444,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="#FF2FF341" HorizontalAlignment="Left" Width="100" BorderBrush="{x:Null}">
+            <Button x:Name="btnAddBook" Content="Add" Height="50" Margin="229,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="#FF2FF341" HorizontalAlignment="Left" Width="100" BorderBrush="{x:Null}">
                 <Button.Background>
                     <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnEditBook" Content="Edit" IsEnabled="False" Height="50" Margin="544,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="#FFFFD200" HorizontalAlignment="Left" Width="100" BorderBrush="{x:Null}">
+            <Button x:Name="btnEditBook" Content="Edit" IsEnabled="False" Height="50" Margin="329,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="#FFFFD200" HorizontalAlignment="Left" Width="100" BorderBrush="{x:Null}">
                 <Button.Background>
                     <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnDeleteBook" Content="Delete" IsEnabled="False" Height="50" Margin="644,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="Red" HorizontalAlignment="Left" Width="100" BorderBrush="{x:Null}">
+            <Button x:Name="btnDeleteBook" Content="Delete" IsEnabled="False" Height="50" Margin="429,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="Red" HorizontalAlignment="Left" Width="100" BorderBrush="{x:Null}">
                 <Button.Background>
                     <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
                 </Button.Background>

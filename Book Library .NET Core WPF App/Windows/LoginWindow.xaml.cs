@@ -4,6 +4,7 @@ using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,8 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
             this.CenterWindowOnScreen();
 
             btnLogin.Click += btnLogin_Click;
+            loginTextBox.KeyUp += TextBox_KeyUp;
+            loginPasswordBox.KeyUp += TextBox_KeyUp;
 
             this.Closing += LoginWindow_Closing;
         }
@@ -87,6 +90,15 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                 App.Current.MainWindow.Show();
             }
             
+        }
+
+        private void TextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+            e.Handled = true;
         }
 
         private LinearGradientBrush LoginGridAlertBackground

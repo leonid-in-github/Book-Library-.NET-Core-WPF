@@ -15,6 +15,12 @@
     <Compile Update="Pages\BookLibraryMainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\ChangePasswordPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\DeleteAccountPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\EditBookPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -33,6 +39,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\BookLibraryMainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ChangePasswordPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\DeleteAccountPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\EditBookPage.xaml">
