@@ -58,5 +58,19 @@ namespace Book_Library_.NET_Core_WPF_App.Properties {
                 this["AccountId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-UF7VQET\\SQLEXPRESS;Initial Catalog=BOOK_LIBRARY;Integrated Se" +
+            "curity=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;Applic" +
+            "ationIntent=ReadWrite;MultiSubnetFailover=False")]
+        public string ConnectionString {
+            get {
+                return ((string)(this["ConnectionString"]));
+            }
+            set {
+                this["ConnectionString"] = value;
+            }
+        }
     }
 }

@@ -1,8 +1,9 @@
-﻿using Book_Library_EF_Core_Proxy_Class_Library.Constants;
+﻿using Book_Library_EF_Core_Proxy_Class_Library.Configuration;
 using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.EntityBook;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace Book_Library_EF_Core_Proxy_Class_Library.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(LibraryConstants.CONNECTIONSTRING);
+            optionsBuilder.UseSqlServer(BookLibraryProxyConfiguration.GetInstanse().ConnectionString);
         }
     }
 }

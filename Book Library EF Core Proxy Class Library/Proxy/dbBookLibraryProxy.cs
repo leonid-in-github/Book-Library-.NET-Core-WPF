@@ -1,5 +1,4 @@
 ﻿using Book_Library_EF_Core_Proxy_Class_Library.Adapters;
-using Book_Library_EF_Core_Proxy_Class_Library.Constants;
 using Book_Library_EF_Core_Proxy_Class_Library.Context;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;

@@ -2,6 +2,7 @@
 using Book_Library_.NET_Core_WPF_App.Models.AccountModels;
 using Book_Library_.NET_Core_WPF_App.Pages;
 using Book_Library_.NET_Core_WPF_App.Windows;
+using Book_Library_EF_Core_Proxy_Class_Library.Configuration;
 using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
 using Newtonsoft.Json;
 using System;
@@ -48,6 +49,10 @@ namespace Book_Library_.NET_Core_WPF_App
 
         private void LoadMainWindow()
         {
+            BookLibraryProxyConfiguration
+                .GetInstanse()
+                .SetupBookLibraryProxyConfiguration(Properties.Settings.Default["ConnectionString"].ToString());
+
             var lastSession = LastSessionConfig;
 
             if (String.IsNullOrEmpty(lastSession.Login)
