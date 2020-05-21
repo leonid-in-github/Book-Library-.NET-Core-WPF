@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450"
       Title="BookLibraryMainPage" Height="Auto">
-    <Grid Margin="21,21,21,21">
+    <Grid Margin="0,21,0,21">
         <Grid.Background>
             <SolidColorBrush Color="Black" Opacity="0.5"/>
         </Grid.Background>
@@ -17,8 +17,12 @@
                 <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Grid VerticalAlignment="Top" Margin="207,0,21,0" HorizontalAlignment="Right">
-            <Label Content="Search:" Height="50" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left">
+        <Grid VerticalAlignment="Top" Margin="0,0,21,0" HorizontalAlignment="Right" Width="540">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Search:" Height="50" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="67" Margin="5,0,0,0" Grid.RowSpan="2">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -28,22 +32,27 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <TextBox x:Name="tbSearch" Height="50" Text="" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="164" Foreground="#FFFFD200" Margin="65,0,0,0">
+            <TextBox x:Name="tbSearch" Height="50" Text="" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="164" Foreground="#FFFFD200" Margin="77,0,0,0" Grid.RowSpan="2">
                 <TextBox.Background>
                     <SolidColorBrush Color="White" Opacity="0"/>
                 </TextBox.Background>
             </TextBox>
-            <Button x:Name="btnAddBook" Content="Add" Height="50" Margin="229,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="#FF2FF341" HorizontalAlignment="Left" Width="100" BorderBrush="{x:Null}">
+            <Button x:Name="btnAddBook" Content="Add" Height="50" Margin="241,0,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="#FF2FF341" HorizontalAlignment="Left" Width="75" BorderBrush="{x:Null}" Grid.RowSpan="2">
                 <Button.Background>
                     <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnEditBook" Content="Edit" IsEnabled="False" Height="50" Margin="329,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="#FFFFD200" HorizontalAlignment="Left" Width="100" BorderBrush="{x:Null}">
+            <Button x:Name="btnEditBook" Content="Edit" IsEnabled="False" Height="50" Margin="391,0,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="#FFFFD200" HorizontalAlignment="Left" Width="75" BorderBrush="{x:Null}" Grid.RowSpan="2">
                 <Button.Background>
                     <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnDeleteBook" Content="Delete" IsEnabled="False" Height="50" Margin="429,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="Red" HorizontalAlignment="Left" Width="100" BorderBrush="{x:Null}">
+            <Button x:Name="btnDeleteBook" Content="Delete" IsEnabled="False" Height="50" Margin="466,0,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="18" Padding="1,1,10,1" Foreground="Red" HorizontalAlignment="Left" Width="75" BorderBrush="{x:Null}" Grid.RowSpan="2">
+                <Button.Background>
+                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnTrackBook" Content="Track" IsEnabled="False" HorizontalAlignment="Left" Margin="316,0,0,0" VerticalAlignment="Top" Width="75" Height="50" Grid.RowSpan="2" Foreground="#FFFFD200" BorderBrush="{x:Null}" FontSize="18">
                 <Button.Background>
                     <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
                 </Button.Background>
@@ -51,6 +60,12 @@
         </Grid>
 
         <Grid Margin="21,50,21,21">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38*"/>
+                <RowDefinition Height="41*"/>
+                <RowDefinition Height="43*"/>
+                <RowDefinition Height="215*"/>
+            </Grid.RowDefinitions>
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.5"/>
             </Grid.Background>
@@ -60,8 +75,7 @@
                 IsReadOnly="True"
                 Background="Transparent"
                 RowBackground="Transparent"
-                Foreground="#FFFFD200" BorderBrush="{x:Null}" 
-                VerticalAlignment="Top" Margin="21,21,21,0" HorizontalGridLinesBrush="#FF1C1E4B" VerticalGridLinesBrush="#FF0E322A" FontSize="16" FontStyle="Normal" Padding="5,5,5,1">
+                Foreground="#FFFFD200" BorderBrush="{x:Null}" Margin="21,21,21,0" HorizontalGridLinesBrush="#FF1C1E4B" VerticalGridLinesBrush="#FF0E322A" FontSize="16" FontStyle="Normal" Padding="5,5,5,1" Grid.RowSpan="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                 <DataGrid.RowHeaderStyle>
                     <Style TargetType="{x:Type DataGridRowHeader}">
                         <Setter Property="Background" Value="Transparent" />

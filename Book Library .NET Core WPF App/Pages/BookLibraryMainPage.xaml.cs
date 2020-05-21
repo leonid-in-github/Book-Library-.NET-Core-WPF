@@ -39,6 +39,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             btnUser.Click += btnUser_Click;
             btnAddBook.Click += btnAddBook_Click;
             btnEditBook.Click += btnEditBook_Click;
+            btnTrackBook.Click += btnTrackBook_Click;
             btnDeleteBook.Click += btnDeleteBook_Click;
         }
 
@@ -95,6 +96,18 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             });
         }
 
+        private void btnTrackBook_Click(object sender, RoutedEventArgs e)
+        {
+            TryCatchMessageTask(() =>
+            {
+                var book = BooksGrid.SelectedItem as DisplayBook;
+                if (book == null) return;
+                var trackBook = dbBookLibraryProxy.Books.GetBookTrack(AppUser.GetInstance().AccountId, book.ID, "All");
+                NavigationService.Navigate(new BookTrackPage(this, trackBook));
+            });
+        }
+
+
         private void btnDeleteBook_Click(object sender, RoutedEventArgs e)
         {
             TryCatchMessageTask(() =>
@@ -121,19 +134,22 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         {
             TryCatchMessageTask(() =>
             {
-                if (btnEditBook.IsEnabled == false || btnDeleteBook.IsEnabled == false)
+                if (btnEditBook.IsEnabled == false || btnDeleteBook.IsEnabled == false || btnTrackBook.IsEnabled == false)
                 {
                     btnEditBook.IsEnabled = true;
+                    btnTrackBook.IsEnabled = true;
                     btnDeleteBook.IsEnabled = true;
                 }
                 if (BooksGrid.SelectedItems.Count == 0)
                 {
                     btnEditBook.IsEnabled = false;
+                    btnTrackBook.IsEnabled = false;
                     btnDeleteBook.IsEnabled = false;
                 }
                 if (BooksGrid.SelectedItems.Count > 1)
                 {
                     btnEditBook.IsEnabled = false;
+                    btnTrackBook.IsEnabled = false;
                 }
             });
         }

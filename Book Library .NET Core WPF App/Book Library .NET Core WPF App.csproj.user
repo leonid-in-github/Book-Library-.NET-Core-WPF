@@ -15,6 +15,9 @@
     <Compile Update="Pages\BookLibraryMainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\BookTrackPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\ChangePasswordPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -42,6 +45,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\BookLibraryMainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\BookTrackPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\ChangePasswordPage.xaml">

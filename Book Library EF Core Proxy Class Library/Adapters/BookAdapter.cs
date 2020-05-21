@@ -168,7 +168,7 @@ namespace Book_Library_EF_Core_Proxy_Class_Library.Adapters
             var result = new BookTrackModel();
             using (var dbContext = new BookLibraryContext())
             {
-                var book = dbContext.GetBook.FromSqlRaw("EXECUTE GetBook {0}", bookId).ToListAsync().Result.FirstOrDefault();
+                var book = dbContext.GetBook.FromSqlRaw("EXECUTE GetBook {0}", bookId).ToList().FirstOrDefault();
 
                 result.BookId = book?.ID;
                 result.BookName = book?.Name;
