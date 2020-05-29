@@ -60,12 +60,6 @@
         </Grid>
 
         <Grid Margin="21,50,21,21">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="38*"/>
-                <RowDefinition Height="41*"/>
-                <RowDefinition Height="43*"/>
-                <RowDefinition Height="215*"/>
-            </Grid.RowDefinitions>
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.5"/>
             </Grid.Background>
@@ -73,9 +67,8 @@
                 x:Name="BooksGrid"
                 ItemsSource="{Binding Path=Books, Mode=OneWay}" 
                 IsReadOnly="True"
-                Background="Transparent"
                 RowBackground="Transparent"
-                Foreground="#FFFFD200" BorderBrush="{x:Null}" Margin="21,21,21,0" HorizontalGridLinesBrush="#FF1C1E4B" VerticalGridLinesBrush="#FF0E322A" FontSize="16" FontStyle="Normal" Padding="5,5,5,1" Grid.RowSpan="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                Foreground="#FFFFD200" BorderBrush="{x:Null}" Margin="21,21,21,0" HorizontalGridLinesBrush="#FF1C1E4B" VerticalGridLinesBrush="#FF0E322A" FontSize="16" FontStyle="Normal" Padding="5,5,5,1" Grid.RowSpan="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}">
                 <DataGrid.RowHeaderStyle>
                     <Style TargetType="{x:Type DataGridRowHeader}">
                         <Setter Property="Background" Value="Transparent" />

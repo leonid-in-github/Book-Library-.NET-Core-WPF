@@ -12,7 +12,7 @@ namespace Book_Library_.NET_Core_WPF_App.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -61,9 +61,9 @@ namespace Book_Library_.NET_Core_WPF_App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-UF7VQET\\SQLEXPRESS;Initial Catalog=BOOK_LIBRARY;Integrated Se" +
-            "curity=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;Applic" +
-            "ationIntent=ReadWrite;MultiSubnetFailover=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-7CKFMUG\\SQLEXPRESS;Initial Catalog=dbBookLibrary;Integrated S" +
+            "ecurity=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;Appli" +
+            "cationIntent=ReadWrite;MultiSubnetFailover=False")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

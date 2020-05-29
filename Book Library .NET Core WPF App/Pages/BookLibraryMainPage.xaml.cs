@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -56,9 +57,12 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         {
             TryCatchMessageTask(() =>
             {
-                pageModel.UserName = AppUser.GetInstance().Login;
-                var books = dbBookLibraryProxy.Books.GetBooks();
-                pageModel.Books = books;
+                Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    pageModel.UserName = AppUser.GetInstance().Login;
+                    var books = dbBookLibraryProxy.Books.GetBooks();
+                    pageModel.Books = books;
+                }));
             });
         }
 

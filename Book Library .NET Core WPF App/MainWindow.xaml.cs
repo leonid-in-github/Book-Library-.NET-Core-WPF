@@ -7,6 +7,7 @@ using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,25 +27,28 @@ namespace Book_Library_.NET_Core_WPF_App
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : BookLibraryWindow
     {
-        private Window loginWindow;
+        private readonly Window loginWindow;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            LoadMainWindow();
+            loginWindow = new LoginWindow();
 
             SetupWindow();
 
-            this.CenterWindowOnScreen();
+            LoadMainWindow();
         }
 
         private void SetupWindow()
         {
             Background = WindowsPropertiesProvider.DefaultBackground;
             Icon = WindowsPropertiesProvider.DefaultIcon;
+            this.CenterWindowOnScreen();
+            Closing += MainWindow_Closing;
+            ContentRendered += MainWindow_Rendered;
         }
 
         private void LoadMainWindow()
@@ -65,12 +69,11 @@ namespace Book_Library_.NET_Core_WPF_App
             }
             else
             {
-                
-                try
+                TryCatchMessageTask(() =>
                 {
                     var actualAccountId = dbBookLibraryProxy.Account.Login(lastSession.Login, lastSession.Password);
 
-                    if(actualAccountId > 0)
+                    if (actualAccountId > 0)
                     {
                         AppUser.SetInstance(lastSession.Login, lastSession.Password, actualAccountId);
                         MainFrame.Navigate(new BookLibraryMainPage());
@@ -81,20 +84,13 @@ namespace Book_Library_.NET_Core_WPF_App
 
                         ShowLoginWindow();
                     }
-                }
-                catch(Exception e)
-                {
-                    MessageBox.Show(e.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Application.Current.Shutdown();
-                }
+                });
             }
 
         }
 
         private void ShowLoginWindow()
         {
-            var loginWindow = new LoginWindow();
-            loginWindow.Closed += LoginWindow_Closed;
             loginWindow.Show();
         }
 
@@ -107,9 +103,14 @@ namespace Book_Library_.NET_Core_WPF_App
             Properties.Settings.Default.Save();
         }
 
-        private void LoginWindow_Closed(object sender, EventArgs e)
+        private void MainWindow_Rendered(object sender, EventArgs e)
         {
             MainFrame.Navigate(new BookLibraryMainPage());
+        }
+
+        private void MainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private void mnUserCabinetClick(object sender, RoutedEventArgs e)

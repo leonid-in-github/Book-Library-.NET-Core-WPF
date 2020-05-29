@@ -5,7 +5,6 @@
   },
   "projects": {
     "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj": {
-      "version": "1.0.0",
       "restore": {
         "projectUniqueName": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj",
         "projectName": "Book Library EF Core Proxy Class Library",
@@ -84,12 +83,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

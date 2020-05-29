@@ -51,7 +51,8 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                     Properties.Settings.Default["AccountId"] = actualAccountId;
                     Properties.Settings.Default.Save();
                     AppUser.SetInstance(login, password, actualAccountId);
-                    this.Close();
+                    this.Hide();
+                    App.Current.MainWindow.Show();
                 }
                 else
                 {
@@ -74,13 +75,15 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
 
         private void LoginWindow_Closing(object sender, CancelEventArgs e)
         {
-            if(String.IsNullOrEmpty(AppUser.GetInstance().Login))
+            Hide();
+            e.Cancel = true;
+            if (String.IsNullOrEmpty(AppUser.GetInstance().Login))
             {
                 Application.Current.Shutdown();
             }
             else
             {
-                App.Current.MainWindow.Show();
+                App.Current.MainWindow?.Show();
             }
             
         }
