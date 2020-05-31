@@ -45,7 +45,6 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
             set
             {
                 _books = value;
-                Thread.Sleep(3000);
                 OnPropertyChanged("Books");
             }
         }
