@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,15 +56,24 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         protected void OnLoad(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
+            TryCatchMessageTask(async () =>
             {
-                Dispatcher.BeginInvoke((Action)(() =>
+                pageModel.ShowPanelCommand.Execute(null);
+                var loadDataContextTask = new Task(() =>
                 {
-                    pageModel.UserName = AppUser.GetInstance().Login;
-                    var books = dbBookLibraryProxy.Books.GetBooks();
-                    pageModel.Books = books;
-                }));
+                    LoadDataContext();
+                });
+                loadDataContextTask.Start();
+                await Task.WhenAll(loadDataContextTask);
+                pageModel.HidePanelCommand.Execute(null);
             });
+        }
+
+        private void LoadDataContext()
+        {
+            pageModel.UserName = AppUser.GetInstance().Login;
+            var books = dbBookLibraryProxy.Books.GetBooks();
+            pageModel.Books = books;
         }
 
         private void btnUser_Click(object sender, RoutedEventArgs e)

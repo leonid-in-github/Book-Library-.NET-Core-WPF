@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:bl="clr-namespace:Book_Library_.NET_Core_WPF_App.Pages"
+      xmlns:bl="clr-namespace:Book_Library_.NET_Core_WPF_App.Pages" 
+      xmlns:ctr="clr-namespace:Book_Library_.NET_Core_WPF_App.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450"
       Title="BookLibraryMainPage" Height="Auto">
@@ -80,6 +81,13 @@
                     </Style>
                 </DataGrid.ColumnHeaderStyle>
             </DataGrid>
+        </Grid>
+        <Grid Margin="21,50,21,21">
+            <ctr:LoadingPanel x:Name="loadingPanel"
+                    IsLoading="{Binding Path=PanelLoading}"
+                    Message="{Binding Path=PanelMainMessage}"
+                    SubMessage="{Binding Path=PanelSubMessage}" 
+                    ClosePanelCommand="{Binding Path=PanelCloseCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" />
         </Grid>
 
     </Grid>
