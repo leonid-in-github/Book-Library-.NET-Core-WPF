@@ -14,10 +14,10 @@
         </Grid.RowDefinitions>
         <Menu Height="21" VerticalAlignment="Top" Grid.RowSpan="2">
             <MenuItem Header="Application menu">
-                <MenuItem Header="User cabinet" Click="mnUserCabinetClick"></MenuItem>
+                <MenuItem Header="User cabinet"  Command="{Binding Path=NavigateUserCabinet, Mode=OneWay}"></MenuItem>
                 <Separator />
-                <MenuItem Header="Logout" Click="mnLogoutClick"></MenuItem>
-                <MenuItem Header="Exit" Click="mnExitClick"></MenuItem>
+                <MenuItem Header="Logout" Command="{Binding Path=Logout, Mode=OneWay}"></MenuItem>
+                <MenuItem Header="Exit" Command="{Binding Path=Exit, Mode=OneWay}"></MenuItem> 
             </MenuItem>
         </Menu>
         <Frame Name="MainFrame" Content="Frame" NavigationUIVisibility="Hidden" Margin="0,16,0,0" Grid.Row="1"/>

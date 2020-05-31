@@ -1,4 +1,5 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
+using Book_Library_.NET_Core_WPF_App.HelperClasses.Commands;
 using Book_Library_.NET_Core_WPF_App.Models.AccountModels;
 using Book_Library_.NET_Core_WPF_App.Pages;
 using Book_Library_.NET_Core_WPF_App.Windows;
@@ -31,15 +32,29 @@ namespace Book_Library_.NET_Core_WPF_App
     {
         private readonly Window loginWindow;
 
+        public ICommand NavigateUserCabinet { get; }
+
+        public ICommand Logout { get; }
+
+        public ICommand Exit { get; }
+
         public MainWindow()
         {
             InitializeComponent();
 
-            loginWindow = new LoginWindow();
+            DataContext = this;
 
             SetupWindow();
 
             LoadMainWindow();
+
+            NavigateUserCabinet = new NavigateUserCabinetCommand(MainFrame);
+            loginWindow = new LoginWindow();
+            Logout = new LogoutCommand(loginWindow);
+            Exit = new ExitCommand();
+
+            Closing += MainWindow_Closing;
+            ContentRendered += MainWindow_Rendered;
         }
 
         private void SetupWindow()
@@ -47,8 +62,6 @@ namespace Book_Library_.NET_Core_WPF_App
             Background = WindowsPropertiesProvider.DefaultBackground;
             Icon = WindowsPropertiesProvider.DefaultIcon;
             this.CenterWindowOnScreen();
-            Closing += MainWindow_Closing;
-            ContentRendered += MainWindow_Rendered;
         }
 
         private void LoadMainWindow()
@@ -94,54 +107,12 @@ namespace Book_Library_.NET_Core_WPF_App
             loginWindow.Show();
         }
 
-        private void ResetSession()
-        {
-            AppUser.SetInstance(string.Empty, string.Empty, 0);
-            Properties.Settings.Default["Login"] = string.Empty;
-            Properties.Settings.Default["Password"] = string.Empty;
-            Properties.Settings.Default["AccountId"] = 0;
-            Properties.Settings.Default.Save();
-        }
-
         private void MainWindow_Rendered(object sender, EventArgs e)
         {
             MainFrame.Navigate(new BookLibraryMainPage());
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void mnUserCabinetClick(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                MainFrame.Navigate(new UserCabinetPage((Page)MainFrame.Content));
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
-        }
-
-        private void mnLogoutClick(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                App.Current.MainWindow.Hide();
-                ResetSession();
-                ShowLoginWindow();
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                Application.Current.Shutdown();
-            }
-        }
-
-        private void mnExitClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }

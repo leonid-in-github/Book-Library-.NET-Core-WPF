@@ -38,7 +38,6 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
             BooksGrid.SelectionChanged += Datagrid_Row_Click;
             tbSearch.TextChanged += Search_Text_Changed;
-            btnUser.Click += btnUser_Click;
             btnAddBook.Click += btnAddBook_Click;
             btnEditBook.Click += btnEditBook_Click;
             btnTrackBook.Click += btnTrackBook_Click;
@@ -47,15 +46,17 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void SetupPage()
         {
-            pageModel = new MainPageVM();
-
-            DataContext = pageModel;
+            
         }
 
         public MainPageVM pageModel { get; set; }
 
         protected void OnLoad(object sender, RoutedEventArgs e)
         {
+            pageModel = new MainPageVM(NavigationService, this);
+
+            DataContext = pageModel;
+
             TryCatchMessageTask(async () =>
             {
                 pageModel.ShowPanelCommand.Execute(null);
@@ -74,14 +75,6 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             pageModel.UserName = AppUser.GetInstance().Login;
             var books = dbBookLibraryProxy.Books.GetBooks();
             pageModel.Books = books;
-        }
-
-        private void btnUser_Click(object sender, RoutedEventArgs e)
-        {
-            TryCatchMessageTask(() =>
-            {
-                NavigationService.Navigate(new UserCabinetPage(this));
-            });
         }
 
         private void btnAddBook_Click(object sender, RoutedEventArgs e)

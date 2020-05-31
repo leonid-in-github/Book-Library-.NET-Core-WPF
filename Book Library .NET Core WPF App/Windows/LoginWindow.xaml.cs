@@ -40,7 +40,9 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
             TryCatchMessageTask(() =>
             {
                 var login = tbLogin.Text;
+                tbLogin.Text = string.Empty;
                 var password = tbPassword.Password;
+                tbPassword.Password = string.Empty;
 
                 var actualAccountId = dbBookLibraryProxy.Account.Login(login, password);
 

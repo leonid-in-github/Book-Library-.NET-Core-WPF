@@ -1,4 +1,5 @@
 ﻿using Book_Library_.NET_Core_WPF_App.HelperClasses;
+using Book_Library_.NET_Core_WPF_App.HelperClasses.Commands;
 using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.LibraryInterfaceBook;
 using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
 using System;
@@ -6,7 +7,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Threading;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace Book_Library_.NET_Core_WPF_App.ViewModels
 {
@@ -23,6 +26,11 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
         private bool _panelLoading;
         private string _panelMainMessage = "Loading";
         private string _panelSubMessage = "Please wait...";
+
+        public MainPageVM(NavigationService navigationService, Page parentPage)
+        {
+            NavigateUserCabinet = new NavigateUserCabinetCommand(navigationService, parentPage);
+        }
 
         public string UserName
         {
@@ -94,16 +102,11 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
             {
                 return new DelegateCommand(() =>
                 {
-                    // Your code here.
-                    // You may want to terminate the running thread etc.
                     PanelLoading = false;
                 });
             }
         }
 
-        /// <summary>
-        /// Gets the show panel command.
-        /// </summary>
         public ICommand ShowPanelCommand
         {
             get
@@ -115,9 +118,6 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
             }
         }
 
-        /// <summary>
-        /// Gets the hide panel command.
-        /// </summary>
         public ICommand HidePanelCommand
         {
             get
@@ -129,9 +129,6 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
             }
         }
 
-        /// <summary>
-        /// Gets the change sub message command.
-        /// </summary>
         public ICommand ChangeSubMessageCommand
         {
             get
@@ -142,5 +139,8 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
                 });
             }
         }
+
+        public ICommand NavigateUserCabinet { get; }
+
     }
 }
