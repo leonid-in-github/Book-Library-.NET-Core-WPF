@@ -30,7 +30,7 @@ namespace Book_Library_.NET_Core_WPF_App
     /// </summary>
     public partial class MainWindow : BookLibraryWindow
     {
-        private readonly Window loginWindow;
+        private readonly LoginWindow loginWindow = new LoginWindow();
 
         public ICommand NavigateUserCabinet { get; }
 
@@ -43,7 +43,6 @@ namespace Book_Library_.NET_Core_WPF_App
             InitializeComponent();
 
             DataContext = this;
-            loginWindow = new LoginWindow();
 
             SetupWindow();
 
@@ -77,7 +76,7 @@ namespace Book_Library_.NET_Core_WPF_App
                 ||
                 String.IsNullOrEmpty(lastSession.Password))
             {
-                App.Current.MainWindow.Hide();
+                App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
 
                 ShowLoginWindow();
             }
@@ -94,7 +93,7 @@ namespace Book_Library_.NET_Core_WPF_App
                     }
                     else
                     {
-                        App.Current.MainWindow.Hide();
+                        App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
 
                         ShowLoginWindow();
                     }
@@ -115,7 +114,7 @@ namespace Book_Library_.NET_Core_WPF_App
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
-            Application.Current.Shutdown();
+            Exit.Execute(null);
         }
 
         private AppUserConfigModel LastSessionConfig

@@ -4,6 +4,7 @@ using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -54,7 +55,7 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                     Properties.Settings.Default.Save();
                     AppUser.SetInstance(login, password, actualAccountId);
                     this.Hide();
-                    App.Current.MainWindow.Show();
+                    App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Show();
                 }
                 else
                 {
@@ -85,7 +86,7 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
             }
             else
             {
-                App.Current.MainWindow?.Show();
+                App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Show();
             }
             
         }

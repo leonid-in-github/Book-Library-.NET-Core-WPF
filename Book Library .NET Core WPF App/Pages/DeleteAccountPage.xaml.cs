@@ -2,6 +2,7 @@
 using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,7 +46,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             {
                 if (dbBookLibraryProxy.Account.DeleteAccount(AppUser.GetInstance().AccountId, pbPassword.Password))
                 {
-                    App.Current.MainWindow.Hide();
+                    App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
                     ResetSession();
                     ShowLoginWindow();
                 }

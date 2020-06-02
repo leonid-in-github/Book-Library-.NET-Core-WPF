@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -23,7 +24,7 @@ namespace Book_Library_.NET_Core_WPF_App.HelperClasses.Commands
             _loginWindow = loginWindow;
             _executeMethod = new Action(() => 
             {
-                App.Current.MainWindow.Hide();
+                App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
                 ResetSession();
                 ShowLoginWindow();
             });
