@@ -43,13 +43,14 @@ namespace Book_Library_.NET_Core_WPF_App
             InitializeComponent();
 
             DataContext = this;
+            loginWindow = new LoginWindow();
 
             SetupWindow();
 
             LoadMainWindow();
 
             NavigateUserCabinet = new NavigateUserCabinetCommand(MainFrame);
-            loginWindow = new LoginWindow();
+            
             Logout = new LogoutCommand(loginWindow);
             Exit = new ExitCommand();
 
