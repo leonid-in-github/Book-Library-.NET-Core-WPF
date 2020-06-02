@@ -67,12 +67,9 @@ namespace Book_Library_.NET_Core_WPF_App
 
         private void LoadMainWindow()
         {
-            if (String.IsNullOrEmpty(LastSession.Login)
-                ||
-                String.IsNullOrEmpty(LastSession.Password))
+            if (String.IsNullOrEmpty(LastSession.Login) || String.IsNullOrEmpty(LastSession.Password))
             {
                 App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
-
                 ShowLoginWindow();
             }
             else

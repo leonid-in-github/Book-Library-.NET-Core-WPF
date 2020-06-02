@@ -52,7 +52,12 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                 {
                     AppUser.SetInstance(login, password, actualAccountId);
                     Hide();
-                    App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Show();
+                    var mainWindow = App.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                    if (mainWindow != null)
+                    {
+                        mainWindow.MainFrame.Refresh();
+                        mainWindow.Show();
+                    }
                 }
                 else
                 {
