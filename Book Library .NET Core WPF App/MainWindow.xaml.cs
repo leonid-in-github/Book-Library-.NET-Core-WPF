@@ -1,4 +1,5 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
+using Book_Library_.NET_Core_WPF_App.HelperClasses;
 using Book_Library_.NET_Core_WPF_App.HelperClasses.Commands;
 using Book_Library_.NET_Core_WPF_App.Models.AccountModels;
 using Book_Library_.NET_Core_WPF_App.Pages;
@@ -66,15 +67,9 @@ namespace Book_Library_.NET_Core_WPF_App
 
         private void LoadMainWindow()
         {
-            BookLibraryProxyConfiguration
-                .GetInstanse()
-                .SetupBookLibraryProxyConfiguration(Properties.Settings.Default["ConnectionString"].ToString());
-
-            var lastSession = LastSessionConfig;
-
-            if (String.IsNullOrEmpty(lastSession.Login)
+            if (String.IsNullOrEmpty(LastSession.Login)
                 ||
-                String.IsNullOrEmpty(lastSession.Password))
+                String.IsNullOrEmpty(LastSession.Password))
             {
                 App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
 
@@ -84,11 +79,11 @@ namespace Book_Library_.NET_Core_WPF_App
             {
                 TryCatchMessageTask(() =>
                 {
-                    var actualAccountId = dbBookLibraryProxy.Account.Login(lastSession.Login, lastSession.Password);
+                    var actualAccountId = dbBookLibraryProxy.Account.Login(LastSession.Login, LastSession.Password);
 
                     if (actualAccountId > 0)
                     {
-                        AppUser.SetInstance(lastSession.Login, lastSession.Password, actualAccountId);
+                        AppUser.SetInstance(LastSession.Login, LastSession.Password, actualAccountId);
                         MainFrame.Navigate(new BookLibraryMainPage());
                     }
                     else
@@ -115,16 +110,6 @@ namespace Book_Library_.NET_Core_WPF_App
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
             Exit.Execute(null);
-        }
-
-        private AppUserConfigModel LastSessionConfig
-        {
-            get
-                {
-                    return new AppUserConfigModel(Properties.Settings.Default.Login,
-                        Properties.Settings.Default.Password,
-                        Properties.Settings.Default.AccountId);
-                }
         }
     }
 }

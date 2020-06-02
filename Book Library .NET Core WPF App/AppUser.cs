@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Book_Library_.NET_Core_WPF_App.HelperClasses;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -28,6 +29,9 @@ namespace Book_Library_.NET_Core_WPF_App
 
         public static void SetInstance(string login, string password, int accountId)
         {
+            LastSession.Login = login;
+            LastSession.Password = password;
+            LastSession.AccountId = accountId;
             _instance = new AppUser(login, password, accountId);
             return;
         }

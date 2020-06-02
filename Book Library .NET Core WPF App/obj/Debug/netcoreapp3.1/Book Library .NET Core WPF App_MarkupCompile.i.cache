@@ -12,9 +12,9 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library .NET Core WPF App\App.xaml
 12-224477660
 
-351733512616
+361189558170
 212-244719491
 Controls\CircularProgressBar.xaml;Controls\LoadingPanel.xaml;MainWindow.xaml;Pages\AddBookPage.xaml;Pages\BookLibraryMainPage.xaml;Pages\BookTrackPage.xaml;Pages\ChangePasswordPage.xaml;Pages\DeleteAccountPage.xaml;Pages\EditBookPage.xaml;Pages\UserCabinetPage.xaml;Windows\LoginWindow.xaml;Windows\RegistrationWindow.xaml;
 
-False
+True
 

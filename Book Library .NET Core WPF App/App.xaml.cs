@@ -14,5 +14,11 @@ namespace Book_Library_.NET_Core_WPF_App
     /// </summary>
     public partial class App : Application
     {
+        void App_Startup(object sender, StartupEventArgs e)
+        {
+            BookLibraryProxyConfiguration
+                .GetInstanse()
+                .SetupBookLibraryProxyConfiguration(Book_Library_.NET_Core_WPF_App.Properties.Settings.Default["ConnectionString"].ToString());
+        }
     }
 }

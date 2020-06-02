@@ -1,4 +1,5 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
+using Book_Library_.NET_Core_WPF_App.HelperClasses;
 using Book_Library_.NET_Core_WPF_App.Models.AccountModels;
 using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
 using System;
@@ -49,12 +50,8 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
 
                 if (actualAccountId > 0)
                 {
-                    Properties.Settings.Default["Login"] = login;
-                    Properties.Settings.Default["Password"] = password;
-                    Properties.Settings.Default["AccountId"] = actualAccountId;
-                    Properties.Settings.Default.Save();
                     AppUser.SetInstance(login, password, actualAccountId);
-                    this.Hide();
+                    Hide();
                     App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Show();
                 }
                 else
