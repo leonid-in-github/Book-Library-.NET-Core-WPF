@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Book Library EF Core Proxy Class Library\Book Library EF Core Proxy Class Library.csproj" />
+    <ProjectReference Include="..\Book Library EF Core Repository Class Library\Book Library EF Core Repository Class Library.csproj" />
   </ItemGroup>
 
 </Project>

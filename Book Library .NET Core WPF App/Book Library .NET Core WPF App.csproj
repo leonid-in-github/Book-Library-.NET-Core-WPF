@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Book Library EF Core Proxy Class Library\Book Library EF Core Proxy Class Library.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -47,6 +43,10 @@
 
   <ItemGroup>
     <Folder Include="Resources\Images\Icons\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Book Library EF Core Repository Class Library\Book Library EF Core Repository Class Library.csproj" />
   </ItemGroup>
 
 </Project>

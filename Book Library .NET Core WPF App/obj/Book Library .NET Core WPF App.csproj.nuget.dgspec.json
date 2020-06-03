@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj": {
-                "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj"
+              "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Repository Class Library\\Book Library EF Core Repository Class Library.csproj": {
+                "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Repository Class Library\\Book Library EF Core Repository Class Library.csproj"
               }
             }
           }
@@ -83,11 +83,11 @@
         }
       }
     },
-    "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj": {
+    "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Repository Class Library\\Book Library EF Core Repository Class Library.csproj": {
       "restore": {
-        "projectUniqueName": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj",
-        "projectName": "Book Library EF Core Proxy Class Library",
-        "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Proxy Class Library\\Book Library EF Core Proxy Class Library.csproj"
+        "projectUniqueName": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Repository Class Library\\Book Library EF Core Repository Class Library.csproj",
+        "projectName": "Book Library EF Core Repository Class Library",
+        "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library EF Core Repository Class Library\\Book Library EF Core Repository Class Library.csproj"
       },
       "frameworks": {
         "net472": {}
