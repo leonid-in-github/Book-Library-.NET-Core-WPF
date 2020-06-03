@@ -5,7 +5,7 @@ using Book_Library_.NET_Core_WPF_App.Models.AccountModels;
 using Book_Library_.NET_Core_WPF_App.Pages;
 using Book_Library_.NET_Core_WPF_App.Windows;
 using Book_Library_EF_Core_Proxy_Class_Library.Configuration;
-using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -76,7 +76,7 @@ namespace Book_Library_.NET_Core_WPF_App
             {
                 TryCatchMessageTask(() =>
                 {
-                    var actualAccountId = dbBookLibraryProxy.Account.Login(LastSession.Login, LastSession.Password);
+                    var actualAccountId = DbBookLibraryRepository.Account.Login(LastSession.Login, LastSession.Password);
 
                     if (actualAccountId > 0)
                     {

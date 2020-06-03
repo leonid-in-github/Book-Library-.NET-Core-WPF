@@ -1,4 +1,4 @@
-using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Book_Library_Tests
@@ -11,7 +11,7 @@ namespace Book_Library_Tests
         {
             var login = "test";
             var password = "test";
-            var accountId = dbBookLibraryProxy.Account.Login(login, password);
+            var accountId = DbBookLibraryRepository.Account.Login(login, password);
 
             Assert.IsTrue(true);
         }

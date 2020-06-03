@@ -1,5 +1,5 @@
 ﻿using Book_Library_.NET_Core_WPF_App.Windows;
-using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +44,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         {
             TryCatchMessageTask(() =>
             {
-                if (dbBookLibraryProxy.Account.DeleteAccount(AppUser.GetInstance().AccountId, pbPassword.Password))
+                if (DbBookLibraryRepository.Account.DeleteAccount(AppUser.GetInstance().AccountId, pbPassword.Password))
                 {
                     App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
                     ResetSession();

@@ -2,7 +2,7 @@
 using Book_Library_.NET_Core_WPF_App.ViewModels;
 using Book_Library_.NET_Core_WPF_App.Windows;
 using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.LibraryInterfaceBook;
-using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
@@ -73,7 +73,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         private void LoadDataContext()
         {
             pageModel.UserName = AppUser.GetInstance().Login;
-            var books = dbBookLibraryProxy.Books.GetBooks();
+            var books = DbBookLibraryRepository.Books.GetBooks();
             pageModel.Books = books;
         }
 
@@ -109,7 +109,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             {
                 var book = BooksGrid.SelectedItem as DisplayBook;
                 if (book == null) return;
-                var trackBook = dbBookLibraryProxy.Books.GetBookTrack(AppUser.GetInstance().AccountId, book.ID, "All");
+                var trackBook = DbBookLibraryRepository.Books.GetBookTrack(AppUser.GetInstance().AccountId, book.ID, "All");
                 NavigationService.Navigate(new BookTrackPage(this, trackBook));
             });
         }
@@ -128,10 +128,10 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                         var bookId = (booksGridEnumerator.Current as DisplayBook)?.ID;
                         if (bookId != null)
                         {
-                            dbBookLibraryProxy.Books.DeleteBook((int)bookId);
+                            DbBookLibraryRepository.Books.DeleteBook((int)bookId);
                         }
                     }
-                    var books = dbBookLibraryProxy.Books.GetBooks();
+                    var books = DbBookLibraryRepository.Books.GetBooks();
                     pageModel.Books = books;
                 }
             });
@@ -168,7 +168,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                 var dataGridContext = DataContext as MainPageVM;
                 if (dataGridContext != null)
                 {
-                    dataGridContext.Books = dbBookLibraryProxy.Books.GetBooks();
+                    dataGridContext.Books = DbBookLibraryRepository.Books.GetBooks();
                     var searchBooksResult = dataGridContext.Books.Where(i =>
                         i.Name.ToString().ToLower().Contains(tbSearch.Text.ToLower())
                         ||

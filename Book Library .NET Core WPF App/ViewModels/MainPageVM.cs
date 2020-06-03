@@ -1,7 +1,7 @@
 ﻿using Book_Library_.NET_Core_WPF_App.HelperClasses;
 using Book_Library_.NET_Core_WPF_App.HelperClasses.Commands;
 using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.LibraryInterfaceBook;
-using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

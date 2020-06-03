@@ -1,6 +1,6 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ViewModels;
 using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.LibraryInterfaceBook;
-using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -67,21 +67,21 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             BookTrackVM bookTrackVM = DataContext as BookTrackVM;
             if (!(bool)_book.BookAvailability)
             {
-                dbBookLibraryProxy.Books.PutBook(AppUser.GetInstance().AccountId, _book.BookId);
+                DbBookLibraryRepository.Books.PutBook(AppUser.GetInstance().AccountId, _book.BookId);
                 _book.BookAvailability = true;
                 if (bookTrackVM != null)
                 {
-                    bookTrackVM.Book = dbBookLibraryProxy.Books.GetBookTrack(AppUser.GetInstance().AccountId, (int)_book.BookId, "All");
+                    bookTrackVM.Book = DbBookLibraryRepository.Books.GetBookTrack(AppUser.GetInstance().AccountId, (int)_book.BookId, "All");
                 }
                 btnActionBook.Content = "Take book";
             }
             else
             {
-                dbBookLibraryProxy.Books.TakeBook(AppUser.GetInstance().AccountId, _book.BookId);
+                DbBookLibraryRepository.Books.TakeBook(AppUser.GetInstance().AccountId, _book.BookId);
                 _book.BookAvailability = false;
                 if (bookTrackVM != null)
                 {
-                    bookTrackVM.Book = dbBookLibraryProxy.Books.GetBookTrack(AppUser.GetInstance().AccountId, (int)_book.BookId, "All");
+                    bookTrackVM.Book = DbBookLibraryRepository.Books.GetBookTrack(AppUser.GetInstance().AccountId, (int)_book.BookId, "All");
                 }
                 btnActionBook.Content = "Put book";
             }

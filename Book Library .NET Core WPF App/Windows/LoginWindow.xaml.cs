@@ -1,7 +1,7 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
 using Book_Library_.NET_Core_WPF_App.HelperClasses;
 using Book_Library_.NET_Core_WPF_App.Models.AccountModels;
-using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,7 +46,7 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                 var password = tbPassword.Password;
                 tbPassword.Password = string.Empty;
 
-                var actualAccountId = dbBookLibraryProxy.Account.Login(login, password);
+                var actualAccountId = DbBookLibraryRepository.Account.Login(login, password);
 
                 if (actualAccountId > 0)
                 {

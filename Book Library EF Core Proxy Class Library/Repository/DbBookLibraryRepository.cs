@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Book_Library_EF_Core_Proxy_Class_Library.Proxy
+namespace Book_Library_EF_Core_Proxy_Class_Library.Repository
 {
-    public static class dbBookLibraryProxy
+    public static class DbBookLibraryRepository
     {
         public static AccountAdapter Account
         {

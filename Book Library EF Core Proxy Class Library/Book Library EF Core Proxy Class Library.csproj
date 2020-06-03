@@ -173,7 +173,7 @@
     <Compile Include="Models\Book\LibraryInterfaceBook\DisplayBook.cs" />
     <Compile Include="Models\Book\LibraryInterfaceBook\UpdateBookModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proxy\dbBookLibraryProxy.cs" />
+    <Compile Include="Repository\DbBookLibraryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

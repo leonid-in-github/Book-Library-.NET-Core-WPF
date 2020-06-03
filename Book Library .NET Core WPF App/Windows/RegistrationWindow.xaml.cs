@@ -1,5 +1,5 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
-using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,7 +57,7 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                     RegistrationGrid.Background = RegistrationGridAlertBackground;
                     return;
                 }
-                if (dbBookLibraryProxy.Account.Register(tbLogin.Text, pbPassword.Password, tbFirstName.Text, tbLastName.Text, tbEmail.Text) <= 0)
+                if (DbBookLibraryRepository.Account.Register(tbLogin.Text, pbPassword.Password, tbFirstName.Text, tbLastName.Text, tbEmail.Text) <= 0)
                 {
                     Message.Content = "Registration data base error";
                     RegistrationGrid.Background = RegistrationGridAlertBackground;

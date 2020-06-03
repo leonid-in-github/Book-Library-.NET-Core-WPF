@@ -1,5 +1,5 @@
 ﻿using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.LibraryInterfaceBook;
-using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -54,7 +54,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                         Authors = tbBookAuthors.Text,
                         Year = dpBookDate.SelectedDate.Value
                     };
-                    dbBookLibraryProxy.Books.AddBook(book);
+                    DbBookLibraryRepository.Books.AddBook(book);
                     tbBookName.Text = string.Empty;
                     tbBookAuthors.Text = string.Empty;
                     NavigationService.Navigate(_previousPage);

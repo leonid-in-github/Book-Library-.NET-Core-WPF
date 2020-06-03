@@ -1,5 +1,5 @@
 ﻿using Book_Library_EF_Core_Proxy_Class_Library.Models.Account;
-using Book_Library_EF_Core_Proxy_Class_Library.Proxy;
+using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
     {
         public UserCabinetVM()
         {
-            _user = dbBookLibraryProxy.Account.GetUser(AppUser.GetInstance().AccountId);
+            _user = DbBookLibraryRepository.Account.GetUser(AppUser.GetInstance().AccountId);
         }
 
         private DisplayUserModel _user;
