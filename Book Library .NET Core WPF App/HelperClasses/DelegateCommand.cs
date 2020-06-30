@@ -5,10 +5,6 @@ using System.Windows.Input;
 
 namespace Book_Library_.NET_Core_WPF_App.HelperClasses
 {
-    /// <summary>
-    /// This class allows delegating the commanding logic to methods passed as parameters,
-    /// and enables a View to bind commands to objects that are not part of the element tree.
-    /// </summary>
     public class DelegateCommand : ICommand
     {
         #region Fields

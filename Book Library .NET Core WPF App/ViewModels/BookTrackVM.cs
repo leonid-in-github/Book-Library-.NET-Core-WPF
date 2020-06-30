@@ -1,4 +1,4 @@
-﻿using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.LibraryInterfaceBook;
+﻿using Book_Library_Repository_EF_Core.Models.Book;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +14,9 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private BookTrackModel _book;
+        private BookTrackList _book;
 
-        public BookTrackModel Book
+        public BookTrackList Book
         {
             get
             {

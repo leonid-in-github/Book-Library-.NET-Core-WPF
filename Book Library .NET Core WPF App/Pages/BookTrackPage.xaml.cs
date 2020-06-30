@@ -1,6 +1,5 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ViewModels;
-using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.LibraryInterfaceBook;
-using Book_Library_EF_Core_Proxy_Class_Library.Repository;
+using Book_Library_Repository_EF_Core.Models.Book;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,20 +15,14 @@ using System.Windows.Shapes;
 
 namespace Book_Library_.NET_Core_WPF_App.Pages
 {
-    /// <summary>
-    /// Interaction logic for BookTrackPage.xaml
-    /// </summary>
     public partial class BookTrackPage : BookLibraryPage
     {
         private Page _previousPage;
 
-        private BookTrackModel _book;
-
-        public BookTrackPage(Page previousPage, BookTrackModel book)
+        public BookTrackPage(Page previousPage, BookTrackList book)
         {
             InitializeComponent();
             _previousPage = previousPage;
-            _book = book;
 
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
             btnBackward.Click += btnBackward_Click;
@@ -65,23 +58,24 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         private void btnActionBook_Click(object sender, RoutedEventArgs e)
         {
             BookTrackVM bookTrackVM = DataContext as BookTrackVM;
-            if (!(bool)_book.BookAvailability)
+            
+            if (!(bool)bookTrackVM.Book.BookAvailability)
             {
-                DbBookLibraryRepository.Books.PutBook(AppUser.GetInstance().AccountId, _book.BookId);
-                _book.BookAvailability = true;
+                DataStore.Books.PutBook(AppUser.GetInstance().AccountId, bookTrackVM.Book.BookId);
+                bookTrackVM.Book.BookAvailability = true;
                 if (bookTrackVM != null)
                 {
-                    bookTrackVM.Book = DbBookLibraryRepository.Books.GetBookTrack(AppUser.GetInstance().AccountId, (int)_book.BookId, "All");
+                    bookTrackVM.Book = DataStore.Books.GetBookTrack(AppUser.GetInstance().AccountId, (int)bookTrackVM.Book.BookId, "All");
                 }
                 btnActionBook.Content = "Take book";
             }
             else
             {
-                DbBookLibraryRepository.Books.TakeBook(AppUser.GetInstance().AccountId, _book.BookId);
-                _book.BookAvailability = false;
+                DataStore.Books.TakeBook(AppUser.GetInstance().AccountId, bookTrackVM.Book.BookId);
+                bookTrackVM.Book.BookAvailability = false;
                 if (bookTrackVM != null)
                 {
-                    bookTrackVM.Book = DbBookLibraryRepository.Books.GetBookTrack(AppUser.GetInstance().AccountId, (int)_book.BookId, "All");
+                    bookTrackVM.Book = DataStore.Books.GetBookTrack(AppUser.GetInstance().AccountId, (int)bookTrackVM.Book.BookId, "All");
                 }
                 btnActionBook.Content = "Put book";
             }

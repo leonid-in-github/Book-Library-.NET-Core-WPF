@@ -61,9 +61,8 @@ namespace Book_Library_.NET_Core_WPF_App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-7CKFMUG\\SQLEXPRESS;Initial Catalog=dbBookLibrary;Integrated S" +
-            "ecurity=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;Appli" +
-            "cationIntent=ReadWrite;MultiSubnetFailover=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=(localdb)\\mssqllocaldb;AttachDBFilename=%CONTENTROOTPATH%App_Data\\dbWPFBoo" +
+            "kLibrary.mdf;Trusted_Connection=true;MultipleActiveResultSets=true")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

@@ -1,0 +1,84 @@
+30.06.2020 4:19:11	This log contains information about the import schema operation into project 'Book Library Data Base' on computer 'DESKTOP-7CKFMUG' by user 'leoni'.
+30.06.2020 4:19:11	Import of database schema has started.
+30.06.2020 4:19:17	Gathering database credentials
+30.06.2020 4:19:17	Gathering database options
+30.06.2020 4:19:17	Gathering users
+30.06.2020 4:19:17	Gathering roles
+30.06.2020 4:19:17	Gathering application roles
+30.06.2020 4:19:17	Gathering role memberships
+30.06.2020 4:19:17	Gathering filegroups
+30.06.2020 4:19:17	Gathering full-text catalogs
+30.06.2020 4:19:17	Gathering assemblies
+30.06.2020 4:19:17	Gathering certificates
+30.06.2020 4:19:17	Gathering asymmetric keys
+30.06.2020 4:19:17	Gathering symmetric keys
+30.06.2020 4:19:17	Gathering encrypted symmetric keys
+30.06.2020 4:19:17	Gathering schemas
+30.06.2020 4:19:17	Gathering XML schema collections
+30.06.2020 4:19:17	Gathering user-defined data types
+30.06.2020 4:19:17	Gathering user-defined types
+30.06.2020 4:19:17	Gathering table types
+30.06.2020 4:19:17	Gathering unique keys for table types
+30.06.2020 4:19:17	Gathering primary keys for table types
+30.06.2020 4:19:17	Gathering indexes for table types
+30.06.2020 4:19:17	Gathering check constraints for table types
+30.06.2020 4:19:17	Gathering default constraints for table types
+30.06.2020 4:19:17	Gathering partition functions
+30.06.2020 4:19:17	Gathering partition schemes
+30.06.2020 4:19:18	Gathering functions
+30.06.2020 4:19:18	Gathering encrypted functions
+30.06.2020 4:19:18	Gathering aggregates
+30.06.2020 4:19:18	Gathering procedures
+30.06.2020 4:19:18	Gathering encrypted procedures
+30.06.2020 4:19:18	Gathering tables
+30.06.2020 4:19:18	Gathering primary keys
+30.06.2020 4:19:18	Gathering unique constraints
+30.06.2020 4:19:18	Gathering foreign keys
+30.06.2020 4:19:18	Gathering default constraints
+30.06.2020 4:19:18	Gathering check constraints
+30.06.2020 4:19:18	Gathering views
+30.06.2020 4:19:18	Gathering encrypted views
+30.06.2020 4:19:18	Gathering indexes
+30.06.2020 4:19:18	Gathering statistics
+30.06.2020 4:19:18	Gathering full-text index stoplists
+30.06.2020 4:19:18	Gathering search property lists
+30.06.2020 4:19:18	Gathering search properties
+30.06.2020 4:19:18	Gathering full-text indexes
+30.06.2020 4:19:18	Gathering column store indexes
+30.06.2020 4:19:18	Gathering spatial indexes
+30.06.2020 4:19:18	Gathering XML indexes
+30.06.2020 4:19:18	Gathering Selective XML indexes
+30.06.2020 4:19:18	Gathering encrypted triggers
+30.06.2020 4:19:19	Gathering triggers
+30.06.2020 4:19:19	Gathering encrypted and clr ddl triggers
+30.06.2020 4:19:19	Gathering ddl triggers
+30.06.2020 4:19:19	Gathering synonyms
+30.06.2020 4:19:19	Gathering defaults
+30.06.2020 4:19:19	Gathering data constraint uddt bindings
+30.06.2020 4:19:19	Gathering rules
+30.06.2020 4:19:19	Gathering data constraint uddt bindings
+30.06.2020 4:19:19	Gathering message types
+30.06.2020 4:19:19	Gathering queues
+30.06.2020 4:19:19	Gathering contracts
+30.06.2020 4:19:19	Gathering services
+30.06.2020 4:19:19	Gathering event notifications
+30.06.2020 4:19:19	Gathering remote service bindings
+30.06.2020 4:19:19	Gathering broker priorities
+30.06.2020 4:19:19	Gathering signatures
+30.06.2020 4:19:19	Gathering data compression options
+30.06.2020 4:19:19	Gathering sequence types
+30.06.2020 4:19:19	Gathering security policies
+30.06.2020 4:19:19	Gather column encryption keys
+30.06.2020 4:19:19	Gathering column master keys
+30.06.2020 4:19:19	Gathering external data sources
+30.06.2020 4:19:19	Gathering external file formats
+30.06.2020 4:19:19	Gathering external tables
+30.06.2020 4:19:19	Gathering extended properties
+30.06.2020 4:19:19	Gathering credentials
+30.06.2020 4:19:19	Gathering logins
+30.06.2020 4:19:19	Gathering server audits
+30.06.2020 4:19:20	Scanning project for duplicate elements
+30.06.2020 4:19:20	Finished duplicate element processing
+30.06.2020 4:19:21	Finished importing database.
+30.06.2020 4:19:21	A summary of the import was saved to the following location: E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library Data Base\Import Schema Logs\Book Library Data Ba_20200630011911.log
+30.06.2020 4:19:21	Click Finish to continue...

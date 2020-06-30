@@ -29,7 +29,7 @@
             </Grid.Background>
             <DataGrid 
                 x:Name="BooksGrid"
-                ItemsSource="{Binding Path=Book.BookTrackList, Mode=OneWay}" 
+                ItemsSource="{Binding Path=Book.TracksList, Mode=OneWay}" 
                 IsReadOnly="True"
                 Background="Transparent"
                 RowBackground="Transparent"

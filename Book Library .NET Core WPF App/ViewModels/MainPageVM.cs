@@ -1,7 +1,6 @@
 ﻿using Book_Library_.NET_Core_WPF_App.HelperClasses;
 using Book_Library_.NET_Core_WPF_App.HelperClasses.Commands;
-using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.LibraryInterfaceBook;
-using Book_Library_EF_Core_Proxy_Class_Library.Repository;
+using Book_Library_Repository_EF_Core.Models.Book;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,14 +21,14 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
         }
 
         private string _userName;
-        private List<DisplayBook> _books;
+        private List<BookItem> _books;
         private bool _panelLoading;
         private string _panelMainMessage = "Loading";
         private string _panelSubMessage = "Please wait...";
 
-        public MainPageVM(NavigationService navigationService, Page parentPage)
+        public MainPageVM(Page previousPage)
         {
-            NavigateUserCabinet = new NavigateUserCabinetCommand(navigationService, parentPage);
+            NavigateUserCabinet = new NavigateUserCabinetCommand(previousPage);
         }
 
         public string UserName
@@ -45,7 +44,7 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
             }
         }
 
-        public List<DisplayBook> Books { 
+        public List<BookItem> Books { 
             get 
             { 
                 return _books;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Book_Library_Repository_EF_Core.Repositories;
+using Book_Library_Repository_EF_Core.Servicies;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -7,6 +9,8 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
 {
     public class BookLibraryWindow : Window
     {
+        protected IDataStore DataStore => RepositoryService.Get<BookLibraryRepository>();
+
         protected delegate void Delegate();
 
         protected void TryCatchMessageTask(Delegate _delegate)

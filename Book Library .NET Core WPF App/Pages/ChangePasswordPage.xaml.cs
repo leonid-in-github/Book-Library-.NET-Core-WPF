@@ -1,5 +1,4 @@
-﻿using Book_Library_EF_Core_Proxy_Class_Library.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -45,7 +44,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             {
                 if (string.Compare(pbNewPassword.Password, pbConfirmPassword.Password) == 0)
                 {
-                    if (DbBookLibraryRepository.Account.ChangeAccountPassword(AppUser.GetInstance().AccountId, pbPassword.Password, pbNewPassword.Password))
+                    if (DataStore.Account.ChangeAccountPassword(AppUser.GetInstance().AccountId, pbPassword.Password, pbNewPassword.Password))
                     {
                         MessageBox.Show("Password changed", "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
                         NavigationService.Navigate(_previousPage);

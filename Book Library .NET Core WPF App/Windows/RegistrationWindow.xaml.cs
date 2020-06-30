@@ -1,5 +1,4 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
-using Book_Library_EF_Core_Proxy_Class_Library.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,36 +37,48 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
             pbPassword.KeyUp += TextBox_KeyUp;
             pbConfirmPassword.KeyUp += TextBox_KeyUp;
 
-            this.Closing += LoginWindow_Closing;
+            this.Closing += RegistrationWindow_Closing;
+        }
+
+        private void SetupWindow()
+        {
+            this.CenterWindowOnScreen();
+            Background = WindowsPropertiesProvider.LoginBackground;
+            Icon = WindowsPropertiesProvider.DefaultIcon;
+        }
+
+        private void Register()
+        {
+            if (!ValidateEmptyInputData())
+            {
+                Message.Content = "Empty input is not correct";
+                RegistrationGrid.Background = RegistrationGridAlertBackground;
+                return;
+            }
+            if (!ConfirmPasswordInputData())
+            {
+                Message.Content = "Confirm password not correct";
+                RegistrationGrid.Background = RegistrationGridAlertBackground;
+                return;
+            }
+            if (DataStore.Account.Register(tbLogin.Text, pbPassword.Password, tbFirstName.Text, tbLastName.Text, tbEmail.Text) <= 0)
+            {
+                Message.Content = "Registration data base error";
+                RegistrationGrid.Background = RegistrationGridAlertBackground;
+                return;
+            }
+            this.Close();
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             TryCatchMessageTask(() =>
             {
-                if (!ValidateEmptyInputData())
-                {
-                    Message.Content = "Empty input is not correct";
-                    RegistrationGrid.Background = RegistrationGridAlertBackground;
-                    return;
-                }
-                if (!ConfirmPasswordInputData())
-                {
-                    Message.Content = "Confirm password not correct";
-                    RegistrationGrid.Background = RegistrationGridAlertBackground;
-                    return;
-                }
-                if (DbBookLibraryRepository.Account.Register(tbLogin.Text, pbPassword.Password, tbFirstName.Text, tbLastName.Text, tbEmail.Text) <= 0)
-                {
-                    Message.Content = "Registration data base error";
-                    RegistrationGrid.Background = RegistrationGridAlertBackground;
-                    return;
-                }
-                this.Close();
+                Register();
             });
         }
 
-        private void LoginWindow_Closing(object sender, CancelEventArgs e)
+        private void RegistrationWindow_Closing(object sender, CancelEventArgs e)
         {
             _loginWindow.Show();
         }
@@ -109,13 +120,6 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                 return true;
             }
             return false;
-        }
-
-        private void SetupWindow()
-        {
-            this.CenterWindowOnScreen();
-            Background = WindowsPropertiesProvider.LoginBackground;
-            Icon = WindowsPropertiesProvider.DefaultIcon;
         }
 
         private LinearGradientBrush RegistrationGridAlertBackground

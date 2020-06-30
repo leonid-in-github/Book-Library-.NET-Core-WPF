@@ -7,7 +7,8 @@
     },
     "additionalProbingPaths": [
       "C:\\Users\\leoni\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\leoni\\.nuget\\packages"
+      "C:\\Users\\leoni\\.nuget\\packages",
+      "C:\\Microsoft\\Xamarin\\NuGet"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

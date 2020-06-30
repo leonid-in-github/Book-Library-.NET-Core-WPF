@@ -1,5 +1,5 @@
-﻿using Book_Library_.NET_Core_WPF_App.Windows;
-using Book_Library_EF_Core_Proxy_Class_Library.Repository;
+﻿using Book_Library_.NET_Core_WPF_App.HelperClasses;
+using Book_Library_.NET_Core_WPF_App.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,9 +44,9 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         {
             TryCatchMessageTask(() =>
             {
-                if (DbBookLibraryRepository.Account.DeleteAccount(AppUser.GetInstance().AccountId, pbPassword.Password))
+                if (DataStore.Account.DeleteAccount(AppUser.GetInstance().AccountId, pbPassword.Password))
                 {
-                    App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
+                    WindowsNavigation.MainWindow?.Hide();
                     ResetSession();
                     ShowLoginWindow();
                 }
@@ -61,7 +61,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         {
             TryCatchMessageTask(() =>
             {
-                NavigationService.Navigate(new BookLibraryMainPage());
+                NavigationService?.Navigate(new BookLibraryMainPage());
             });
         }
 

@@ -29,11 +29,16 @@ namespace Book_Library_.NET_Core_WPF_App
 
         public static void SetInstance(string login, string password, int accountId)
         {
+            SetLastSessionUser(login, password, accountId);
+            _instance = new AppUser(login, password, accountId);
+            return;
+        }
+
+        private static void SetLastSessionUser(string login, string password, int accountId)
+        {
             LastSession.Login = login;
             LastSession.Password = password;
             LastSession.AccountId = accountId;
-            _instance = new AppUser(login, password, accountId);
-            return;
         }
 
         public string Login { get; }

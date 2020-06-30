@@ -4,8 +4,8 @@ using Book_Library_.NET_Core_WPF_App.HelperClasses.Commands;
 using Book_Library_.NET_Core_WPF_App.Models.AccountModels;
 using Book_Library_.NET_Core_WPF_App.Pages;
 using Book_Library_.NET_Core_WPF_App.Windows;
-using Book_Library_EF_Core_Proxy_Class_Library.Configuration;
-using Book_Library_EF_Core_Proxy_Class_Library.Repository;
+using Book_Library_Repository_EF_Core.Repositories;
+using Book_Library_Repository_EF_Core.Servicies;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -69,14 +69,14 @@ namespace Book_Library_.NET_Core_WPF_App
         {
             if (String.IsNullOrEmpty(LastSession.Login) || String.IsNullOrEmpty(LastSession.Password))
             {
-                App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
+                WindowsNavigation.MainWindow?.Hide();
                 ShowLoginWindow();
             }
             else
             {
                 TryCatchMessageTask(() =>
                 {
-                    var actualAccountId = DbBookLibraryRepository.Account.Login(LastSession.Login, LastSession.Password);
+                    var actualAccountId = DataStore.Account.Login(LastSession.Login, LastSession.Password);
 
                     if (actualAccountId > 0)
                     {
@@ -85,7 +85,7 @@ namespace Book_Library_.NET_Core_WPF_App
                     }
                     else
                     {
-                        App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
+                        WindowsNavigation.MainWindow?.Hide();
 
                         ShowLoginWindow();
                     }

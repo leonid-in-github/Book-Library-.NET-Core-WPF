@@ -1,5 +1,6 @@
-﻿using Book_Library_EF_Core_Proxy_Class_Library.Models.Account;
-using Book_Library_EF_Core_Proxy_Class_Library.Repository;
+﻿using Book_Library_Repository_EF_Core.Models.Account;
+using Book_Library_Repository_EF_Core.Repositories;
+using Book_Library_Repository_EF_Core.Servicies;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,9 +10,11 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
 {
     public class UserCabinetVM
     {
+        private IDataStore DataStore => RepositoryService.Get<BookLibraryRepository>();
+
         public UserCabinetVM()
         {
-            _user = DbBookLibraryRepository.Account.GetUser(AppUser.GetInstance().AccountId);
+            _user = DataStore.Account.GetUser(AppUser.GetInstance().AccountId);
         }
 
         private DisplayUserModel _user;

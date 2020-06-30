@@ -24,7 +24,7 @@ namespace Book_Library_.NET_Core_WPF_App.HelperClasses.Commands
             _loginWindow = loginWindow;
             _executeMethod = new Action(() => 
             {
-                App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Hide();
+                WindowsNavigation.MainWindow?.Hide();
                 ResetSession();
                 ShowLoginWindow();
             });

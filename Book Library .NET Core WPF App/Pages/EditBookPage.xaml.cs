@@ -1,5 +1,4 @@
-﻿using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.LibraryInterfaceBook;
-using Book_Library_EF_Core_Proxy_Class_Library.Repository;
+﻿using Book_Library_Repository_EF_Core.Models.Book;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,9 +21,9 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
     {
         private Page _previousPage;
 
-        private UpdateBookModel _book;
+        private BookItem _book;
 
-        public EditBookPage(Page previousPage, UpdateBookModel book)
+        public EditBookPage(Page previousPage, BookItem book)
         {
             InitializeComponent();
 
@@ -60,7 +59,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                     _book.Name = tbBookName.Text;
                     _book.Authors = tbBookAuthors.Text;
                     _book.Year = dpBookDate.SelectedDate.Value;
-                    DbBookLibraryRepository.Books.UpdateBook(_book);
+                    DataStore.Books.UpdateBook(_book);
                     NavigationService.Navigate(_previousPage);
                 }
             });

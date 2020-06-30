@@ -1,7 +1,7 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
 using Book_Library_.NET_Core_WPF_App.HelperClasses;
 using Book_Library_.NET_Core_WPF_App.Models.AccountModels;
-using Book_Library_EF_Core_Proxy_Class_Library.Repository;
+using Book_Library_.NET_Core_WPF_App.Pages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,71 +36,6 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
 
             this.Closing += LoginWindow_Closing;
         }
-        
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            TryCatchMessageTask(() =>
-            {
-                var login = tbLogin.Text;
-                tbLogin.Text = string.Empty;
-                var password = tbPassword.Password;
-                tbPassword.Password = string.Empty;
-
-                var actualAccountId = DbBookLibraryRepository.Account.Login(login, password);
-
-                if (actualAccountId > 0)
-                {
-                    AppUser.SetInstance(login, password, actualAccountId);
-                    Hide();
-                    var mainWindow = App.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-                    if (mainWindow != null)
-                    {
-                        mainWindow.MainFrame.Refresh();
-                        mainWindow.Show();
-                    }
-                }
-                else
-                {
-                    LoginGrid.Background = LoginGridAlertBackground;
-
-                    Message.Content = "Incorrect login or password.";
-                }
-            });
-        }
-
-        private void btnRegistration_Click(object sender, RoutedEventArgs e)
-        {
-            TryCatchMessageTask(() =>
-            {
-                this.Hide();
-                var registrationWindow = new RegistrationWindow(this);
-                registrationWindow.Show();
-            });
-        }
-
-        private void LoginWindow_Closing(object sender, CancelEventArgs e)
-        {
-            Hide();
-            e.Cancel = true;
-            if (String.IsNullOrEmpty(AppUser.GetInstance().Login))
-            {
-                Application.Current.Shutdown();
-            }
-            else
-            {
-                App.Current.Windows.OfType<MainWindow>().FirstOrDefault()?.Show();
-            }
-            
-        }
-
-        private void TextBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                btnLogin_Click(sender, e);
-            }
-            e.Handled = true;
-        }
 
         private void SetupWindow()
         {
@@ -123,6 +58,82 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
                     new GradientStop(Colors.Red, 1));
                 return lgBackground;
             }
+        }
+
+        private void Login()
+        {
+            var login = tbLogin.Text;
+            tbLogin.Text = string.Empty;
+            var password = tbPassword.Password;
+            tbPassword.Password = string.Empty;
+
+            var actualAccountId = DataStore.Account.Login(login, password);
+
+            if (actualAccountId > 0)
+            {
+                AppUser.SetInstance(login, password, actualAccountId);
+                Hide();
+                var mainWindow = WindowsNavigation.MainWindow;
+                if (mainWindow != null)
+                {
+                    mainWindow.MainFrame.Refresh();
+                    mainWindow.MainFrame.Navigate(new BookLibraryMainPage());
+                    mainWindow.Show();
+                }
+            }
+            else
+            {
+                LoginGrid.Background = LoginGridAlertBackground;
+
+                Message.Content = "Incorrect login or password.";
+            }
+        }
+
+        private void Registration()
+        {
+            this.Hide();
+            var registrationWindow = new RegistrationWindow(this);
+            registrationWindow.Show();
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            TryCatchMessageTask(() =>
+            {
+                Login();
+            });
+        }
+
+        private void btnRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            TryCatchMessageTask(() =>
+            {
+                Registration();
+            });
+        }
+
+        private void LoginWindow_Closing(object sender, CancelEventArgs e)
+        {
+            Hide();
+            e.Cancel = true;
+            if (String.IsNullOrEmpty(AppUser.GetInstance().Login))
+            {
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                WindowsNavigation.MainWindow?.Show();
+            }
+            
+        }
+
+        private void TextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+            e.Handled = true;
         }
     }
 }

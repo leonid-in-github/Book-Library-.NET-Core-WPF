@@ -1,4 +1,5 @@
-﻿using Book_Library_EF_Core_Proxy_Class_Library.Configuration;
+﻿using Book_Library_Repository_EF_Core.Repositories;
+using Book_Library_Repository_EF_Core.Servicies;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,9 +17,10 @@ namespace Book_Library_.NET_Core_WPF_App
     {
         void App_Startup(object sender, StartupEventArgs e)
         {
-            BookLibraryProxyConfiguration
-                .GetInstanse()
-                .SetupBookLibraryProxyConfiguration(Book_Library_.NET_Core_WPF_App.Properties.Settings.Default["ConnectionString"].ToString());
+            var _contentRootPath = System.AppDomain.CurrentDomain.BaseDirectory;
+            var dbConnectionString = Book_Library_.NET_Core_WPF_App.Properties.Settings.Default["ConnectionString"].ToString();
+            dbConnectionString = dbConnectionString.Replace("%CONTENTROOTPATH%", _contentRootPath);
+            RepositoryService.Register<BookLibraryRepository>(dbConnectionString);
         }
     }
 }

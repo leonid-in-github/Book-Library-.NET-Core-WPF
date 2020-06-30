@@ -1,5 +1,4 @@
-﻿using Book_Library_EF_Core_Proxy_Class_Library.Models.Book.LibraryInterfaceBook;
-using Book_Library_EF_Core_Proxy_Class_Library.Repository;
+﻿using Book_Library_Repository_EF_Core.Models.Book;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -34,6 +33,23 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             btnAddBook.Click += btnAddBook_Click;
         }
 
+        private void AddBook()
+        {
+            if (tbBookName.Text != string.Empty && tbBookAuthors.Text != string.Empty && dpBookDate.SelectedDate != null)
+            {
+                var book = new BookItem()
+                {
+                    Name = tbBookName.Text,
+                    Authors = tbBookAuthors.Text,
+                    Year = dpBookDate.SelectedDate.Value
+                };
+                DataStore.Books.AddBook(book);
+                tbBookName.Text = string.Empty;
+                tbBookAuthors.Text = string.Empty;
+                NavigationService.Navigate(_previousPage);
+            }
+        }
+
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
             TryCatchMessageTask(() => 
@@ -46,19 +62,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         {
             TryCatchMessageTask(() =>
             {
-                if (tbBookName.Text != string.Empty && tbBookAuthors.Text != string.Empty && dpBookDate.SelectedDate != null)
-                {
-                    var book = new AddBookModel()
-                    {
-                        Name = tbBookName.Text,
-                        Authors = tbBookAuthors.Text,
-                        Year = dpBookDate.SelectedDate.Value
-                    };
-                    DbBookLibraryRepository.Books.AddBook(book);
-                    tbBookName.Text = string.Empty;
-                    tbBookAuthors.Text = string.Empty;
-                    NavigationService.Navigate(_previousPage);
-                }
+                AddBook();
             });
         }
 
