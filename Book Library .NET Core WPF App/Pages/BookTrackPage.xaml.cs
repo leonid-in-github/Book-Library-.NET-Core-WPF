@@ -19,6 +19,8 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
     {
         private Page _previousPage;
 
+        private BookTrackVM pageViewModel;
+
         public BookTrackPage(Page previousPage, BookTrackList book)
         {
             InitializeComponent();
@@ -41,10 +43,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                 btnActionBook.Content = "Put book";
             }
 
-            var pageModel = new BookTrackVM();
-            pageModel.Book = book;
-
-            DataContext = pageModel;
+            DataContext = pageViewModel = new BookTrackVM(book);
         }
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
@@ -57,25 +56,24 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void btnActionBook_Click(object sender, RoutedEventArgs e)
         {
-            BookTrackVM bookTrackVM = DataContext as BookTrackVM;
-            
-            if (!(bool)bookTrackVM.Book.BookAvailability)
+           
+            if (!(bool)pageViewModel.Book.BookAvailability)
             {
-                DataStore.Books.PutBook(AppUser.GetInstance().AccountId, bookTrackVM.Book.BookId);
-                bookTrackVM.Book.BookAvailability = true;
-                if (bookTrackVM != null)
+                if (pageViewModel != null)
                 {
-                    bookTrackVM.Book = DataStore.Books.GetBookTrack(AppUser.GetInstance().AccountId, (int)bookTrackVM.Book.BookId, "All");
+                    pageViewModel.PutBook();
+                    pageViewModel.LoadBookTrack();
+                    BooksGrid.ItemsSource = pageViewModel.BookTracks;
                 }
                 btnActionBook.Content = "Take book";
             }
             else
             {
-                DataStore.Books.TakeBook(AppUser.GetInstance().AccountId, bookTrackVM.Book.BookId);
-                bookTrackVM.Book.BookAvailability = false;
-                if (bookTrackVM != null)
+                if (pageViewModel != null)
                 {
-                    bookTrackVM.Book = DataStore.Books.GetBookTrack(AppUser.GetInstance().AccountId, (int)bookTrackVM.Book.BookId, "All");
+                    pageViewModel.TakeBook();
+                    pageViewModel.LoadBookTrack();
+                    BooksGrid.ItemsSource = pageViewModel.BookTracks;
                 }
                 btnActionBook.Content = "Put book";
             }

@@ -35,7 +35,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
             SetupPage();
 
-            this.Loaded += OnLoad;
+            Loaded += OnLoad;
 
             BooksGrid.SelectionChanged += Datagrid_Row_Click;
             tbSearch.TextChanged += Search_Text_Changed;
@@ -54,28 +54,10 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         protected void OnLoad(object sender, RoutedEventArgs e)
         {
-            pageModel = new MainPageVM(this);
-
-            DataContext = pageModel;
-
-            TryCatchMessageTask(async () =>
+            TryCatchMessageTask(() =>
             {
-                pageModel.ShowPanelCommand.Execute(null);
-                var loadDataContextTask = new Task(() =>
-                {
-                    LoadDataContext();
-                });
-                loadDataContextTask.Start();
-                await Task.WhenAll(loadDataContextTask);
-                pageModel.HidePanelCommand.Execute(null);
+                DataContext = pageModel = new MainPageVM(this);
             });
-        }
-
-        private void LoadDataContext()
-        {
-            pageModel.UserName = AppUser.GetInstance().Login;
-            var books = DataStore.Books.GetBooks();
-            pageModel.Books = books;
         }
 
         private void btnAddBook_Click(object sender, RoutedEventArgs e)
@@ -132,8 +114,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                             DataStore.Books.DeleteBook((int)bookId);
                         }
                     }
-                    var books = DataStore.Books.GetBooks();
-                    pageModel.Books = books;
+                    pageModel.ExecuteLoadBooksCommand();
                 }
             });
         }
@@ -166,23 +147,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         {
             TryCatchMessageTask(() =>
             {
-                var dataGridContext = DataContext as MainPageVM;
-                if (dataGridContext != null)
-                {
-                    dataGridContext.Books = DataStore.Books.GetBooks();
-                    var searchBooksResult = dataGridContext.Books.Where(i =>
-                        i.Name.ToString().ToLower().Contains(tbSearch.Text.ToLower())
-                        ||
-                        i.Authors.ToString().ToLower().Contains(tbSearch.Text.ToLower())
-                        ||
-                        i.Year.ToString("M/d/yyyy h:mm:ss tt", CultureInfo.InvariantCulture).Contains(tbSearch.Text)
-                        ||
-                        i.Availability.ToString().ToLower().Contains(tbSearch.Text.ToLower())
-                        ||
-                        i.ID.ToString().ToLower().Contains(tbSearch.Text.ToLower())
-                    ).OrderBy(a => a.Name).ToList();
-                    dataGridContext.Books = searchBooksResult;
-                }
+                pageModel.FilterString = tbSearch.Text.ToLower();
             });
         }
     }

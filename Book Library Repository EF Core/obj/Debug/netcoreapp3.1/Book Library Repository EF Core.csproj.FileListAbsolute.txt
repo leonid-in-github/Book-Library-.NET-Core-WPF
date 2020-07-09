@@ -14,4 +14,3 @@ E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF
 E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.csproj.CoreCompileInputs.cache
 E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.dll
 E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.pdb
-E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.csprojAssemblyReference.cache
