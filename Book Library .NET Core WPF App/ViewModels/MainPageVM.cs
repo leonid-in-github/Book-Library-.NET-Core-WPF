@@ -1,18 +1,16 @@
 ﻿using Book_Library_.NET_Core_WPF_App.HelperClasses;
 using Book_Library_.NET_Core_WPF_App.HelperClasses.Commands;
+using Book_Library_.NET_Core_WPF_App.Models.BooksModels;
 using Book_Library_Repository_EF_Core.Models.Book;
 using Book_Library_Repository_EF_Core.Repositories;
 using Book_Library_Repository_EF_Core.Servicies;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Text;
-using System.Threading;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Navigation;
 
 namespace Book_Library_.NET_Core_WPF_App.ViewModels
 {
@@ -35,12 +33,12 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
 
         private bool BooksFilter(object item)
         {
-            var book = item as BookItem;
+            var book = item as Book;
             return book.Name.ToString().ToLower().Contains(_filterString.ToLower())
                 ||
                 book.Authors.ToString().ToLower().Contains(_filterString.ToLower())
                 ||
-                book.Year.ToString("M/d/yyyy h:mm:ss tt", CultureInfo.InvariantCulture).Contains(_filterString)
+                book.Year.Contains(_filterString)
                 ||
                 book.Availability.ToString().ToLower().Contains(_filterString.ToLower())
                 ||
@@ -51,12 +49,13 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
         {
             ShowPanelCommand.Execute(null);
             UserName = AppUser.GetInstance().Login;
-            var books = DataStore.Books.GetBooks();
+            var books = DataStore.Books.GetBooks().Select(book => new Book(book)).ToList();
             _booksView = CollectionViewSource.GetDefaultView(books);
             _booksView.Filter = BooksFilter;
             _booksView.SortDescriptions.Add(
-                new SortDescription("Name", ListSortDirection.Ascending));
+                new SortDescription("ID", ListSortDirection.Descending));
             _booksView.Refresh();
+            OnPropertyChanged("Books");
             HidePanelCommand.Execute(null);
         }
 
@@ -73,9 +72,10 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
             }
         }
 
-        public ICollectionView Books { 
-            get 
-            { 
+        public ICollectionView Books
+        {
+            get
+            {
                 return _booksView;
             }
             set
@@ -134,7 +134,7 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
                 OnPropertyChanged("PanelSubMessage");
             }
         }
-        
+
         public ICommand PanelCloseCommand
         {
             get

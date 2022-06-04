@@ -15,3 +15,13 @@ E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF
 E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.dll
 E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.pdb
 E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.csprojAssemblyReference.cache
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\bin\Debug\netcoreapp3.1\Book Library Repository EF Core.deps.json
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\bin\Debug\netcoreapp3.1\Book Library Repository EF Core.dll
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\bin\Debug\netcoreapp3.1\Book Library Repository EF Core.pdb
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.csproj.AssemblyReference.cache
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.AssemblyInfoInputs.cache
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.AssemblyInfo.cs
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.csproj.CoreCompileInputs.cache
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.dll
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Repository EF Core\obj\Debug\netcoreapp3.1\Book Library Repository EF Core.pdb

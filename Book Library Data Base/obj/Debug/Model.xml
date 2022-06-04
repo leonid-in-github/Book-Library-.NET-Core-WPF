@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="Book_Library_Data_Base.dll" />
-			<Metadata Name="FileName" Value="E:\[ROOT]\[DOCUMENTS]\[PROJECTS]\BOOK LIBRARY PROJECT\BOOK LIBRARY .NET CORE WPF SOLUTION\BOOK LIBRARY DATA BASE\OBJ\DEBUG\BOOK_LIBRARY_DATA_BASE.DLL" />
+			<Metadata Name="FileName" Value="D:\ROOT\DOCUMENTS\PROJECTS\BOOK LIBRARY PROJECT\BOOK LIBRARY .NET CORE WPF SOLUTION\BOOK LIBRARY DATA BASE\OBJ\DEBUG\BOOK_LIBRARY_DATA_BASE.DLL" />
 			<Metadata Name="AssemblyName" Value="Book_Library_Data_Base" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="E:\[ROOT]\[Documents]\[Projects]\Book Library Project\Book Library .NET Core WPF Solution\Book Library Data Base\obj\Debug\Book_Library_Data_Base.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library Data Base\obj\Debug\Book_Library_Data_Base.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>

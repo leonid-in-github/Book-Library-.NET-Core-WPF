@@ -12,7 +12,7 @@ namespace Book_Library_.NET_Core_WPF_App.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.1.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -61,7 +61,7 @@ namespace Book_Library_.NET_Core_WPF_App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=(localdb)\\mssqllocaldb;AttachDBFilename=%CONTENTROOTPATH%App_Data\\dbWPFBoo" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=(localdb)\\MSSQLLocalDB;AttachDBFilename=%CONTENTROOTPATH%App_Data\\dbWPFBoo" +
             "kLibrary.mdf;Trusted_Connection=true;MultipleActiveResultSets=true")]
         public string ConnectionString {
             get {

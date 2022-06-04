@@ -1,7 +1,4 @@
 ﻿using Book_Library_.NET_Core_WPF_App.HelperClasses;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Book_Library_.NET_Core_WPF_App
 {
@@ -9,7 +6,7 @@ namespace Book_Library_.NET_Core_WPF_App
     {
         private AppUser() { }
 
-        private AppUser(string login, string password, int accountId) 
+        private AppUser(string login, string password, int accountId)
         {
             Login = login;
             Password = password;
@@ -20,7 +17,7 @@ namespace Book_Library_.NET_Core_WPF_App
 
         public static AppUser GetInstance()
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 _instance = new AppUser();
             }
@@ -45,6 +42,6 @@ namespace Book_Library_.NET_Core_WPF_App
 
         public string Password { get; }
 
-        public int  AccountId { get; }
+        public int AccountId { get; }
     }
 }

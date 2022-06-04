@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZaEMs0B6I8VE5OKwKf+fAhrLIm2PE1t13OfEBVOs5U0fX1fNFM8FJGjNiIfVAM9o/QBs+hwlMydLzoJKIyh33w==",
+  "dgSpecHash": "R4CQ8sicXyB9zi3KMUR5wtj/gK1LQop0+MoIfiUxDoRK32uaA/L3DbsHKwsMsN7M4yGRu2wBpGZ51oTc1V7jsQ==",
   "success": true,
-  "projectFilePath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj",
+  "projectFilePath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leoni\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\leoni\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

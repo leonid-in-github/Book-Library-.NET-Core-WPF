@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Book_Library_Repository_EF_Core.Components
 {
@@ -15,8 +14,16 @@ namespace Book_Library_Repository_EF_Core.Components
         {
             using (var dbContext = new BookLibraryContext())
             {
-                var book = dbContext.GetBook.FromSqlRaw("EXECUTE GetBook {0}", bookId).ToListAsync().Result.FirstOrDefault();
-                return book;
+                var inID = new SqlParameter
+                {
+                    ParameterName = "BookID",
+                    Value = bookId,
+                    DbType = System.Data.DbType.Int32,
+                    Direction = System.Data.ParameterDirection.Input
+                };
+                var books = dbContext.GetBook.FromSqlRaw("EXECUTE GetBook @BookID", inID).ToList();
+                var book = books.FirstOrDefault();
+                return book; 
             }
         }
 

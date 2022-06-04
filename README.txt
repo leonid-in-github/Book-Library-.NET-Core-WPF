@@ -1,2 +1,1 @@
-Deploy
-1. Run in visual studio 2019.
+Run in visual studio.

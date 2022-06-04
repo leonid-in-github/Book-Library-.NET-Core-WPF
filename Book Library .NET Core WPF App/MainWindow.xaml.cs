@@ -1,28 +1,11 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
 using Book_Library_.NET_Core_WPF_App.HelperClasses;
 using Book_Library_.NET_Core_WPF_App.HelperClasses.Commands;
-using Book_Library_.NET_Core_WPF_App.Models.AccountModels;
 using Book_Library_.NET_Core_WPF_App.Pages;
 using Book_Library_.NET_Core_WPF_App.Windows;
-using Book_Library_Repository_EF_Core.Repositories;
-using Book_Library_Repository_EF_Core.Servicies;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Book_Library_.NET_Core_WPF_App
 {
@@ -50,7 +33,7 @@ namespace Book_Library_.NET_Core_WPF_App
             LoadMainWindow();
 
             NavigateUserCabinet = new NavigateUserCabinetCommand(MainFrame);
-            
+
             Logout = new LogoutCommand(loginWindow);
             Exit = new ExitCommand();
 

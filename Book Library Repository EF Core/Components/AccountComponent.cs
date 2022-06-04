@@ -1,11 +1,8 @@
 ﻿using Book_Library_Repository_EF_Core.Contexts;
-using Book_Library_Repository_EF_Core.Exceptions;
 using Book_Library_Repository_EF_Core.Models.Account;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Book_Library_Repository_EF_Core.Components
 {

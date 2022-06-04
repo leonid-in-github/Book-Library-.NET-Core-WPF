@@ -1,26 +1,10 @@
-﻿using Book_Library_.NET_Core_WPF_App.Models.PagesModels;
+﻿using Book_Library_.NET_Core_WPF_App.Models.BooksModels;
 using Book_Library_.NET_Core_WPF_App.ViewModels;
-using Book_Library_.NET_Core_WPF_App.Windows;
 using Book_Library_Repository_EF_Core.Models.Book;
-using Book_Library_Repository_EF_Core.Repositories;
-using Book_Library_Repository_EF_Core.Servicies;
-using Microsoft.EntityFrameworkCore.Internal;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Book_Library_.NET_Core_WPF_App.Pages
 {
@@ -38,6 +22,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             Loaded += OnLoad;
 
             BooksGrid.SelectionChanged += Datagrid_Row_Click;
+            BooksGrid.AutoGeneratingColumn += Datagrid_AutoGeneratingColumn;
             tbSearch.TextChanged += Search_Text_Changed;
             btnAddBook.Click += btnAddBook_Click;
             btnEditBook.Click += btnEditBook_Click;
@@ -47,7 +32,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void SetupPage()
         {
-            
+
         }
 
         public MainPageVM pageModel { get; set; }
@@ -72,13 +57,10 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         {
             TryCatchMessageTask(() =>
             {
-                var book = BooksGrid.SelectedItem as BookItem;
+                var book = BooksGrid.SelectedItem as Book;
                 if (book == null) return;
                 var editBook = new BookItem()
                 {
-                    Name = book.Name,
-                    Authors = book.Authors,
-                    Year = book.Year,
                     ID = book.ID
                 };
                 NavigationService.Navigate(new EditBookPage(this, editBook));
@@ -90,7 +72,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
         {
             TryCatchMessageTask(() =>
             {
-                var book = BooksGrid.SelectedItem as BookItem;
+                var book = BooksGrid.SelectedItem as Book;
                 if (book == null) return;
                 var trackBook = DataStore.Books.GetBookTrack(AppUser.GetInstance().AccountId, book.ID, "All");
                 NavigationService.Navigate(new BookTrackPage(this, trackBook));
@@ -108,7 +90,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                     var booksGridEnumerator = BooksGrid.SelectedItems.GetEnumerator();
                     while (booksGridEnumerator.MoveNext())
                     {
-                        var bookId = (booksGridEnumerator.Current as BookItem)?.ID;
+                        var bookId = (booksGridEnumerator.Current as Book)?.ID;
                         if (bookId != null)
                         {
                             DataStore.Books.DeleteBook((int)bookId);
@@ -149,6 +131,14 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             {
                 pageModel.FilterString = tbSearch.Text.ToLower();
             });
+        }
+
+        private void Datagrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.Column.Header.ToString() == "ID")
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

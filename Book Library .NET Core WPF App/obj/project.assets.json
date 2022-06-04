@@ -5165,25 +5165,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\leoni\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\leoni\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj",
+      "projectUniqueName": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj",
       "projectName": "Book Library .NET Core WPF App",
-      "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj",
+      "projectPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj",
       "packagesPath": "C:\\Users\\leoni\\.nuget\\packages\\",
-      "outputPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\obj\\",
+      "outputPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\leoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -5194,9 +5189,10 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj": {
-              "projectPath": "E:\\[ROOT]\\[Documents]\\[Projects]\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj"
+            "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj": {
+              "projectPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj"
             }
           }
         }
@@ -5209,6 +5205,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
@@ -5241,7 +5238,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

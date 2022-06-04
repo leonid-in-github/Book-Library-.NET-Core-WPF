@@ -1,11 +1,5 @@
 ﻿using Book_Library_Repository_EF_Core.Repositories;
 using Book_Library_Repository_EF_Core.Servicies;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Book_Library_.NET_Core_WPF_App

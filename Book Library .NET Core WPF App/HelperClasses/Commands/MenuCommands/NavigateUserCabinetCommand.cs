@@ -1,11 +1,8 @@
 ﻿using Book_Library_.NET_Core_WPF_App.Pages;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Navigation;
 
 namespace Book_Library_.NET_Core_WPF_App.HelperClasses.Commands
 {
@@ -26,7 +23,7 @@ namespace Book_Library_.NET_Core_WPF_App.HelperClasses.Commands
                 mainFrame.Navigate(new UserCabinetPage((Page)mainFrame.Content));
             });
         }
-        
+
 
         public NavigateUserCabinetCommand(Page previousPage)
         {
@@ -35,7 +32,7 @@ namespace Book_Library_.NET_Core_WPF_App.HelperClasses.Commands
                 WindowsNavigation.MainWindow?.MainFrame.Navigate(new UserCabinetPage(previousPage));
             });
         }
-        
+
 
         public event EventHandler CanExecuteChanged
         {

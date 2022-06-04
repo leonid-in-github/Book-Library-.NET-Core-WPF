@@ -1,16 +1,9 @@
 ﻿using Book_Library_Repository_EF_Core.Models.Book;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Book_Library_Repository_EF_Core.Repositories;
+using Book_Library_Repository_EF_Core.Servicies;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Book_Library_.NET_Core_WPF_App.Pages
 {
@@ -19,6 +12,8 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
     /// </summary>
     public partial class EditBookPage : BookLibraryPage
     {
+        private IDataStore DataStore => RepositoryService.Get<BookLibraryRepository>();
+
         private Page _previousPage;
 
         private BookItem _book;
@@ -31,9 +26,11 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
 
-            if (book == null)
+            _book = DataStore.Books.GetBook((int)book.ID);
+
+            if (book == null || _book == null)
                 NavigationService.Navigate(_previousPage);
-            _book = book;
+            
             tbBookName.Text = _book.Name;
             tbBookAuthors.Text = _book.Authors;
             dpBookDate.SelectedDate = _book.Year;

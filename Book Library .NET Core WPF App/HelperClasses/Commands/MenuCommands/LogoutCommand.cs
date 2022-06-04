@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
@@ -22,7 +20,7 @@ namespace Book_Library_.NET_Core_WPF_App.HelperClasses.Commands
         public LogoutCommand(Window loginWindow)
         {
             _loginWindow = loginWindow;
-            _executeMethod = new Action(() => 
+            _executeMethod = new Action(() =>
             {
                 WindowsNavigation.MainWindow?.Hide();
                 ResetSession();

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Book_Library_.NET_Core_WPF_App.Models.AccountModels
+﻿namespace Book_Library_.NET_Core_WPF_App.Models.AccountModels
 {
     internal class AppUserConfigModel
     {

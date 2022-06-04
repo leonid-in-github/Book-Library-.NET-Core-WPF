@@ -1,10 +1,7 @@
 ﻿using Book_Library_Repository_EF_Core.Models.Book;
 using Book_Library_Repository_EF_Core.Repositories;
 using Book_Library_Repository_EF_Core.Servicies;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Windows.Data;
 
 namespace Book_Library_.NET_Core_WPF_App.ViewModels
@@ -21,7 +18,7 @@ namespace Book_Library_.NET_Core_WPF_App.ViewModels
 
         public BookTrackVM() { }
 
-        public BookTrackVM(BookTrackList book) 
+        public BookTrackVM(BookTrackList book)
         {
             Book = book;
         }

@@ -1,17 +1,8 @@
 ﻿using Book_Library_.NET_Core_WPF_App.ViewModels;
 using Book_Library_Repository_EF_Core.Models.Book;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Book_Library_.NET_Core_WPF_App.Pages
 {
@@ -29,6 +20,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
             btnBackward.Click += btnBackward_Click;
             btnActionBook.Click += btnActionBook_Click;
+            BooksGrid.AutoGeneratingColumn += BooksGrid_AutoGeneratingColumn;
 
             if ((bool)book.BookAvailability)
             {
@@ -56,7 +48,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void btnActionBook_Click(object sender, RoutedEventArgs e)
         {
-           
+
             if (!(bool)pageViewModel.Book.BookAvailability)
             {
                 if (pageViewModel != null)
@@ -76,6 +68,18 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
                     BooksGrid.ItemsSource = pageViewModel.BookTracks;
                 }
                 btnActionBook.Content = "Put book";
+            }
+        }
+
+        private void BooksGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.Column.Header.ToString() == "BookId" || e.Column.Header.ToString() == "Action")
+            {
+                e.Cancel = true;
+            }
+            if (e.Column.Header.ToString() == "ActionString")
+            {
+                e.Column.Header = "Action";
             }
         }
     }

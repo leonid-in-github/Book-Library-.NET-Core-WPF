@@ -12,7 +12,7 @@
         <Grid.Background>
             <SolidColorBrush Color="Black" Opacity="0.5"/>
         </Grid.Background>
-        <Label Content="App User:" Height="50" VerticalAlignment="Top" FontSize="18" Foreground="#FF07D4A6" HorizontalAlignment="Left" Width="88" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="21,0,0,0"/>
+        <Label Content="User:" Height="50" VerticalAlignment="Top" FontSize="18" Foreground="#FF07D4A6" HorizontalAlignment="Left" Width="88" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="21,0,0,0"/>
         <Button x:Name="btnUser" Content="{Binding Path=UserName, Mode=OneWay}" Command="{Binding Path=NavigateUserCabinet, Mode=OneWay}" HorizontalAlignment="Left" Height="50" Margin="109,0,0,0" VerticalAlignment="Top" Foreground="#FFFFD100" FontSize="18" HorizontalContentAlignment="Left" BorderBrush="{x:Null}">
             <Button.Background>
                 <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
@@ -64,7 +64,7 @@
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.5"/>
             </Grid.Background>
-            <DataGrid
+            <DataGrid x:Name="BooksGrid"
                 ItemsSource="{Binding Path=Books, Mode=OneWay}" 
                 IsReadOnly="True"
                 RowBackground="Transparent"
