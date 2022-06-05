@@ -12,8 +12,6 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
     /// </summary>
     public partial class EditBookPage : BookLibraryPage
     {
-        private IDataStore DataStore => RepositoryService.Get<BookLibraryRepository>();
-
         private Page _previousPage;
 
         private BookItem _book;
