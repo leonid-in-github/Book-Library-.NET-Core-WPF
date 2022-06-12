@@ -73,7 +73,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void BooksGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.Column.Header.ToString() == "BookId" || e.Column.Header.ToString() == "Action")
+            if (e.Column.Header.ToString() == "BookId" || e.Column.Header.ToString() == "Action" || e.Column.Header.ToString() == "BookName")
             {
                 e.Cancel = true;
             }

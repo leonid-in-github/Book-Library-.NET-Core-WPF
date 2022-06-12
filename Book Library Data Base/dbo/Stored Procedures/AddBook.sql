@@ -1,6 +1,6 @@
 ﻿
 CREATE PROCEDURE [dbo].[AddBook]
-	@Name NVARCHAR (64),
+	@Name NVARCHAR (1024),
 	@Authors nvarchar (1024) = NULL,
 	@Year DATETIME,
 	@Quantity INT = 1

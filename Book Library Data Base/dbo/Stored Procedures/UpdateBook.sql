@@ -1,7 +1,7 @@
 ﻿
 CREATE PROCEDURE [dbo].[UpdateBook]
 	@ID INT,
-	@NewName NVARCHAR(64),
+	@NewName NVARCHAR(1024),
 	@NewAuthors NVARCHAR(1024) = NULL,
 	@NewYear DATETIME
 AS

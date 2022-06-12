@@ -139,6 +139,10 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             {
                 e.Cancel = true;
             }
+            if (e.Column.Header.ToString() == "Name")
+            {
+                e.Column.Width = 390;
+            }
         }
     }
 }

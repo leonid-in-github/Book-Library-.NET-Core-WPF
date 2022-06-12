@@ -29,7 +29,7 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Label Content="Name:" Grid.Row="0" Grid.Column="0" Margin="0,0,0,3" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Label Content="Authors (sep-r:','):" Grid.Row="1" HorizontalAlignment="Stretch" Height="55" VerticalAlignment="Stretch" Width="211" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Authors:" Grid.Row="1" HorizontalAlignment="Stretch" Height="55" VerticalAlignment="Stretch" Width="211" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Label Content="Year:" Grid.Row="2" Grid.Column="0" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <TextBox x:Name="tbBookName" Grid.Column="1" Height="21" Margin="40,17,40,17" Text="" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <TextBox x:Name="tbBookAuthors" Grid.Column="1" Height="21" Margin="40,17,40,17" Grid.Row="1" Text="" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
