@@ -25,35 +25,26 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
-            {
-                NavigationService.Navigate(_previousPage);
-            });
+            NavigationService.Navigate(_previousPage);
         }
 
         private void btnDeleteAccount_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
+            if (DataStore.Account.DeleteAccount(AppUser.GetInstance().AccountId, pbPassword.Password))
             {
-                if (DataStore.Account.DeleteAccount(AppUser.GetInstance().AccountId, pbPassword.Password))
-                {
-                    WindowsNavigation.MainWindow?.Hide();
-                    ResetSession();
-                    ShowLoginWindow();
-                }
-                else
-                {
-                    lblMasage.Content = "Can't delete account with this password";
-                }
-            });
+                WindowsNavigation.MainWindow?.Hide();
+                ResetSession();
+                ShowLoginWindow();
+            }
+            else
+            {
+                lblMasage.Content = "Can't delete account with this password";
+            }
         }
 
         private void LoginWindow_Closed(object sender, EventArgs e)
         {
-            TryCatchMessageTask(() =>
-            {
-                NavigationService?.Navigate(new BookLibraryMainPage());
-            });
+            NavigationService?.Navigate(new BookLibraryMainPage());
         }
 
         private void SetupPage()

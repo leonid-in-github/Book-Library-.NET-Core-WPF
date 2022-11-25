@@ -23,30 +23,24 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
-            {
-                NavigationService.Navigate(_previousPage);
-            });
+            NavigationService.Navigate(_previousPage);
         }
 
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
+            if (string.Compare(pbNewPassword.Password, pbConfirmPassword.Password) == 0)
             {
-                if (string.Compare(pbNewPassword.Password, pbConfirmPassword.Password) == 0)
+                if (DataStore.Account.ChangeAccountPassword(AppUser.GetInstance().AccountId, pbPassword.Password, pbNewPassword.Password))
                 {
-                    if (DataStore.Account.ChangeAccountPassword(AppUser.GetInstance().AccountId, pbPassword.Password, pbNewPassword.Password))
-                    {
-                        MessageBox.Show("Password changed", "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                        NavigationService.Navigate(_previousPage);
-                    }
-                    lblMasage.Content = "Can't change password with this password";
+                    MessageBox.Show("Password changed", "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                    NavigationService.Navigate(_previousPage);
                 }
-                else
-                {
-                    lblMasage.Content = "Confirm password not correct";
-                }
-            });
+                lblMasage.Content = "Can't change password with this password";
+            }
+            else
+            {
+                lblMasage.Content = "Confirm password not correct";
+            }
         }
     }
 }

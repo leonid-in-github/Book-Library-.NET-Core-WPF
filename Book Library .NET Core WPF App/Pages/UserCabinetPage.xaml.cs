@@ -29,26 +29,17 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
-            {
-                NavigationService.Navigate(_previousPage);
-            });
+            NavigationService.Navigate(_previousPage);
         }
 
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
-            {
-                NavigationService.Navigate(new ChangePasswordPage(this));
-            });
+            NavigationService.Navigate(new ChangePasswordPage(this));
         }
 
         private void btnDeleteAccount_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
-            {
-                NavigationService.Navigate(new DeleteAccountPage(this));
-            });
+            NavigationService.Navigate(new DeleteAccountPage(this));
         }
     }
 }

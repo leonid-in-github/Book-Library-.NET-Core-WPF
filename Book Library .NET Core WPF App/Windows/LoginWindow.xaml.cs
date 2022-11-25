@@ -88,18 +88,12 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
-            {
-                Login();
-            });
+            Login();
         }
 
         private void btnRegistration_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
-            {
-                Registration();
-            });
+            Registration();
         }
 
         private void LoginWindow_Closing(object sender, CancelEventArgs e)

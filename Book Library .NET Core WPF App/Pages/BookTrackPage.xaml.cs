@@ -40,10 +40,7 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
-            {
-                NavigationService.Navigate(_previousPage);
-            });
+            NavigationService.Navigate(_previousPage);
         }
 
         private void btnActionBook_Click(object sender, RoutedEventArgs e)

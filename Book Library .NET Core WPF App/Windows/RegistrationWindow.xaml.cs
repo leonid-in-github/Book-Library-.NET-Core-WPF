@@ -64,10 +64,7 @@ namespace Book_Library_.NET_Core_WPF_App.Windows
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            TryCatchMessageTask(() =>
-            {
-                Register();
-            });
+            Register();
         }
 
         private void RegistrationWindow_Closing(object sender, CancelEventArgs e)

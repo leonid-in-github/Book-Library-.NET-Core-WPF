@@ -57,22 +57,19 @@ namespace Book_Library_.NET_Core_WPF_App
             }
             else
             {
-                TryCatchMessageTask(() =>
+                var actualAccountId = DataStore.Account.Login(LastSession.Login, LastSession.Password);
+
+                if (actualAccountId > 0)
                 {
-                    var actualAccountId = DataStore.Account.Login(LastSession.Login, LastSession.Password);
+                    AppUser.SetInstance(LastSession.Login, LastSession.Password, actualAccountId);
+                    MainFrame.Navigate(new BookLibraryMainPage());
+                }
+                else
+                {
+                    WindowsNavigation.MainWindow?.Hide();
 
-                    if (actualAccountId > 0)
-                    {
-                        AppUser.SetInstance(LastSession.Login, LastSession.Password, actualAccountId);
-                        MainFrame.Navigate(new BookLibraryMainPage());
-                    }
-                    else
-                    {
-                        WindowsNavigation.MainWindow?.Hide();
-
-                        ShowLoginWindow();
-                    }
-                });
+                    ShowLoginWindow();
+                }
             }
 
         }
