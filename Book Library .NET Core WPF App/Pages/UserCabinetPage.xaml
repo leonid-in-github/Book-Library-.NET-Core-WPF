@@ -44,7 +44,7 @@
             <Label Content="Last name: " Grid.Row="3" Grid.Column="0" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
             <Label Content="{Binding Path=LastName, Mode=OneWay}" Grid.Row="3" Grid.Column="1" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="0,0,0,30" Grid.RowSpan="2"/>
             <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Left" Height="25" Margin="204,0,0,0" Grid.Row="4" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2"/>
-            <Button x:Name="btnDeleteAccount" Content="Delete account" HorizontalAlignment="Left" Height="25" Margin="203,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="120" Background="#FFF0B6B6" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnDeleteAccount" Content="Delete account" HorizontalAlignment="Left" Height="25" Margin="204,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="120" Background="#FFF0B6B6" Grid.ColumnSpan="2"/>
 
         </Grid>
     </Grid>
