@@ -50,16 +50,40 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="Button" x:Key="UserButton">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="MyContentPresenter" 
+                                          Content="{TemplateBinding Content}"
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontWeight" Value="DemiBold"/>
+                    <Setter Property="Opacity" Value="1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </bl:BookLibraryPage.Resources>
     <Grid Margin="0,21,0,21">
         <Grid.Background>
             <SolidColorBrush Color="Black" Opacity="0.5"/>
         </Grid.Background>
         <Label Content="User:" Height="50" VerticalAlignment="Top" FontSize="18" Foreground="#FF07D4A6" HorizontalAlignment="Left" Width="88" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="21,0,0,0"/>
-        <Button x:Name="btnUser" Content="{Binding Path=UserName, Mode=OneWay}" Command="{Binding Path=NavigateUserCabinet, Mode=OneWay}" HorizontalAlignment="Left" Height="50" Margin="109,0,0,0" VerticalAlignment="Top" Foreground="#FFFFD100" FontSize="18" HorizontalContentAlignment="Left" BorderBrush="{x:Null}">
-            <Button.Background>
-                <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
-            </Button.Background>
+        <Button x:Name="btnUser" Content="{Binding Path=UserName, Mode=OneWay}" Command="{Binding Path=NavigateUserCabinet, Mode=OneWay}" Style="{StaticResource UserButton}" HorizontalAlignment="Left" Height="50" Margin="109,0,0,0" VerticalAlignment="Top" Foreground="#FFFFD100" FontSize="18" HorizontalContentAlignment="Left" BorderBrush="{x:Null}" Opacity="0.9">
         </Button>
         <Grid VerticalAlignment="Top" Margin="0,0,21,0" HorizontalAlignment="Right" Width="540">
             <Grid.RowDefinitions>
