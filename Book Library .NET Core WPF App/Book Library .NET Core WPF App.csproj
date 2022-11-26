@@ -48,10 +48,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Images\Icons\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Book Library Repository EF Core\Book Library Repository EF Core.csproj" />
   </ItemGroup>
 
