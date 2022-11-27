@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Remove="Styles.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
   </ItemGroup>
