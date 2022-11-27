@@ -1,6 +1,7 @@
 ﻿using Book_Library_.NET_Core_WPF_App.Models.BooksModels;
 using Book_Library_.NET_Core_WPF_App.ViewModels;
 using Book_Library_Repository_EF_Core.Models.Book;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -118,7 +119,45 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             }
             if (e.Column.Header.ToString() == "Name")
             {
-                e.Column.Width = 390;
+                e.Column.Width = 685;
+                var col = e.Column as DataGridTextColumn;
+
+                var style = new Style(typeof(TextBlock));
+                style.Setters.Add(new Setter(TextBlock.TextWrappingProperty, TextWrapping.Wrap));
+                style.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center));
+
+                col.ElementStyle = style;
+            }
+            if (e.Column.Header.ToString() == "Authors")
+            {
+                e.Column.Width = 220;
+                var col = e.Column as DataGridTextColumn;
+
+                var style = new Style(typeof(TextBlock));
+                style.Setters.Add(new Setter(TextBlock.TextWrappingProperty, TextWrapping.Wrap));
+                style.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center));
+
+                col.ElementStyle = style;
+            }
+            if (e.Column.Header.ToString() == "Year")
+            {
+                var col = e.Column as DataGridTextColumn;
+
+                var style = new Style(typeof(TextBlock));
+                style.Setters.Add(new Setter(TextBlock.TextWrappingProperty, TextWrapping.Wrap));
+                style.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center));
+
+                col.ElementStyle = style;
+            }
+            if (e.Column.Header.ToString() == "Availability")
+            {
+                var col = e.Column as DataGridTextColumn;
+
+                var style = new Style(typeof(TextBlock));
+                style.Setters.Add(new Setter(TextBlock.TextWrappingProperty, TextWrapping.Wrap));
+                style.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center));
+
+                col.ElementStyle = style;
             }
         }
     }
