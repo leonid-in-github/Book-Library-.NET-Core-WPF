@@ -1,0 +1,20 @@
+﻿BookLibrary.UI
+1.0.0.0
+
+winexe
+C#
+.cs
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library .NET Core WPF App\obj\Debug\netcoreapp3.1\
+BookLibrary.UI
+none
+false
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+D:\ROOT\Documents\Projects\Book Library Project\Book Library .NET Core WPF Solution\Book Library .NET Core WPF App\App.xaml
+12-1548607887
+
+38-1079947082
+2112073369530
+Controls\CircularProgressBar.xaml;Controls\LoadingPanel.xaml;MainWindow.xaml;Pages\AddBookPage.xaml;Pages\BookLibraryMainPage.xaml;Pages\BookTrackPage.xaml;Pages\ChangePasswordPage.xaml;Pages\DeleteAccountPage.xaml;Pages\EditBookPage.xaml;Pages\UserCabinetPage.xaml;Windows\LoginWindow.xaml;Windows\RegistrationWindow.xaml;
+
+False
+

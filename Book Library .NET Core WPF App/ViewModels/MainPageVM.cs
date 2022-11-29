@@ -1,9 +1,9 @@
-﻿using Book_Library_.NET_Core_WPF_App.HelperClasses;
-using Book_Library_.NET_Core_WPF_App.HelperClasses.Commands;
-using Book_Library_.NET_Core_WPF_App.Models.BooksModels;
-using Book_Library_Repository_EF_Core.Models.Book;
-using Book_Library_Repository_EF_Core.Repositories;
-using Book_Library_Repository_EF_Core.Servicies;
+﻿using BookLibrary.UI.HelperClasses;
+using BookLibrary.UI.HelperClasses.Commands;
+using BookLibrary.UI.Models.BooksModels;
+using BookLibrary.Repository.Models.Book;
+using BookLibrary.Repository.Repositories;
+using BookLibrary.Repository.Servicies;
 using System;
 using System.ComponentModel;
 using System.Globalization;
@@ -12,7 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 
-namespace Book_Library_.NET_Core_WPF_App.ViewModels
+namespace BookLibrary.UI.ViewModels
 {
     public class MainPageVM : INotifyPropertyChanged
     {

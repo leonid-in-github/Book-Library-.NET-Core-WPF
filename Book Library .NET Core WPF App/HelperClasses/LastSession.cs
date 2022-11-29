@@ -1,4 +1,4 @@
-﻿namespace Book_Library_.NET_Core_WPF_App.HelperClasses
+﻿namespace BookLibrary.UI.HelperClasses
 {
     class LastSession
     {

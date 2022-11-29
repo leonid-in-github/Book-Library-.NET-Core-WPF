@@ -1,8 +1,8 @@
-﻿using Book_Library_Repository_EF_Core.Models.Account;
-using Book_Library_Repository_EF_Core.Repositories;
-using Book_Library_Repository_EF_Core.Servicies;
+﻿using BookLibrary.Repository.Models.Account;
+using BookLibrary.Repository.Repositories;
+using BookLibrary.Repository.Servicies;
 
-namespace Book_Library_.NET_Core_WPF_App.ViewModels
+namespace BookLibrary.UI.ViewModels
 {
     public class UserCabinetVM
     {

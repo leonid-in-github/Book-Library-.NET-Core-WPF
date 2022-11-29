@@ -1516,7 +1516,7 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Book Library Repository EF Core/1.0.0": {
+      "BookLibrary.Repository/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -1524,10 +1524,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.5"
         },
         "compile": {
-          "bin/placeholder/Book Library Repository EF Core.dll": {}
+          "bin/placeholder/BookLibrary.Repository.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Book Library Repository EF Core.dll": {}
+          "bin/placeholder/BookLibrary.Repository.dll": {}
         }
       }
     }
@@ -5316,15 +5316,15 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Book Library Repository EF Core/1.0.0": {
+    "BookLibrary.Repository/1.0.0": {
       "type": "project",
-      "path": "../Book Library Repository EF Core/Book Library Repository EF Core.csproj",
-      "msbuildProject": "../Book Library Repository EF Core/Book Library Repository EF Core.csproj"
+      "path": "../Book Library Repository EF Core/BookLibrary.Repository.csproj",
+      "msbuildProject": "../Book Library Repository EF Core/BookLibrary.Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Book Library Repository EF Core >= 1.0.0",
+      "BookLibrary.Repository >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.5",
       "System.Configuration.ConfigurationManager >= 4.7.0"
     ]
@@ -5335,9 +5335,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj",
-      "projectName": "Book Library .NET Core WPF App",
-      "projectPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\Book Library .NET Core WPF App.csproj",
+      "projectUniqueName": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\BookLibrary.UI.csproj",
+      "projectName": "BookLibrary.UI",
+      "projectPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\BookLibrary.UI.csproj",
       "packagesPath": "C:\\Users\\leoni\\.nuget\\packages\\",
       "outputPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library .NET Core WPF App\\obj\\",
       "projectStyle": "PackageReference",
@@ -5356,8 +5356,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj": {
-              "projectPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj"
+            "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\BookLibrary.Repository.csproj": {
+              "projectPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\BookLibrary.Repository.csproj"
             }
           }
         }

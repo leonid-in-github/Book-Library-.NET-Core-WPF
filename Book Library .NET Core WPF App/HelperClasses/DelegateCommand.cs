@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace Book_Library_.NET_Core_WPF_App.HelperClasses
+namespace BookLibrary.UI.HelperClasses
 {
     public class DelegateCommand : ICommand
     {

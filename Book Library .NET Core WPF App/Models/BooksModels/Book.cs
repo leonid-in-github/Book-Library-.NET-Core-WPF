@@ -1,9 +1,9 @@
-﻿using Book_Library_Repository_EF_Core.Models.Book;
+﻿using BookLibrary.Repository.Models.Book;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Book_Library_.NET_Core_WPF_App.Models.BooksModels
+namespace BookLibrary.UI.Models.BooksModels
 {
     public class Book
     {

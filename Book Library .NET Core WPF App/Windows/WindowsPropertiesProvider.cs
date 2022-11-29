@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Book_Library_.NET_Core_WPF_App.Windows
+namespace BookLibrary.UI.Windows
 {
     internal class WindowsPropertiesProvider
     {

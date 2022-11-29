@@ -1,6 +1,6 @@
-﻿using Book_Library_.NET_Core_WPF_App.HelperClasses;
+﻿using BookLibrary.UI.HelperClasses;
 
-namespace Book_Library_.NET_Core_WPF_App
+namespace BookLibrary.UI
 {
     public class AppUser
     {

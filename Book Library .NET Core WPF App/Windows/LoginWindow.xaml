@@ -1,9 +1,9 @@
-﻿<bl:BookLibraryWindow x:Class="Book_Library_.NET_Core_WPF_App.Windows.LoginWindow"
+﻿<bl:BookLibraryWindow x:Class="BookLibrary.UI.Windows.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:bl="clr-namespace:Book_Library_.NET_Core_WPF_App.Windows"
+        xmlns:bl="clr-namespace:BookLibrary.UI.Windows"
         mc:Ignorable="d"
         Title="Book library Login Window" Height="280" Width="400" Background="{x:Null}">
     <Grid x:Name="LoginGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Height="230" Width="400">

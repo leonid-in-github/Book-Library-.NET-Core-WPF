@@ -1,11 +1,11 @@
-﻿using Book_Library_Repository_EF_Core.Models.Book;
-using Book_Library_Repository_EF_Core.Repositories;
-using Book_Library_Repository_EF_Core.Servicies;
+﻿using BookLibrary.Repository.Models.Book;
+using BookLibrary.Repository.Repositories;
+using BookLibrary.Repository.Servicies;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace Book_Library_.NET_Core_WPF_App.Pages
+namespace BookLibrary.UI.Pages
 {
     /// <summary>
     /// Interaction logic for EditBookPage.xaml

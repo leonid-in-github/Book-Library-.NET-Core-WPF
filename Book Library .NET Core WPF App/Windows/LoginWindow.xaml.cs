@@ -1,13 +1,13 @@
-﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
-using Book_Library_.NET_Core_WPF_App.HelperClasses;
-using Book_Library_.NET_Core_WPF_App.Pages;
+﻿using BookLibrary.UI.ExtensionMethods;
+using BookLibrary.UI.HelperClasses;
+using BookLibrary.UI.Pages;
 using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Book_Library_.NET_Core_WPF_App.Windows
+namespace BookLibrary.UI.Windows
 {
     /// <summary>
     /// Interaction logic for LoginWindow.xaml

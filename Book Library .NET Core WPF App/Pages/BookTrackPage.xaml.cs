@@ -1,10 +1,10 @@
-﻿using Book_Library_.NET_Core_WPF_App.ViewModels;
-using Book_Library_Repository_EF_Core.Models.Book;
+﻿using BookLibrary.UI.ViewModels;
+using BookLibrary.Repository.Models.Book;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace Book_Library_.NET_Core_WPF_App.Pages
+namespace BookLibrary.UI.Pages
 {
     public partial class BookTrackPage : BookLibraryPage
     {
@@ -73,6 +73,10 @@ namespace Book_Library_.NET_Core_WPF_App.Pages
             if (e.Column.Header.ToString() == "BookId" || e.Column.Header.ToString() == "Action" || e.Column.Header.ToString() == "BookName")
             {
                 e.Cancel = true;
+            }
+            if (e.Column.Header.ToString() == "ActionTime")
+            {
+                e.Column.Header = "Date";
             }
             if (e.Column.Header.ToString() == "ActionString")
             {

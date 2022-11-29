@@ -1,8 +1,8 @@
-﻿using Book_Library_Repository_EF_Core.Components;
-using Book_Library_Repository_EF_Core.Contexts;
+﻿using BookLibrary.Repository.Components;
+using BookLibrary.Repository.Contexts;
 using System.Threading.Tasks;
 
-namespace Book_Library_Repository_EF_Core.Repositories
+namespace BookLibrary.Repository.Repositories
 {
     public class BookLibraryRepository : IDataStore, IDataStoreCreatable
     {

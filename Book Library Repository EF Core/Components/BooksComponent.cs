@@ -1,12 +1,12 @@
-﻿using Book_Library_Repository_EF_Core.Contexts;
-using Book_Library_Repository_EF_Core.Models.Book;
+﻿using BookLibrary.Repository.Contexts;
+using BookLibrary.Repository.Models.Book;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Book_Library_Repository_EF_Core.Components
+namespace BookLibrary.Repository.Components
 {
     public class BooksComponent
     {

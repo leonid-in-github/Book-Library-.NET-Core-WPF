@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace Book_Library_.NET_Core_WPF_App.Controls
+namespace BookLibrary.UI.Controls
 {
     public partial class LoadingPanel
     {

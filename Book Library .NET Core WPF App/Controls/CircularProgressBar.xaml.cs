@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace Book_Library_.NET_Core_WPF_App.Controls
+namespace BookLibrary.UI.Controls
 {
     public partial class CircularProgressBar
     {

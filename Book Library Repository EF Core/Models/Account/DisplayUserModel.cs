@@ -1,4 +1,4 @@
-﻿namespace Book_Library_Repository_EF_Core.Models.Account
+﻿namespace BookLibrary.Repository.Models.Account
 {
     public class DisplayUserModel
     {

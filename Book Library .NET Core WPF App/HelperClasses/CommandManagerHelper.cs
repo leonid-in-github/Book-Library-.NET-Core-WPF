@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Book_Library_.NET_Core_WPF_App.HelperClasses
+namespace BookLibrary.UI.HelperClasses
 {
     /// <summary>
     /// This class contains methods for the CommandManager that help avoid memory leaks by using weak references.

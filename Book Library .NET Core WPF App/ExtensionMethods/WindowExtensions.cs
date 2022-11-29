@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Book_Library_.NET_Core_WPF_App.ExtensionMethods
+namespace BookLibrary.UI.ExtensionMethods
 {
     internal static class WindowExtensions
     {

@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Book_Library_.NET_Core_WPF_App">
+                    xmlns:local="clr-namespace:BookLibrary.UI">
     <Style x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}" TargetType="{x:Type Button}">
         <Setter Property="Template">
             <Setter.Value>
@@ -115,5 +115,29 @@
                 </Setter>
             </Trigger>
         </Style.Triggers>
+    </Style>
+    <Style TargetType="TextBox" x:Key="MyTextBox">
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="Black" Opacity="0"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="#FFFFD200"></SolidColorBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="PasswordBox" x:Key="MyPasswordBox">
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="Black" Opacity="0"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="#FFFFD200"></SolidColorBrush>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

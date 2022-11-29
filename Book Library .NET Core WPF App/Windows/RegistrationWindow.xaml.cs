@@ -1,10 +1,10 @@
-﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
+﻿using BookLibrary.UI.ExtensionMethods;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Book_Library_.NET_Core_WPF_App.Windows
+namespace BookLibrary.UI.Windows
 {
     /// <summary>
     /// Interaction logic for RegistrationWindow.xaml

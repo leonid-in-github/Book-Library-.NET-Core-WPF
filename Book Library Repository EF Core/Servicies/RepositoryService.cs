@@ -1,9 +1,9 @@
-﻿using Book_Library_Repository_EF_Core.Repositories;
+﻿using BookLibrary.Repository.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Book_Library_Repository_EF_Core.Servicies
+namespace BookLibrary.Repository.Servicies
 {
     public class RepositoryService
     {

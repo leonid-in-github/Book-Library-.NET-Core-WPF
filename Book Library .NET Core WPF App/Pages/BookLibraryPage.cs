@@ -1,8 +1,8 @@
-﻿using Book_Library_Repository_EF_Core.Repositories;
-using Book_Library_Repository_EF_Core.Servicies;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Repository.Servicies;
 using System.Windows.Controls;
 
-namespace Book_Library_.NET_Core_WPF_App.Pages
+namespace BookLibrary.UI.Pages
 {
     public class BookLibraryPage : Page
     {

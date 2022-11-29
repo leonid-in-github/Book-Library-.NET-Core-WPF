@@ -1,9 +1,9 @@
-﻿<bl:BookLibraryWindow x:Class="Book_Library_.NET_Core_WPF_App.Windows.RegistrationWindow"
+﻿<bl:BookLibraryWindow x:Class="BookLibrary.UI.Windows.RegistrationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:bl="clr-namespace:Book_Library_.NET_Core_WPF_App.Windows"
+        xmlns:bl="clr-namespace:BookLibrary.UI.Windows"
         mc:Ignorable="d"
         Title="Book library Registration Window" Height="450" Width="417">
     <Grid x:Name="RegistrationGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Height="435" Width="400">

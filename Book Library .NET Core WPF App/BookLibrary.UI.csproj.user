@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ShowAllFiles>false</ShowAllFiles>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Controls\CircularProgressBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\LoadingPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\AddBookPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\BookLibraryMainPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\BookTrackPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ChangePasswordPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\DeleteAccountPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\EditBookPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\UserCabinetPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\RegistrationWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\LoadingPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\AddBookPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\BookLibraryMainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\BookTrackPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ChangePasswordPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\DeleteAccountPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\EditBookPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\UserCabinetPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\RegistrationWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

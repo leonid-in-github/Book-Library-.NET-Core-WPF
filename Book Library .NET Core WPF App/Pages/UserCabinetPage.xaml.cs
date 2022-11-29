@@ -1,9 +1,9 @@
-﻿using Book_Library_.NET_Core_WPF_App.ViewModels;
+﻿using BookLibrary.UI.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace Book_Library_.NET_Core_WPF_App.Pages
+namespace BookLibrary.UI.Pages
 {
     /// <summary>
     /// Interaction logic for UserCabinetPage.xaml

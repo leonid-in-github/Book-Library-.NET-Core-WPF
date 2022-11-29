@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Book_Library_.NET_Core_WPF_App.Pages
+namespace BookLibrary.UI.Pages
 {
     internal static class PagesPropertiesProvider
     {

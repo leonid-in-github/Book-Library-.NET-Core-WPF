@@ -1,11 +1,11 @@
-﻿using Book_Library_.NET_Core_WPF_App.HelperClasses;
-using Book_Library_.NET_Core_WPF_App.Windows;
+﻿using BookLibrary.UI.HelperClasses;
+using BookLibrary.UI.Windows;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace Book_Library_.NET_Core_WPF_App.Pages
+namespace BookLibrary.UI.Pages
 {
     /// <summary>
     /// Interaction logic for DeleteAccountPage.xaml

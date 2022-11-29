@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Book_Library_Repository_EF_Core.Exceptions
+namespace BookLibrary.Repository.Exceptions
 {
     [Serializable]
     public class SessionExpirationConflictException : Exception

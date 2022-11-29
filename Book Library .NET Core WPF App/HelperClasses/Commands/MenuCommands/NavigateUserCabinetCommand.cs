@@ -1,10 +1,10 @@
-﻿using Book_Library_.NET_Core_WPF_App.Pages;
+﻿using BookLibrary.UI.Pages;
 using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Book_Library_.NET_Core_WPF_App.HelperClasses.Commands
+namespace BookLibrary.UI.HelperClasses.Commands
 {
     public class NavigateUserCabinetCommand : ICommand
     {

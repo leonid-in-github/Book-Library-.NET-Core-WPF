@@ -1,10 +1,10 @@
-﻿using Book_Library_Repository_EF_Core.Models.Book;
-using Book_Library_Repository_EF_Core.Repositories;
-using Book_Library_Repository_EF_Core.Servicies;
+﻿using BookLibrary.Repository.Models.Book;
+using BookLibrary.Repository.Repositories;
+using BookLibrary.Repository.Servicies;
 using System.ComponentModel;
 using System.Windows.Data;
 
-namespace Book_Library_.NET_Core_WPF_App.ViewModels
+namespace BookLibrary.UI.ViewModels
 {
     public class BookTrackVM : INotifyPropertyChanged
     {

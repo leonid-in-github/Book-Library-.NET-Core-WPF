@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Book_Library_Repository_EF_Core.Models.Book
+namespace BookLibrary.Repository.Models.Book
 {
     public class BookTrackItem
     {

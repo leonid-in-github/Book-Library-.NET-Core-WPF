@@ -1,4 +1,4 @@
-﻿namespace Book_Library_.NET_Core_WPF_App.Models.PagesModels
+﻿namespace BookLibrary.UI.Models.PagesModels
 {
     public class MainPageModel
     {

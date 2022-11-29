@@ -1,6 +1,6 @@
-﻿using Book_Library_Repository_EF_Core.Components;
+﻿using BookLibrary.Repository.Components;
 
-namespace Book_Library_Repository_EF_Core.Repositories
+namespace BookLibrary.Repository.Repositories
 {
     public interface IDataStore
     {

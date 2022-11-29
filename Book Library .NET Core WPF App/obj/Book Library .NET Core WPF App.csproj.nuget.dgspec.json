@@ -28,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj": {
-                "projectPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj"
+              "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\BookLibrary.Repository.csproj": {
+                "projectPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\BookLibrary.Repository.csproj"
               }
             }
           }
@@ -76,12 +76,12 @@
         }
       }
     },
-    "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj": {
+    "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\BookLibrary.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj",
-        "projectName": "Book Library Repository EF Core",
-        "projectPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\Book Library Repository EF Core.csproj",
+        "projectUniqueName": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\BookLibrary.Repository.csproj",
+        "projectName": "BookLibrary.Repository",
+        "projectPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\BookLibrary.Repository.csproj",
         "packagesPath": "C:\\Users\\leoni\\.nuget\\packages\\",
         "outputPath": "D:\\ROOT\\Documents\\Projects\\Book Library Project\\Book Library .NET Core WPF Solution\\Book Library Repository EF Core\\obj\\",
         "projectStyle": "PackageReference",

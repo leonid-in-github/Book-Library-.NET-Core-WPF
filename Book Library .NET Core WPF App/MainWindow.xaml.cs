@@ -1,13 +1,13 @@
-﻿using Book_Library_.NET_Core_WPF_App.ExtensionMethods;
-using Book_Library_.NET_Core_WPF_App.HelperClasses;
-using Book_Library_.NET_Core_WPF_App.HelperClasses.Commands;
-using Book_Library_.NET_Core_WPF_App.Pages;
-using Book_Library_.NET_Core_WPF_App.Windows;
+﻿using BookLibrary.UI.ExtensionMethods;
+using BookLibrary.UI.HelperClasses;
+using BookLibrary.UI.HelperClasses.Commands;
+using BookLibrary.UI.Pages;
+using BookLibrary.UI.Windows;
 using System;
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace Book_Library_.NET_Core_WPF_App
+namespace BookLibrary.UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

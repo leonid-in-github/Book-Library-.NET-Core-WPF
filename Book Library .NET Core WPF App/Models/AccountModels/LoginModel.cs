@@ -1,4 +1,4 @@
-﻿namespace Book_Library_.NET_Core_WPF_App.Models.AccountModels
+﻿namespace BookLibrary.UI.Models.AccountModels
 {
     internal class LoginModel
     {

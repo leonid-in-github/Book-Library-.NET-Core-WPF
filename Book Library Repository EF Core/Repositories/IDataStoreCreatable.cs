@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Book_Library_Repository_EF_Core.Repositories
+namespace BookLibrary.Repository.Repositories
 {
     public interface IDataStoreCreatable
     {
