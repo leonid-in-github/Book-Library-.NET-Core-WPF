@@ -1,5 +1,4 @@
-﻿using BookLibrary.UI.ExtensionMethods;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -34,7 +33,6 @@ namespace BookLibrary.UI.Windows
 
         private void SetupWindow()
         {
-            this.CenterWindowOnScreen();
             Background = WindowsPropertiesProvider.LoginBackground;
             Icon = WindowsPropertiesProvider.DefaultIcon;
         }

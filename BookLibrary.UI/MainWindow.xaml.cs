@@ -1,5 +1,4 @@
-﻿using BookLibrary.UI.ExtensionMethods;
-using BookLibrary.UI.HelperClasses;
+﻿using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Pages;
 using BookLibrary.UI.Windows;
@@ -45,7 +44,6 @@ namespace BookLibrary.UI
         {
             Background = WindowsPropertiesProvider.DefaultBackground;
             Icon = WindowsPropertiesProvider.DefaultIcon;
-            this.CenterWindowOnScreen();
         }
 
         private void LoadMainWindow()

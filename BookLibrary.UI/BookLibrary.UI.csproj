@@ -9,10 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\Background\background-image-0.jpg" />
+    <None Remove="Resources\Images\Background\background-image-1.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Remove="Styles.xaml" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\Background\background-image-0.jpg" />
+    <Resource Include="Resources\Images\Background\background-image-1.jpg" />
     <Resource Include="Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Resource>

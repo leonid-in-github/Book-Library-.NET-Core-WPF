@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:bl="clr-namespace:BookLibrary.UI.Windows"
         mc:Ignorable="d"
-        Title="Book library Registration Window" Height="450" Width="417">
+                      Title="Book library Registration Window" 
+                      Height="450" 
+                      Width="417"
+                      WindowStartupLocation="CenterScreen">
     <Grid x:Name="RegistrationGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Height="435" Width="400">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" Opacity="0.25" StartPoint="0.5,0">

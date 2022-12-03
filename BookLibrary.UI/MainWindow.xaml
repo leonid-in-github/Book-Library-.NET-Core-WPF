@@ -6,7 +6,11 @@
         xmlns:bl="clr-namespace:BookLibrary.UI.Windows"
         xmlns:subfolder="clr-namespace:BookLibrary.UI.Pages"
         mc:Ignorable="d"
-        Title="Book Library WPF Demo App" Height="650" Width="1200" HorizontalAlignment="Stretch">
+                      Title="Book Library WPF Demo App" 
+                      Height="650" 
+                      Width="1200" 
+                      HorizontalAlignment="Stretch"
+                      WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>

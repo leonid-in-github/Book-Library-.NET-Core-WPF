@@ -3,32 +3,98 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:bl="clr-namespace:BookLibrary.UI.Windows"
-        mc:Ignorable="d"
-        Title="Book library Login Window" Height="280" Width="400" Background="{x:Null}">
-    <Grid x:Name="LoginGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Height="230" Width="400">
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" Opacity="0.25" StartPoint="0.5,0">
-                <GradientStop Color="Black"/>
-                <GradientStop Color="#FF13C123" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="3.5*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1.5*" />
-        </Grid.RowDefinitions>
-        <Label x:Name="Message" Content="Welcome" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="52" Margin="19,12,0,0" VerticalAlignment="Top" Width="361" FontSize="24" Foreground="#FFFFD100" Background="{x:Null}" RenderTransformOrigin="0.512,0.51" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <Label Content="Login:" Margin="10,0,5,0" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.514,0.508" Height="26" Grid.Row="1" HorizontalAlignment="Stretch" Foreground="#FFFFD100"/>
-        <TextBox x:Name="tbLogin" Text="" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="26" Margin="5,10,20,10" TextWrapping="Wrap" VerticalAlignment="Center" Width="256" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="Password:" Grid.Column="0" Grid.Row="2" Height="24" Margin="10,0,5,0" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.509,0.546" Foreground="#FFFFD100" Background="{x:Null}"/>
-        <PasswordBox x:Name="tbPassword" Grid.Column="1" Grid.Row="2" PasswordChar="*" HorizontalAlignment="Left" Height="24" Margin="5,10,20,10" VerticalAlignment="Center" Width="256" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Height="32" Margin="52,51,0,0" VerticalAlignment="Top" Width="118" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FFDBFDD9" BorderBrush="#FF17FF00"/>
-        <Button x:Name="btnRegistration" Content="Registration" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="52,45,0,0" Grid.Row="3" VerticalAlignment="Top" Width="118" Background="#FFFDFFCC"/>
-    </Grid>
+        xmlns:bl="clr-namespace:BookLibrary.UI.Windows" xmlns:controls="clr-namespace:BookLibrary.UI.Controls"
+                      mc:Ignorable="d"
+                      Title="Book library login" 
+                      Height="280" 
+                      Width="400" 
+                      Background="Transparent"
+                      AllowsTransparency="True"
+                      WindowStyle="None"
+                      WindowStartupLocation="CenterScreen"
+                      ResizeMode="NoResize"
+                      MouseDown="Window_OnMouseDown">
+    <controls:ClippingBorder CornerRadius="15">
+        <Border.Background>
+            <ImageBrush ImageSource="../Resources/Images/Background/background-image-1.jpg"
+                        Stretch="UniformToFill">
+            </ImageBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0,0.5" Opacity="0.25" StartPoint="1,0.5" >
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="Blue" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="BOOK LIBRARY" 
+                           Foreground="DarkGray" 
+                           FontSize="10"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+                <Button x:Name="btnMinimize"
+                        Style="{StaticResource MinimizeWindowButton}"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click"/>
+                <Button x:Name="btnClose"
+                        Style="{StaticResource CloseWindowButton}"
+                        BorderThickness="0"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnClose_Click"/>
+            </Grid>
+            <Grid x:Name="LoginGrid" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="230" Width="400">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3.5*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1.5*" />
+                </Grid.RowDefinitions>
+                <Label x:Name="Message" Content="Welcome" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="52" Margin="19,12,0,0" VerticalAlignment="Top" Width="361" FontSize="24" Foreground="#FFFFD100" Background="{x:Null}" RenderTransformOrigin="0.512,0.51" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                <Label Content="Login:" Margin="30,0,286,0" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.514,0.508" Height="25" Grid.Row="1" Foreground="#FFFFD100" Grid.ColumnSpan="2">
+                    <Label.Background>
+                        <SolidColorBrush Color="DarkBlue" Opacity="0.5"/>
+                    </Label.Background>
+                </Label>
+                <TextBox x:Name="tbLogin" Text="" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" Margin="25,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="256" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label Content="Password:" Grid.Column="0" Grid.Row="2" Height="25" Margin="30,0,286,0" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.509,0.546" Foreground="#FFFFD100" Grid.ColumnSpan="2">
+                    <Label.Background>
+                        <SolidColorBrush Color="DarkBlue" Opacity="0.7"/>
+                    </Label.Background>
+                </Label>
+                <PasswordBox x:Name="tbPassword" Grid.Column="1" Grid.Row="2" PasswordChar="*" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="256" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="25,0,0,0"/>
+                <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Height="32" Margin="52,51,0,0" VerticalAlignment="Top" Width="118" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FFDBFDD9" BorderBrush="#FF17FF00"/>
+                <Button x:Name="btnRegistration" Content="Registration" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="52,45,0,0" Grid.Row="3" VerticalAlignment="Top" Width="118" Background="#FFFDFFCC"/>
+            </Grid>
+        </Grid>
+
+    </controls:ClippingBorder>
 </bl:BookLibraryWindow>

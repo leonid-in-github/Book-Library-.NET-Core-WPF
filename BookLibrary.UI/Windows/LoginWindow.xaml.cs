@@ -1,5 +1,4 @@
-﻿using BookLibrary.UI.ExtensionMethods;
-using BookLibrary.UI.HelperClasses;
+﻿using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.Pages;
 using System;
 using System.ComponentModel;
@@ -29,8 +28,6 @@ namespace BookLibrary.UI.Windows
 
         private void SetupWindow()
         {
-            this.CenterWindowOnScreen();
-            Background = WindowsPropertiesProvider.LoginBackground;
             Icon = WindowsPropertiesProvider.DefaultIcon;
         }
 
@@ -118,6 +115,24 @@ namespace BookLibrary.UI.Windows
                 btnLogin_Click(sender, e);
             }
             e.Handled = true;
+        }
+
+        private void Window_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.LeftButton== MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState= WindowState.Minimized;
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
