@@ -17,7 +17,14 @@
                       WindowStartupLocation="CenterScreen"
                       ResizeMode="NoResize"
                       MouseDown="Window_OnMouseDown">
-    <controls:ClippingBorder CornerRadius="15">
+    <controls:ClippingBorder CornerRadius="15"
+                             BorderThickness="1">
+        <controls:ClippingBorder.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#464AD8" Offset="0"/>
+                <GradientStop Color="#8A16C1" Offset="1"/>
+            </LinearGradientBrush>
+        </controls:ClippingBorder.BorderBrush>
         <controls:ClippingBorder.Background>
             <ImageBrush ImageSource="../Resources/Images/Background/background-image-0.jpg"
                         Stretch="UniformToFill">
