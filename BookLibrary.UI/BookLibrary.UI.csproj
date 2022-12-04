@@ -11,6 +11,8 @@
   <ItemGroup>
     <None Remove="Resources\Images\Background\background-image-0.jpg" />
     <None Remove="Resources\Images\Background\background-image-1.jpg" />
+    <None Remove="Resources\Images\Icons\backward-image.png" />
+    <None Remove="Resources\Images\Icons\favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +22,8 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Background\background-image-0.jpg" />
     <Resource Include="Resources\Images\Background\background-image-1.jpg" />
+    <Resource Include="Resources\Images\Icons\backward-image.png" />
+    <Resource Include="Resources\Images\Icons\favicon.ico" />
     <Resource Include="Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Resource>

@@ -16,7 +16,6 @@ namespace BookLibrary.UI.Windows
         public LoginWindow()
         {
             InitializeComponent();
-            SetupWindow();
 
             btnLogin.Click += btnLogin_Click;
             btnRegistration.Click += btnRegistration_Click;
@@ -24,11 +23,6 @@ namespace BookLibrary.UI.Windows
             tbPassword.KeyUp += TextBox_KeyUp;
 
             this.Closing += LoginWindow_Closing;
-        }
-
-        private void SetupWindow()
-        {
-            Icon = WindowsPropertiesProvider.DefaultIcon;
         }
 
         private LinearGradientBrush LoginGridAlertBackground
@@ -115,24 +109,6 @@ namespace BookLibrary.UI.Windows
                 btnLogin_Click(sender, e);
             }
             e.Handled = true;
-        }
-
-        private void Window_OnMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if(e.LeftButton== MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
-        }
-
-        private void btnMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState= WindowState.Minimized;
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }

@@ -16,8 +16,6 @@ namespace BookLibrary.UI.Pages
         {
             InitializeComponent();
 
-            SetupPage();
-
             Loaded += OnLoad;
 
             BooksGrid.SelectionChanged += Datagrid_Row_Click;
@@ -27,11 +25,6 @@ namespace BookLibrary.UI.Pages
             btnEditBook.Click += btnEditBook_Click;
             btnTrackBook.Click += btnTrackBook_Click;
             btnDeleteBook.Click += btnDeleteBook_Click;
-        }
-
-        private void SetupPage()
-        {
-
         }
 
         public MainPageVM pageModel { get; set; }

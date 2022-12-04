@@ -27,8 +27,6 @@ namespace BookLibrary.UI
 
             DataContext = this;
 
-            SetupWindow();
-
             LoadMainWindow();
 
             NavigateUserCabinet = new NavigateUserCabinetCommand(MainFrame);
@@ -38,12 +36,6 @@ namespace BookLibrary.UI
 
             Closing += MainWindow_Closing;
             ContentRendered += MainWindow_Rendered;
-        }
-
-        private void SetupWindow()
-        {
-            Background = WindowsPropertiesProvider.DefaultBackground;
-            Icon = WindowsPropertiesProvider.DefaultIcon;
         }
 
         private void LoadMainWindow()

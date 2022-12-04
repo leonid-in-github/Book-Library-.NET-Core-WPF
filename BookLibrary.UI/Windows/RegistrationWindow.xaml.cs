@@ -15,7 +15,6 @@ namespace BookLibrary.UI.Windows
         public RegistrationWindow(Window loginWindow)
         {
             InitializeComponent();
-            SetupWindow();
 
             _loginWindow = loginWindow;
 
@@ -29,12 +28,6 @@ namespace BookLibrary.UI.Windows
             pbConfirmPassword.KeyUp += TextBox_KeyUp;
 
             this.Closing += RegistrationWindow_Closing;
-        }
-
-        private void SetupWindow()
-        {
-            Background = WindowsPropertiesProvider.LoginBackground;
-            Icon = WindowsPropertiesProvider.DefaultIcon;
         }
 
         private void Register()
@@ -107,6 +100,10 @@ namespace BookLibrary.UI.Windows
                 return true;
             }
             return false;
+        }
+        protected new void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
 
         private LinearGradientBrush RegistrationGridAlertBackground

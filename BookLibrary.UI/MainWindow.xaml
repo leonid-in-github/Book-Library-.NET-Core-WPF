@@ -4,26 +4,86 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:bl="clr-namespace:BookLibrary.UI.Windows"
-        xmlns:subfolder="clr-namespace:BookLibrary.UI.Pages"
-        mc:Ignorable="d"
+        xmlns:subfolder="clr-namespace:BookLibrary.UI.Pages" 
+        xmlns:controls="clr-namespace:BookLibrary.UI.Controls"
+                      mc:Ignorable="d"
                       Title="Book Library WPF Demo App" 
                       Height="650" 
                       Width="1200" 
                       HorizontalAlignment="Stretch"
-                      WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="429*"/>
-        </Grid.RowDefinitions>
-        <Menu Height="21" VerticalAlignment="Top" Grid.RowSpan="2">
-            <MenuItem Header="Application menu">
-                <MenuItem Header="User cabinet"  Command="{Binding Path=NavigateUserCabinet, Mode=OneWay}"></MenuItem>
-                <Separator />
-                <MenuItem Header="Logout" Command="{Binding Path=Logout, Mode=OneWay}"></MenuItem>
-                <MenuItem Header="Exit" Command="{Binding Path=Exit, Mode=OneWay}"></MenuItem> 
-            </MenuItem>
-        </Menu>
-        <Frame Name="MainFrame" Content="Frame" NavigationUIVisibility="Hidden" Margin="0,16,0,0" Grid.Row="1"/>
-    </Grid>
+                      Background="Transparent"
+                      AllowsTransparency="True"
+                      WindowStyle="None"
+                      WindowStartupLocation="CenterScreen"
+                      ResizeMode="NoResize"
+                      MouseDown="Window_OnMouseDown">
+    <controls:ClippingBorder CornerRadius="15">
+        <controls:ClippingBorder.Background>
+            <ImageBrush ImageSource="../Resources/Images/Background/background-image-0.jpg"
+                        Stretch="UniformToFill">
+            </ImageBrush>
+        </controls:ClippingBorder.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0,0.5" Opacity="0.25" StartPoint="1,0.5" >
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="Blue" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="BOOK LIBRARY" 
+                           Foreground="DarkGray" 
+                           FontSize="10"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+                <Button x:Name="btnMinimize"
+                        Style="{StaticResource MinimizeWindowButton}"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click"/>
+                <Button x:Name="btnClose"
+                        Style="{StaticResource CloseWindowButton}"
+                        BorderThickness="0"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnClose_Click"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="5*"/>-->
+                    <RowDefinition Height="429*"/>
+                </Grid.RowDefinitions>
+                <!--<Menu Height="21" VerticalAlignment="Top" Grid.RowSpan="2">
+                    <MenuItem Header="Application menu">
+                        <MenuItem Header="User cabinet"  Command="{Binding Path=NavigateUserCabinet, Mode=OneWay}"></MenuItem>
+                        <Separator />
+                        <MenuItem Header="Logout" Command="{Binding Path=Logout, Mode=OneWay}"></MenuItem>
+                        <MenuItem Header="Exit" Command="{Binding Path=Exit, Mode=OneWay}"></MenuItem>
+                    </MenuItem>
+                </Menu>-->
+                <Frame Name="MainFrame" Content="Frame" NavigationUIVisibility="Hidden" Margin="0,0,0,0" Grid.Row="1"/>
+            </Grid>
+        </Grid>
+    </controls:ClippingBorder>
 </bl:BookLibraryWindow>

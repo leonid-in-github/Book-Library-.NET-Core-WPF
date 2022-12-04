@@ -200,4 +200,16 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="Label" x:Key="BlueLabel">
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="DarkBlue" Opacity="0.5"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="#FFFFD200"></SolidColorBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

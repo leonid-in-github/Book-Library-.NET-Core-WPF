@@ -3,47 +3,103 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:bl="clr-namespace:BookLibrary.UI.Windows"
-        mc:Ignorable="d"
+        xmlns:bl="clr-namespace:BookLibrary.UI.Windows" 
+        xmlns:controls="clr-namespace:BookLibrary.UI.Controls"
+                      mc:Ignorable="d"
                       Title="Book library Registration Window" 
                       Height="450" 
                       Width="417"
-                      WindowStartupLocation="CenterScreen">
-    <Grid x:Name="RegistrationGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Height="435" Width="400">
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" Opacity="0.25" StartPoint="0.5,0">
-                <GradientStop Color="Black"/>
-                <GradientStop Color="#FF13C123" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="114*" />
-            <ColumnDefinition Width="193*" />
-            <ColumnDefinition Width="92*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1.5*" />
-        </Grid.RowDefinitions>
-        <Label x:Name="Message" Content="Registration" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="52" Margin="19,12,0,0" VerticalAlignment="Top" Width="361" FontSize="24" Foreground="#FFFFD100" Background="{x:Null}" RenderTransformOrigin="0.512,0.51" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-        <Label Content="Login:" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.514,0.508" Height="51" Grid.Row="1" Foreground="#FFFFD100" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="tbLogin" Text="" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-        <TextBox x:Name="tbFirstName" Text="" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-        <TextBox x:Name="tbLastName" Text="" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-        <TextBox x:Name="tbEmail" Text="" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-        <Label Content="Password:" Grid.Column="0" Grid.Row="2" Height="51" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.509,0.546" Foreground="#FFFFD100" Background="{x:Null}" VerticalContentAlignment="Center"/>
-        <PasswordBox x:Name="pbPassword" Grid.Column="1" Grid.Row="2" PasswordChar="*" HorizontalAlignment="Left" Height="24" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-        <PasswordBox x:Name="pbConfirmPassword" Grid.Column="1" Grid.Row="3" PasswordChar="*" HorizontalAlignment="Left" Height="24" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-        <Button x:Name="btnRegister" Content="Register" HorizontalAlignment="Left" Height="32" Margin="27,18,0,0" VerticalAlignment="Top" Width="118" Grid.Row="7" Grid.Column="1" Background="#FFDBFDD9" BorderBrush="#FF17FF00"/>
-        <Label Content="Confirm passsword: " HorizontalAlignment="Center" Height="51" Grid.Row="3" VerticalAlignment="Center" Width="114" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Label Content="First name:" HorizontalAlignment="Center" Height="51" Grid.Row="4" VerticalAlignment="Center" Width="114" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Label Content="Last name: " HorizontalAlignment="Center" Height="51" Grid.Row="5" VerticalAlignment="Center" Width="114" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Label Content="Email: " HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Height="51" Width="114" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-    </Grid>
+                      Background="Transparent"
+                      AllowsTransparency="True"
+                      WindowStyle="None"
+                      WindowStartupLocation="CenterScreen"
+                      ResizeMode="NoResize"
+                      MouseDown="Window_OnMouseDown">
+    <controls:ClippingBorder CornerRadius="15">
+        <controls:ClippingBorder.Background>
+            <ImageBrush ImageSource="../Resources/Images/Background/background-image-1.jpg"
+                        Stretch="UniformToFill">
+            </ImageBrush>
+        </controls:ClippingBorder.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0,0.5" Opacity="0.25" StartPoint="1,0.5" >
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="Blue" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="BOOK LIBRARY" 
+                           Foreground="DarkGray" 
+                           FontSize="10"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+                <Button x:Name="btnMinimize"
+                        Style="{StaticResource MinimizeWindowButton}"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click"/>
+                <Button x:Name="btnClose"
+                        Style="{StaticResource CloseWindowButton}"
+                        BorderThickness="0"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnClose_Click"/>
+            </Grid>
+            <Grid x:Name="RegistrationGrid" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="435" Width="417">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="114*" />
+                    <ColumnDefinition Width="193*" />
+                    <ColumnDefinition Width="92*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1.5*" />
+                </Grid.RowDefinitions>
+                <Label x:Name="Message" Content="Registration" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="52" Margin="19,12,0,0" VerticalAlignment="Top" Width="361" FontSize="24" Foreground="#FFFFD100" Background="{x:Null}" RenderTransformOrigin="0.512,0.51" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                <Label Content="Login:" Style="{StaticResource BlueLabel}" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.514,0.508" Height="25" Grid.Row="1" Foreground="#FFFFD100" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="24,0,170,0"/>
+                <TextBox x:Name="tbLogin" Text="" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
+                <TextBox x:Name="tbFirstName" Text="" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
+                <TextBox x:Name="tbLastName" Text="" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
+                <TextBox x:Name="tbEmail" Text="" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
+                <Label Content="Password:" Style="{StaticResource BlueLabel}" Grid.Column="0" Grid.Row="2" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.509,0.546" Foreground="#FFFFD100" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="24,0,170,0"/>
+                <PasswordBox x:Name="pbPassword" Grid.Column="1" Grid.Row="2" PasswordChar="*" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
+                <PasswordBox x:Name="pbConfirmPassword" Grid.Column="1" Grid.Row="3" PasswordChar="*" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
+                <Button x:Name="btnRegister" Content="Register" HorizontalAlignment="Left" Height="32" Margin="27,18,0,0" VerticalAlignment="Top" Width="118" Grid.Row="7" Grid.Column="1" Background="#FFDBFDD9" BorderBrush="#FF17FF00"/>
+                <Label Content="Confirm passsword: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="25" Grid.Row="3" VerticalAlignment="Center" Width="114" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="24,0,0,0"/>
+                <Label Content="First name:" Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="25" Grid.Row="4" VerticalAlignment="Center" Width="114" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="24,0,0,0"/>
+                <Label Content="Last name: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="25" Grid.Row="5" VerticalAlignment="Center" Width="114" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="24,0,0,0"/>
+                <Label Content="Email: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" Height="25" Width="114" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="24,0,0,0"/>
+            </Grid>
+        </Grid>
+
+    </controls:ClippingBorder>
+
 </bl:BookLibraryWindow>
