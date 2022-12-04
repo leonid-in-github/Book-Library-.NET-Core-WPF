@@ -80,10 +80,10 @@
                     <RowDefinition Height="1.5*" />
                 </Grid.RowDefinitions>
                 <Label x:Name="Message" Content="Welcome" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="52" Margin="19,12,0,0" VerticalAlignment="Top" Width="361" FontSize="24" Foreground="#FFFFD100" Background="{x:Null}" RenderTransformOrigin="0.512,0.51" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                <Label Content="Login:" Style="{StaticResource BlueLabel}" Margin="30,0,286,0" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.514,0.508" Height="25" Grid.Row="1" Foreground="#FFFFD100" Grid.ColumnSpan="2">
+                <Label Content="Login: " Style="{StaticResource BlueLabel}" Margin="30,0,286,0" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.514,0.508" Height="25" Grid.Row="1" Foreground="#FFFFD100" Grid.ColumnSpan="2">
                 </Label>
                 <TextBox x:Name="tbLogin" Text="" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" Margin="25,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="256" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label Content="Password:" Style="{StaticResource BlueLabel}" Grid.Column="0" Grid.Row="2" Height="25" Margin="30,0,286,0" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.509,0.546" Foreground="#FFFFD100" Grid.ColumnSpan="2">
+                <Label Content="Password: " Style="{StaticResource BlueLabel}" Grid.Column="0" Grid.Row="2" Height="25" Margin="30,0,286,0" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.509,0.546" Foreground="#FFFFD100" Grid.ColumnSpan="2">
                 </Label>
                 <PasswordBox x:Name="tbPassword" Grid.Column="1" Grid.Row="2" PasswordChar="*" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="256" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="25,0,0,0"/>
                 <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Height="32" Margin="52,51,0,0" VerticalAlignment="Top" Width="118" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FFDBFDD9" BorderBrush="#FF17FF00"/>

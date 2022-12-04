@@ -111,7 +111,7 @@ namespace BookLibrary.UI.Pages
             }
             if (e.Column.Header.ToString() == "Name")
             {
-                e.Column.Width = 685;
+                e.Column.Width = 715;
                 var col = e.Column as DataGridTextColumn;
 
                 var style = new Style(typeof(TextBlock));
