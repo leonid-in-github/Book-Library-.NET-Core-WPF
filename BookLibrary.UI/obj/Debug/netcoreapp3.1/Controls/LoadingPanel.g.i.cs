@@ -86,7 +86,7 @@ namespace BookLibrary.UI.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BookLibrary.UI;V1.0.0.0;component/controls/loadingpanel.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BookLibrary.UI;component/controls/loadingpanel.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\LoadingPanel.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

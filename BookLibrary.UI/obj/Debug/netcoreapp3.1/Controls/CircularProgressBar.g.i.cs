@@ -133,7 +133,7 @@ namespace BookLibrary.UI.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BookLibrary.UI;V1.0.0.0;component/controls/circularprogressbar.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BookLibrary.UI;component/controls/circularprogressbar.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\CircularProgressBar.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

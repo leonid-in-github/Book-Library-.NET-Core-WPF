@@ -77,7 +77,7 @@ namespace BookLibrary.UI.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BookLibrary.UI;V1.0.0.0;component/pages/booktrackpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BookLibrary.UI;component/pages/booktrackpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\BookTrackPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
