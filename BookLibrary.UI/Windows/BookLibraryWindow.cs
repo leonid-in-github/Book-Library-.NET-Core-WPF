@@ -9,7 +9,7 @@ namespace BookLibrary.UI.Windows
 {
     public partial class BookLibraryWindow : Window
     {
-        protected IDataStore DataStore => RepositoryService.Get<BookLibraryRepository>();
+        protected IDataStore DataStore => RepositoryService.Get<IDataStore>();
 
         public BookLibraryWindow() : base()
         {

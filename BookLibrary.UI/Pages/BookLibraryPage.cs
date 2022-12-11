@@ -6,6 +6,6 @@ namespace BookLibrary.UI.Pages
 {
     public class BookLibraryPage : Page
     {
-        protected IDataStore DataStore => RepositoryService.Get<BookLibraryRepository>();
+        protected IDataStore DataStore => RepositoryService.Get<IDataStore>();
     }
 }
