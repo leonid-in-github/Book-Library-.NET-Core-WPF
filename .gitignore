@@ -13,3 +13,4 @@ x64/
 #build/
 
 .vs/
+BookLibrary.DataBase/obj/Debug/BookLibrary.DataBase.sqlproj.FileListAbsolute.txt
