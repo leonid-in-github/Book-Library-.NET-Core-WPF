@@ -16,7 +16,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class MainPageVM : INotifyPropertyChanged
     {
-        private IDataStore DataStore => RepositoryService.Get<BookLibraryRepository>();
+        private IDataStore DataStore => RepositoryService.Get<IDataStore>();
 
         private string _userName;
         private ICollectionView _booksView;

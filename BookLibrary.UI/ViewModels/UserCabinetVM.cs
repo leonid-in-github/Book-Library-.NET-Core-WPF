@@ -10,7 +10,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class UserCabinetVM
     {
-        private IDataStore DataStore => RepositoryService.Get<BookLibraryRepository>();
+        private IDataStore DataStore => RepositoryService.Get<IDataStore>();
 
         public UserCabinetVM()
         {

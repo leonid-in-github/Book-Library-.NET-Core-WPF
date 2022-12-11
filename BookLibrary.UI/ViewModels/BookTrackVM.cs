@@ -8,7 +8,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class BookTrackVM : INotifyPropertyChanged
     {
-        private IDataStore DataStore => RepositoryService.Get<BookLibraryRepository>();
+        private IDataStore DataStore => RepositoryService.Get<IDataStore>();
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
