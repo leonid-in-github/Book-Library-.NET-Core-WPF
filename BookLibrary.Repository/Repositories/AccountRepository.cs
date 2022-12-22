@@ -2,11 +2,10 @@
 using BookLibrary.Repository.Models.Account;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System;
 
-namespace BookLibrary.Repository.Components
+namespace BookLibrary.Repository.Repositories
 {
-    public class AccountComponent
+    public class AccountRepository
     {
         public int Login(string login, string password)
         {
@@ -36,7 +35,7 @@ namespace BookLibrary.Repository.Components
             {
                 _ = dbContext.Database.ExecuteSqlRaw(sql, inLogin, inPassword, outResult);
             }
-            if (Int32.TryParse(outResult.Value.ToString(), out int accountId))
+            if (int.TryParse(outResult.Value.ToString(), out int accountId))
                 if (accountId > 0)
                 {
                     return accountId;
@@ -93,7 +92,7 @@ namespace BookLibrary.Repository.Components
             {
                 _ = dbContext.Database.ExecuteSqlRaw(sql, inLogin, inPassword, inFirstName, inLastName, inEmail, outResult);
             }
-            if (Int32.TryParse(outResult.Value.ToString(), out int accountId))
+            if (int.TryParse(outResult.Value.ToString(), out int accountId))
                 return accountId;
             return 0;
         }
@@ -188,7 +187,7 @@ namespace BookLibrary.Repository.Components
             {
                 _ = dbContext.Database.ExecuteSqlRaw(sql, inAccountId, inPassword, inNewPassword, outResult);
             }
-            Boolean.TryParse(outResult.Value.ToString(), out bool result);
+            bool.TryParse(outResult.Value.ToString(), out bool result);
 
             return result;
         }
@@ -220,7 +219,7 @@ namespace BookLibrary.Repository.Components
             {
                 _ = dbContext.Database.ExecuteSqlRaw(sql, inAccountId, inPassword, outResult);
             }
-            Boolean.TryParse(outResult.Value.ToString(), out bool result);
+            bool.TryParse(outResult.Value.ToString(), out bool result);
 
             return result;
 

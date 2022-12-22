@@ -1,11 +1,9 @@
-﻿using BookLibrary.Repository.Components;
-
-namespace BookLibrary.Repository.Repositories
+﻿namespace BookLibrary.Repository.Repositories
 {
     public interface IDataStore
     {
-        AccountComponent Account { get; }
+        AccountRepository Account { get; }
 
-        BooksComponent Books { get; }
+        BooksRepository Books { get; }
     }
 }

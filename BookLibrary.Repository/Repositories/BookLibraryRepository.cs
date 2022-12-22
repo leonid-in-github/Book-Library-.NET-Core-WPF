@@ -1,14 +1,19 @@
-﻿using BookLibrary.Repository.Components;
-using BookLibrary.Repository.Contexts;
+﻿using BookLibrary.Repository.Contexts;
 using System.Threading.Tasks;
 
 namespace BookLibrary.Repository.Repositories
 {
     public class BookLibraryRepository : IDataStore, IDataStoreCreatable
     {
-        public AccountComponent Account => new AccountComponent();
+        public BookLibraryRepository() 
+        {
+            Account = new AccountRepository();
+            Books = new BooksRepository();
+        }
 
-        public BooksComponent Books => new BooksComponent();
+        public AccountRepository Account { get; private set; }
+
+        public BooksRepository Books { get; private set; }
 
         public async Task<bool> EnsureCreated()
         {
