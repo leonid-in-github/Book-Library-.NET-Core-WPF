@@ -1,7 +1,4 @@
 ﻿using BookLibrary.Repository.Models.Book;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BookLibrary.UI.Models.BooksModels
 {

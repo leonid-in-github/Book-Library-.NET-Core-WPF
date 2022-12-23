@@ -1,12 +1,10 @@
-﻿using BookLibrary.UI.HelperClasses;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Repository.Servicies;
+using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Models.BooksModels;
-using BookLibrary.Repository.Models.Book;
-using BookLibrary.Repository.Repositories;
-using BookLibrary.Repository.Servicies;
 using System;
 using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Data;

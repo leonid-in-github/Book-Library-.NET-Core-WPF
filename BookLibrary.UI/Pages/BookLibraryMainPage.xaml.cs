@@ -1,6 +1,6 @@
-﻿using BookLibrary.UI.Models.BooksModels;
+﻿using BookLibrary.Repository.Models.Book;
+using BookLibrary.UI.Models.BooksModels;
 using BookLibrary.UI.ViewModels;
-using BookLibrary.Repository.Models.Book;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;

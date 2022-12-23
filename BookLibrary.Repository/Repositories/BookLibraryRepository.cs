@@ -5,7 +5,7 @@ namespace BookLibrary.Repository.Repositories
 {
     public class BookLibraryRepository : IDataStore, IDataStoreCreatable
     {
-        public BookLibraryRepository() 
+        public BookLibraryRepository()
         {
             Account = new AccountRepository();
             Books = new BooksRepository();

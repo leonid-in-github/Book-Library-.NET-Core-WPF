@@ -2,8 +2,8 @@
 using BookLibrary.Repository.Servicies;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace BookLibrary.UI.Windows
 {

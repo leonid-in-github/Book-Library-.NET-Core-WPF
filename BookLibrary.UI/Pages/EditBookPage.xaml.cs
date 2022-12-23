@@ -1,6 +1,4 @@
 ﻿using BookLibrary.Repository.Models.Book;
-using BookLibrary.Repository.Repositories;
-using BookLibrary.Repository.Servicies;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -28,7 +26,7 @@ namespace BookLibrary.UI.Pages
 
             if (book == null || _book == null)
                 NavigationService.Navigate(_previousPage);
-            
+
             tbBookName.Text = _book.Name;
             tbBookAuthors.Text = _book.Authors;
             dpBookDate.SelectedDate = _book.Year;
