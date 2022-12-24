@@ -8,11 +8,11 @@ using System.Windows.Input;
 
 namespace BookLibrary.UI.ViewModels
 {
-    public class UserCabinetVM
+    public class UserCabinetViewModel
     {
         private IDataStore DataStore => RepositoryService.Get<IDataStore>();
 
-        public UserCabinetVM()
+        public UserCabinetViewModel()
         {
             _user = DataStore.Account.GetUser(AppUser.GetInstance().AccountId);
             foreach (Window window in Application.Current.Windows)

@@ -24,7 +24,7 @@ namespace BookLibrary.UI.Pages
             btnChangePassword.Click += btnChangePassword_Click;
             btnDeleteAccount.Click += btnDeleteAccount_Click;
 
-            DataContext = new UserCabinetVM();
+            DataContext = new UserCabinetViewModel();
         }
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)

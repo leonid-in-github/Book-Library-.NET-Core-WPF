@@ -10,7 +10,7 @@ namespace BookLibrary.UI.Pages
     {
         private Page _previousPage;
 
-        private BookTrackVM pageViewModel;
+        private BookTrackViewModel pageViewModel;
 
         public BookTrackPage(Page previousPage, BookTrackList book)
         {
@@ -35,7 +35,7 @@ namespace BookLibrary.UI.Pages
                 btnActionBook.Content = "Put book";
             }
 
-            DataContext = pageViewModel = new BookTrackVM(book);
+            DataContext = pageViewModel = new BookTrackViewModel(book);
         }
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)

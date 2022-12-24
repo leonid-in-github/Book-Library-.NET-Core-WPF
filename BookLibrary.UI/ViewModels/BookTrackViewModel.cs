@@ -6,7 +6,7 @@ using System.Windows.Data;
 
 namespace BookLibrary.UI.ViewModels
 {
-    public class BookTrackVM : INotifyPropertyChanged
+    public class BookTrackViewModel : INotifyPropertyChanged
     {
         private IDataStore DataStore => RepositoryService.Get<IDataStore>();
 
@@ -16,9 +16,9 @@ namespace BookLibrary.UI.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public BookTrackVM() { }
+        public BookTrackViewModel() { }
 
-        public BookTrackVM(BookTrackList book)
+        public BookTrackViewModel(BookTrackList book)
         {
             Book = book;
         }

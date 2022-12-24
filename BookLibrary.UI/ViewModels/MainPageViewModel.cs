@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace BookLibrary.UI.ViewModels
 {
-    public class MainPageVM : INotifyPropertyChanged
+    public class MainPageViewModel : INotifyPropertyChanged
     {
         private IDataStore DataStore => RepositoryService.Get<IDataStore>();
 
@@ -23,7 +23,7 @@ namespace BookLibrary.UI.ViewModels
         private string _panelMainMessage = "Loading";
         private string _panelSubMessage = "Please wait...";
 
-        public MainPageVM(Page previousPage)
+        public MainPageViewModel(Page previousPage)
         {
             NavigateUserCabinet = new NavigateUserCabinetCommand(previousPage);
             LoadBooks();

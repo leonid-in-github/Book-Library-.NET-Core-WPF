@@ -27,11 +27,11 @@ namespace BookLibrary.UI.Pages
             btnDeleteBook.Click += btnDeleteBook_Click;
         }
 
-        public MainPageVM pageModel { get; set; }
+        public MainPageViewModel pageModel { get; set; }
 
         protected void OnLoad(object sender, RoutedEventArgs e)
         {
-            DataContext = pageModel = new MainPageVM(this);
+            DataContext = pageModel = new MainPageViewModel(this);
         }
 
         private void btnAddBook_Click(object sender, RoutedEventArgs e)
