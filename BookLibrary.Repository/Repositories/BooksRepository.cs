@@ -4,6 +4,8 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Xml.Linq;
 
 namespace BookLibrary.Repository.Repositories
 {
@@ -37,7 +39,7 @@ namespace BookLibrary.Repository.Repositories
                 }
                 else
                 {
-                    booksResult = dbContext.GetBook.FromSqlRaw(string.Format("EXECUTE {0}", spName), pArr).ToListAsync().Result;
+                    booksResult = dbContext.GetBook.FromSqlRaw(string.Format("EXECUTE {0}", spName), pArr).ToList();
                 }
                 var booksList = new List<BookItem>();
 
@@ -50,9 +52,50 @@ namespace BookLibrary.Repository.Repositories
             }
         }
 
-        public List<BookItem> GetBooks()
+        public List<BookItem> GetBooks(string searchString = "", uint from = 0, uint count = 10)
         {
-            return GetBooks("GetBooks", null);
+            var searchStringParameter = new SqlParameter
+            {
+                ParameterName = "SearchString",
+                Value = searchString,
+                DbType = System.Data.DbType.String,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var fromParameter = new SqlParameter
+            {
+                ParameterName = "From",
+                Value = from,
+                DbType = System.Data.DbType.Int32,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var countParameter = new SqlParameter
+            {
+                ParameterName = "Count",
+                Value = count,
+                DbType = System.Data.DbType.Int32,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var sqlParameters = new SqlParameter[] { searchStringParameter, fromParameter, countParameter };
+
+            return GetBooks("GetBooks @SearchString, @From, @Count", sqlParameters);
+        }
+
+        public int GetBooksTotalCount(string searchString = "")
+        {
+            var searchStringParameter = new SqlParameter
+            {
+                ParameterName = "SearchString",
+                Value = searchString,
+                DbType = System.Data.DbType.String,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var sqlParameters = new SqlParameter[] { searchStringParameter };
+            var sqlString = "EXECUTE GetBooksTotalCount @SearchString";
+            using (var dbContext = new BookLibraryContext())
+            {
+                var result = dbContext.Database.SqlQueryRaw<int>(sqlString, sqlParameters).AsEnumerable<int>().FirstOrDefault();
+                return result;
+            }
         }
 
         public List<BookItem> GetAvaliableBooks()

@@ -26,7 +26,7 @@ namespace BookLibrary.UI.ViewModels
         public MainPageVM(Page previousPage)
         {
             NavigateUserCabinet = new NavigateUserCabinetCommand(previousPage);
-            ExecuteLoadBooksCommand();
+            LoadBooks();
         }
 
         private bool BooksFilter(object item)
@@ -43,11 +43,12 @@ namespace BookLibrary.UI.ViewModels
                 book.ID.ToString().ToLower().Contains(_filterString.ToLower());
         }
 
-        public void ExecuteLoadBooksCommand()
+        public void LoadBooks(string searchString = "", uint from = 0, uint count = 10)
         {
             ShowPanelCommand.Execute(null);
             UserName = AppUser.GetInstance().Login;
-            var books = DataStore.Books.GetBooks().Select(book => new Book(book)).ToList();
+            var books = DataStore.Books.GetBooks(searchString, from, count).Select(book => new Book(book)).ToList();
+            var booksTotalCount = DataStore.Books.GetBooksTotalCount(searchString);
             _booksView = CollectionViewSource.GetDefaultView(books);
             _booksView.Filter = BooksFilter;
             _booksView.SortDescriptions.Add(

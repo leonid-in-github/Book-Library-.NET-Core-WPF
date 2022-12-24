@@ -73,7 +73,7 @@ namespace BookLibrary.UI.Pages
                         DataStore.Books.DeleteBook((int)bookId);
                     }
                 }
-                pageModel.ExecuteLoadBooksCommand();
+                pageModel.LoadBooks();
             }
         }
 
