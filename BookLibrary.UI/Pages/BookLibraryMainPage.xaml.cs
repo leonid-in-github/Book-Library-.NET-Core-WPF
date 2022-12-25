@@ -20,7 +20,7 @@ namespace BookLibrary.UI.Pages
 
             BooksGrid.SelectionChanged += Datagrid_Row_Click;
             BooksGrid.AutoGeneratingColumn += Datagrid_AutoGeneratingColumn;
-            tbSearch.TextChanged += Search_Text_Changed;
+            tbFilter.TextChanged += Filter_Text_Changed;
             btnAddBook.Click += btnAddBook_Click;
             btnEditBook.Click += btnEditBook_Click;
             btnTrackBook.Click += btnTrackBook_Click;
@@ -98,9 +98,9 @@ namespace BookLibrary.UI.Pages
             }
         }
 
-        private void Search_Text_Changed(object sender, TextChangedEventArgs e)
+        private void Filter_Text_Changed(object sender, TextChangedEventArgs e)
         {
-            pageModel.FilterString = tbSearch.Text.ToLower();
+            pageModel.FilterString = tbFilter.Text.ToLower();
         }
 
         private void Datagrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

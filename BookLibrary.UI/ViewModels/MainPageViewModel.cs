@@ -22,6 +22,9 @@ namespace BookLibrary.UI.ViewModels
         private bool _panelLoading;
         private string _panelMainMessage = "Loading";
         private string _panelSubMessage = "Please wait...";
+        private int _currentPage = 1;
+        private int _numberOfPages = 5;
+        private int _recordsPerPage = 10;
 
         public MainPageViewModel(Page previousPage)
         {
@@ -56,6 +59,45 @@ namespace BookLibrary.UI.ViewModels
             _booksView.Refresh();
             OnPropertyChanged("Books");
             HidePanelCommand.Execute(null);
+        }
+
+        public int CurrentPage
+        {
+            get
+            {
+                return _currentPage;
+            }
+            set
+            {
+                _currentPage = value;
+                OnPropertyChanged("CurrentPage");
+            }
+        }
+
+        public int NumberOfPages
+        {
+            get
+            {
+                return _numberOfPages;
+            }
+            set
+            {
+                _numberOfPages = value;
+                OnPropertyChanged("NumberOfPages");
+            }
+        }
+
+        public int RecordsPerPage
+        {
+            get
+            {
+                return _recordsPerPage;
+            }
+            set
+            {
+                _recordsPerPage = value;
+                OnPropertyChanged("RecordsPerPage");
+            }
         }
 
         public string UserName
