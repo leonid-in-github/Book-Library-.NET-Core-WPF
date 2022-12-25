@@ -114,10 +114,11 @@
                 <Button Content="&lt;&lt;" Margin="5" ToolTip="First page"></Button>
                 <Button Content="&lt;" Margin="5" ToolTip="Previous page"></Button>
 
+                <TextBlock Text="page"  VerticalAlignment="Center" Foreground="#FFFFD200" />
+                <TextBox Text="{Binding CurrentPage}" Margin="5" VerticalContentAlignment="Center" />
                 <TextBlock VerticalAlignment="Center" Foreground="#FFFFD200">
                     <TextBlock.Text>
-                        <MultiBinding StringFormat="page {0} of {1}">
-                            <Binding Path="CurrentPage"></Binding>
+                        <MultiBinding StringFormat="of {0}">
                             <Binding Path="NumberOfPages"></Binding>
                         </MultiBinding>
                     </TextBlock.Text>
