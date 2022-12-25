@@ -1,6 +1,7 @@
 ﻿using BookLibrary.Repository.Models.Book;
 using BookLibrary.UI.Models.BooksModels;
 using BookLibrary.UI.ViewModels;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -16,23 +17,26 @@ namespace BookLibrary.UI.Pages
         {
             InitializeComponent();
 
-            Loaded += OnLoad;
+            DataContext = pageModel = new MainPageViewModel(this);
 
             BooksGrid.SelectionChanged += Datagrid_Row_Click;
             BooksGrid.AutoGeneratingColumn += Datagrid_AutoGeneratingColumn;
+            tbSearch.TextChanged += Search_Text_Changed;
             tbFilter.TextChanged += Filter_Text_Changed;
             btnAddBook.Click += btnAddBook_Click;
             btnEditBook.Click += btnEditBook_Click;
             btnTrackBook.Click += btnTrackBook_Click;
             btnDeleteBook.Click += btnDeleteBook_Click;
+            btnFirstPage.Click += btnFirstPage_Click;
+            btnPreviousPage.Click += btnPreviousPage_Click;
+            tbCurrentPage.TextChanged += tbCurrentPage_Text_Changed;
+            btnNextPage.Click += btnNextPage_Click;
+            btnLastPage.Click += btnLastPage_Click;
+            cbRecordsPerPage.SelectionChanged += cbRecordsPerPage_SelectionChanged;
+
         }
 
         public MainPageViewModel pageModel { get; set; }
-
-        protected void OnLoad(object sender, RoutedEventArgs e)
-        {
-            DataContext = pageModel = new MainPageViewModel(this);
-        }
 
         private void btnAddBook_Click(object sender, RoutedEventArgs e)
         {
@@ -77,6 +81,46 @@ namespace BookLibrary.UI.Pages
             }
         }
 
+        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
+        {
+            pageModel.CurrentPage = 1;
+        }
+
+        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            var currentPage = pageModel.CurrentPage - 1;
+            if (currentPage > 0) 
+            {
+                pageModel.CurrentPage = currentPage;
+            }
+        }
+
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            var currentPage = pageModel.CurrentPage + 1;
+            if (currentPage <= pageModel.NumberOfPages)
+            {
+                pageModel.CurrentPage = currentPage;
+            }
+        }
+
+        private void btnLastPage_Click(object sender, RoutedEventArgs e)
+        {
+            pageModel.CurrentPage = pageModel.NumberOfPages;
+        }
+
+        private void tbCurrentPage_Text_Changed(object sender, TextChangedEventArgs e)
+        {
+            LoadBooks();
+        }
+
+        private void cbRecordsPerPage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CalculateNamberOfPages();
+            pageModel.CurrentPage = 1;
+            LoadBooks();
+        }
+
         private void Datagrid_Row_Click(object sender, SelectionChangedEventArgs e)
         {
             if (btnEditBook.IsEnabled == false || btnDeleteBook.IsEnabled == false || btnTrackBook.IsEnabled == false)
@@ -98,9 +142,16 @@ namespace BookLibrary.UI.Pages
             }
         }
 
+        private void Search_Text_Changed(object sender, TextChangedEventArgs e)
+        {
+            CalculateNamberOfPages();
+            pageModel.CurrentPage = 1;
+            LoadBooks();
+        }
+
         private void Filter_Text_Changed(object sender, TextChangedEventArgs e)
         {
-            pageModel.FilterString = tbFilter.Text.ToLower();
+            pageModel.FilterString = tbFilter.Text;
         }
 
         private void Datagrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -151,6 +202,21 @@ namespace BookLibrary.UI.Pages
 
                 col.ElementStyle = style;
             }
+        }
+
+        private void LoadBooks()
+        {
+            var searchText = tbSearch.Text;
+            var recordsPerPage = (uint)pageModel.RecordsPerPage;
+            var currentPage = (uint)pageModel.CurrentPage;
+            var from = recordsPerPage * (currentPage - 1);
+            pageModel.LoadBooks(searchText, from, recordsPerPage);
+        }
+
+        private void CalculateNamberOfPages()
+        {
+            var pageCountDouble = (double)pageModel.BooksTotalCount / (double)pageModel.RecordsPerPage;
+            pageModel.NumberOfPages = (int)Math.Ceiling(pageCountDouble);
         }
     }
 }

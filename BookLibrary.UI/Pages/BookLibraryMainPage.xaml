@@ -104,18 +104,18 @@
                 </DataGrid.CellStyle>
             </DataGrid>
             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,21,0">
-                <TextBlock Text="Records per page" Foreground="#FFFFD200" VerticalAlignment="Center" Margin="5"/>
-                <ComboBox Margin="5" VerticalContentAlignment="Center" SelectedValue="{Binding RecordsPerPage}">
-                    <sys:Int32>5</sys:Int32>
-                    <sys:Int32>10</sys:Int32>
-                    <sys:Int32>15</sys:Int32>
-                    <sys:Int32>25</sys:Int32>
+                <TextBlock Text="Books per page" Foreground="#FFFFD200" VerticalAlignment="Center" Margin="5"/>
+                <ComboBox x:Name="cbRecordsPerPage" Margin="5" VerticalContentAlignment="Center" SelectedValue="{Binding RecordsPerPage}">
+                    <sys:Int32>1</sys:Int32>
+                    <sys:Int32>2</sys:Int32>
+                    <sys:Int32>3</sys:Int32>
+                    <sys:Int32>4</sys:Int32>
                 </ComboBox>
-                <Button Content="&lt;&lt;" Margin="5" ToolTip="First page"></Button>
-                <Button Content="&lt;" Margin="5" ToolTip="Previous page"></Button>
+                <Button x:Name="btnFirstPage" Content="&lt;&lt;" Margin="5" ToolTip="First page"></Button>
+                <Button x:Name="btnPreviousPage" Content="&lt;" Margin="5" ToolTip="Previous page"></Button>
 
                 <TextBlock Text="page"  VerticalAlignment="Center" Foreground="#FFFFD200" />
-                <TextBox Text="{Binding CurrentPage}" Margin="5" VerticalContentAlignment="Center" />
+                <TextBox x:Name="tbCurrentPage" Text="{Binding CurrentPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" VerticalContentAlignment="Center" />
                 <TextBlock VerticalAlignment="Center" Foreground="#FFFFD200">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="of {0}">
@@ -124,8 +124,8 @@
                     </TextBlock.Text>
                 </TextBlock>
 
-                <Button Content=">" Margin="5" ToolTip="Next page"></Button>
-                <Button Content=">>" Margin="5" ToolTip="Last page"></Button>
+                <Button x:Name="btnNextPage" Content=">" Margin="5" ToolTip="Next page"></Button>
+                <Button x:Name="btnLastPage" Content=">>" Margin="5" ToolTip="Last page"></Button>
             </StackPanel>
 
         </Grid>

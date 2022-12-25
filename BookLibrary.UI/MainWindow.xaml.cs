@@ -35,7 +35,6 @@ namespace BookLibrary.UI
             Exit = new ExitCommand();
 
             Closing += MainWindow_Closing;
-            ContentRendered += MainWindow_Rendered;
         }
 
         private void LoadMainWindow()
@@ -67,11 +66,6 @@ namespace BookLibrary.UI
         private void ShowLoginWindow()
         {
             loginWindow.Show();
-        }
-
-        private void MainWindow_Rendered(object sender, EventArgs e)
-        {
-            MainFrame.Navigate(new BookLibraryMainPage());
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)

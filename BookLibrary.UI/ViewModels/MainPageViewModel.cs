@@ -23,13 +23,13 @@ namespace BookLibrary.UI.ViewModels
         private string _panelMainMessage = "Loading";
         private string _panelSubMessage = "Please wait...";
         private int _currentPage = 1;
-        private int _numberOfPages = 5;
-        private int _recordsPerPage = 10;
+        private int _numberOfPages = 2;
+        private int _recordsPerPage = 4;
+        private int _booksTotalCount = 0;
 
         public MainPageViewModel(Page previousPage)
         {
             NavigateUserCabinet = new NavigateUserCabinetCommand(previousPage);
-            LoadBooks();
         }
 
         private bool BooksFilter(object item)
@@ -51,7 +51,7 @@ namespace BookLibrary.UI.ViewModels
             ShowPanelCommand.Execute(null);
             UserName = AppUser.GetInstance().Login;
             var books = DataStore.Books.GetBooks(searchString, from, count).Select(book => new Book(book)).ToList();
-            var booksTotalCount = DataStore.Books.GetBooksTotalCount(searchString);
+            BooksTotalCount = DataStore.Books.GetBooksTotalCount(searchString);
             _booksView = CollectionViewSource.GetDefaultView(books);
             _booksView.Filter = BooksFilter;
             _booksView.SortDescriptions.Add(
@@ -59,6 +59,19 @@ namespace BookLibrary.UI.ViewModels
             _booksView.Refresh();
             OnPropertyChanged("Books");
             HidePanelCommand.Execute(null);
+        }
+
+        public int BooksTotalCount
+        {
+            get
+            {
+                return _booksTotalCount;
+            }
+            set
+            {
+                _booksTotalCount = value;
+                OnPropertyChanged("BooksTotalCount");
+            }
         }
 
         public int CurrentPage
