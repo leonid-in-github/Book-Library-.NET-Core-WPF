@@ -204,11 +204,16 @@ namespace BookLibrary.UI.Pages
             }
         }
 
-        private void LoadBooks()
+        public void LoadBooks()
+        {
+            LoadBooksPage((uint)pageModel.CurrentPage);
+        }
+
+        public void LoadBooksPage(uint pageNumber)
         {
             var searchText = tbSearch.Text;
             var recordsPerPage = (uint)pageModel.RecordsPerPage;
-            var currentPage = (uint)pageModel.CurrentPage;
+            var currentPage = pageNumber;
             var from = recordsPerPage * (currentPage - 1);
             pageModel.LoadBooks(searchText, from, recordsPerPage);
         }

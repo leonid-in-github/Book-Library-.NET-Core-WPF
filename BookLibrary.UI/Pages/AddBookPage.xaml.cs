@@ -1,4 +1,5 @@
-﻿using BookLibrary.Repository.Models.Book;
+﻿using Azure;
+using BookLibrary.Repository.Models.Book;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -37,7 +38,22 @@ namespace BookLibrary.UI.Pages
                 DataStore.Books.AddBook(book);
                 tbBookName.Text = string.Empty;
                 tbBookAuthors.Text = string.Empty;
-                NavigationService.Navigate(new BookLibraryMainPage());
+                this.NavigationService.Navigated += NavigationService_Navigated;
+                NavigationService.Navigate(_previousPage);
+            }
+        }
+
+        private void NavigationService_Navigated(object sender, NavigationEventArgs e)
+        {
+            var frame = sender as Frame;
+            if (frame != null)
+            {
+                var page = frame.NavigationService.Content as BookLibraryMainPage;
+                if (page != null)
+                {
+                    page.LoadBooksPage(1);
+                }
+                frame.NavigationService.Navigated -= NavigationService_Navigated;
             }
         }
 

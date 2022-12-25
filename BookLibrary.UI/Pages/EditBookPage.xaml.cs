@@ -48,7 +48,22 @@ namespace BookLibrary.UI.Pages
                 _book.Authors = tbBookAuthors.Text;
                 _book.Year = dpBookDate.SelectedDate.Value;
                 DataStore.Books.UpdateBook(_book);
-                NavigationService.Navigate(new BookLibraryMainPage());
+                this.NavigationService.Navigated += NavigationService_Navigated;
+                NavigationService.Navigate(_previousPage);
+            }
+        }
+
+        private void NavigationService_Navigated(object sender, NavigationEventArgs e)
+        {
+            var frame = sender as Frame;
+            if (frame != null)
+            {
+                var page = frame.NavigationService?.Content as BookLibraryMainPage;
+                if (page != null)
+                {
+                    page.LoadBooks();
+                }
+                frame.NavigationService.Navigated -= NavigationService_Navigated;
             }
         }
     }
