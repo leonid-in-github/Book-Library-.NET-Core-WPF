@@ -37,7 +37,7 @@ namespace BookLibrary.UI.Pages
                 DataStore.Books.AddBook(book);
                 tbBookName.Text = string.Empty;
                 tbBookAuthors.Text = string.Empty;
-                NavigationService.Navigate(_previousPage);
+                NavigationService.Navigate(new BookLibraryMainPage());
             }
         }
 

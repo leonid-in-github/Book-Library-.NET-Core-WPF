@@ -77,7 +77,7 @@ namespace BookLibrary.UI.Pages
                         DataStore.Books.DeleteBook((int)bookId);
                     }
                 }
-                pageModel.LoadBooks();
+                LoadBooks();
             }
         }
 
@@ -162,7 +162,7 @@ namespace BookLibrary.UI.Pages
             }
             if (e.Column.Header.ToString() == "Name")
             {
-                e.Column.Width = 715;
+                e.Column.Width = 700;
                 var col = e.Column as DataGridTextColumn;
 
                 var style = new Style(typeof(TextBlock));
