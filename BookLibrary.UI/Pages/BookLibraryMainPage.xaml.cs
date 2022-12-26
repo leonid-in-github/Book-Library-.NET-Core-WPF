@@ -89,7 +89,7 @@ namespace BookLibrary.UI.Pages
         private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
         {
             var currentPage = pageModel.CurrentPage - 1;
-            if (currentPage > 0) 
+            if (currentPage > 0)
             {
                 pageModel.CurrentPage = currentPage;
             }
@@ -119,6 +119,7 @@ namespace BookLibrary.UI.Pages
             CalculateNamberOfPages();
             pageModel.CurrentPage = 1;
             LoadBooks();
+            CalculateNamberOfPages();
         }
 
         private void Datagrid_Row_Click(object sender, SelectionChangedEventArgs e)
@@ -206,13 +207,13 @@ namespace BookLibrary.UI.Pages
 
         public void LoadBooks()
         {
-            LoadBooksPage((uint)pageModel.CurrentPage);
+            LoadBooksPage(pageModel.CurrentPage);
         }
 
-        public void LoadBooksPage(uint pageNumber)
+        public void LoadBooksPage(int pageNumber)
         {
             var searchText = tbSearch.Text;
-            var recordsPerPage = (uint)pageModel.RecordsPerPage;
+            var recordsPerPage = pageModel.RecordsPerPage;
             var currentPage = pageNumber;
             var from = recordsPerPage * (currentPage - 1);
             pageModel.LoadBooks(searchText, from, recordsPerPage);

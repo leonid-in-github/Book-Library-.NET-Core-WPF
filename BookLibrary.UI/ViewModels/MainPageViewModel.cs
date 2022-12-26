@@ -46,7 +46,7 @@ namespace BookLibrary.UI.ViewModels
                 book.ID.ToString().ToLower().Contains(_filterString.ToLower());
         }
 
-        public void LoadBooks(string searchString = "", uint from = 0, uint count = 10)
+        public void LoadBooks(string searchString = "", int from = 0, int count = 10)
         {
             ShowPanelCommand.Execute(null);
             UserName = AppUser.GetInstance().Login;

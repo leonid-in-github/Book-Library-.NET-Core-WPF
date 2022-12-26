@@ -4,8 +4,6 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Xml.Linq;
 
 namespace BookLibrary.Repository.Repositories
 {
@@ -52,7 +50,7 @@ namespace BookLibrary.Repository.Repositories
             }
         }
 
-        public List<BookItem> GetBooks(string searchString = "", uint from = 0, uint count = 10)
+        public List<BookItem> GetBooks(string searchString = "", int from = 0, int count = 10)
         {
             var searchStringParameter = new SqlParameter
             {
