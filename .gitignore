@@ -14,6 +14,3 @@ x64/
 
 # Visual Studio temp something
 .vs/
-
-BookLibrary.DataBase/obj/Debug/BookLibrary.DataBase.sqlproj.FileListAbsolute.txt
-/BookLibrary.UI/App_Data/dbWPFBookLibrary_log.ldf
