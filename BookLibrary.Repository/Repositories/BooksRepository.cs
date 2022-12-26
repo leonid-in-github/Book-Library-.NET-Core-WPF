@@ -96,22 +96,65 @@ namespace BookLibrary.Repository.Repositories
             }
         }
 
-        public List<BookItem> GetAvaliableBooks()
+        public List<BookItem> GetAvaliableBooks(string searchString = "", int from = 0, int count = 10)
         {
-            return GetBooks("GetBooksAvaliable", null);
+            var searchStringParameter = new SqlParameter
+            {
+                ParameterName = "SearchString",
+                Value = searchString,
+                DbType = System.Data.DbType.String,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var fromParameter = new SqlParameter
+            {
+                ParameterName = "From",
+                Value = from,
+                DbType = System.Data.DbType.Int32,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var countParameter = new SqlParameter
+            {
+                ParameterName = "Count",
+                Value = count,
+                DbType = System.Data.DbType.Int32,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var sqlParameters = new SqlParameter[] { searchStringParameter, fromParameter, countParameter };
+            return GetBooks("GetBooksAvaliable @SearchString, @From, @Count", sqlParameters);
         }
 
-        public List<BookItem> GetBooksByUser(int userId)
+        public List<BookItem> GetBooksByUser(int userId, string searchString = "", int from = 0, int count = 10)
         {
             var inID = new SqlParameter
             {
-                ParameterName = "ID",
+                ParameterName = "AccountId",
                 Value = userId,
                 DbType = System.Data.DbType.Int32,
                 Direction = System.Data.ParameterDirection.Input
             };
-
-            return GetBooks("GetBooksByAccount @ID", new SqlParameter[] { inID });
+            var searchStringParameter = new SqlParameter
+            {
+                ParameterName = "SearchString",
+                Value = searchString,
+                DbType = System.Data.DbType.String,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var fromParameter = new SqlParameter
+            {
+                ParameterName = "From",
+                Value = from,
+                DbType = System.Data.DbType.Int32,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var countParameter = new SqlParameter
+            {
+                ParameterName = "Count",
+                Value = count,
+                DbType = System.Data.DbType.Int32,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var sqlParameters = new SqlParameter[] { inID, searchStringParameter, fromParameter, countParameter };
+            return GetBooks("GetBooksByAccount @AccountId, @SearchString, @From, @Count", new SqlParameter[] { inID, searchStringParameter, fromParameter, countParameter });
         }
 
         public void DeleteBook(int bookId)

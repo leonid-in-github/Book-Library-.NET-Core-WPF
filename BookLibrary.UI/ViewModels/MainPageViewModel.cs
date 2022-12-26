@@ -4,6 +4,7 @@ using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Models.BooksModels;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Controls;
@@ -26,6 +27,7 @@ namespace BookLibrary.UI.ViewModels
         private int _numberOfPages = 2;
         private int _recordsPerPage = 4;
         private int _booksTotalCount = 0;
+        private string _show = "all";
 
         public MainPageViewModel(Page previousPage)
         {
@@ -46,11 +48,23 @@ namespace BookLibrary.UI.ViewModels
                 book.ID.ToString().ToLower().Contains(_filterString.ToLower());
         }
 
-        public void LoadBooks(string searchString = "", int from = 0, int count = 10)
+        public void LoadBooks(string searchString = "", int from = 0, int count = 10, string show = "all")
         {
             ShowPanelCommand.Execute(null);
             UserName = AppUser.GetInstance().Login;
-            var books = DataStore.Books.GetBooks(searchString, from, count).Select(book => new Book(book)).ToList();
+            var books = new List<Book>();
+            switch (show)
+            {
+                case "all":
+                    books = DataStore.Books.GetBooks(searchString, from, count).Select(book => new Book(book)).ToList();
+                    break;
+                case "available":
+                    books = DataStore.Books.GetAvaliableBooks(searchString, from, count).Select(book => new Book(book)).ToList();
+                    break;
+                case "taked by user":
+                    books = DataStore.Books.GetBooksByUser(AppUser.GetInstance().AccountId, searchString, from, count).Select(book => new Book(book)).ToList();
+                    break;
+            }
             BooksTotalCount = DataStore.Books.GetBooksTotalCount(searchString);
             _booksView = CollectionViewSource.GetDefaultView(books);
             _booksView.Filter = BooksFilter;
@@ -59,6 +73,19 @@ namespace BookLibrary.UI.ViewModels
             _booksView.Refresh();
             OnPropertyChanged("Books");
             HidePanelCommand.Execute(null);
+        }
+
+        public string Show
+        {
+            get
+            {
+                return _show;
+            }
+            set
+            {
+                _show = value;
+                OnPropertyChanged("Show");
+            }
         }
 
         public int BooksTotalCount

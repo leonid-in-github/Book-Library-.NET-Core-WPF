@@ -206,7 +206,13 @@
 
             </Grid>
             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,21,0">
-                <TextBlock Text="Books per page" Foreground="#FFFFD200" VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Text="Show" Foreground="#FFFFD200" VerticalAlignment="Center" Margin="5"/>
+                <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" x:Name="cbShow"  Margin="0,5,-15,5" Foreground="#FFFFD200" Height="26"  VerticalContentAlignment="Center" SelectedValue="{Binding Show}" SelectionChanged="cbShow_SelectionChanged" RenderTransformOrigin="1.281,0.548">
+                    <sys:String>all</sys:String>
+                    <sys:String>available</sys:String>
+                    <sys:String>taked by user</sys:String>
+                </ComboBox>
+                <TextBlock Text="books per page" Foreground="#FFFFD200" VerticalAlignment="Center" Margin="0,5,5,5"/>
                 <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" x:Name="cbRecordsPerPage" Foreground="#FFFFD200" Margin="5,5,0,5" Height="25"  VerticalContentAlignment="Center" SelectedValue="{Binding RecordsPerPage}">
                     <sys:Int32>1</sys:Int32>
                     <sys:Int32>2</sys:Int32>
