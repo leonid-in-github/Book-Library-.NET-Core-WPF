@@ -278,9 +278,9 @@
                             <Border 
                   Grid.Column="0"
                   CornerRadius="2,0,0,2" 
-                  Margin="1" 
                   Background="Transparent" 
-                  BorderThickness="0,0,1,0" />
+                  BorderBrush="White"
+                  BorderThickness="0.75" />
                             <Path 
                   x:Name="Arrow"
                   Grid.Column="1"     
