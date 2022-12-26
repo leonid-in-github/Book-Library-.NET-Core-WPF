@@ -210,7 +210,7 @@
                 <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" x:Name="cbShow"  Margin="0,5,-15,5" Foreground="#FFFFD200" Height="26"  VerticalContentAlignment="Center" SelectedValue="{Binding Show}" SelectionChanged="cbShow_SelectionChanged" RenderTransformOrigin="1.281,0.548">
                     <sys:String>all</sys:String>
                     <sys:String>available</sys:String>
-                    <sys:String>taked by user</sys:String>
+                    <sys:String>taken by user</sys:String>
                 </ComboBox>
                 <TextBlock Text="books per page" Foreground="#FFFFD200" VerticalAlignment="Center" Margin="0,5,0,5"/>
                 <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" x:Name="cbRecordsPerPage" Foreground="#FFFFD200" Margin="5,5,0,5" Height="25"  VerticalContentAlignment="Center" SelectedValue="{Binding RecordsPerPage}">
@@ -223,8 +223,8 @@
                     <sys:Int32>100</sys:Int32>
                     <sys:Int32>1000</sys:Int32>
                 </ComboBox>
-                <Button x:Name="btnFirstPage" Style="{StaticResource Button}" Content="&lt;&lt;" Height="25" Margin="0,5,5,5" ToolTip="First page"></Button>
-                <Button x:Name="btnPreviousPage" Style="{StaticResource Button}" Content="&lt;" Height="25" Margin="5" ToolTip="Previous page"></Button>
+                <Button x:Name="btnFirstPage" Style="{StaticResource RoundedButton}" Content="&lt;&lt;" Height="25" Margin="0,5,5,5" ToolTip="First page"></Button>
+                <Button x:Name="btnPreviousPage" Style="{StaticResource RoundedButton}" Content="&lt;" Height="25" Margin="5" ToolTip="Previous page"></Button>
 
                 <TextBlock Text="page"  VerticalAlignment="Center" Foreground="#FFFFD200" />
                 <TextBox x:Name="tbCurrentPage" Style="{StaticResource TextBox}" Text="{Binding CurrentPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="Current page" Height="25" Margin="5" VerticalContentAlignment="Center" />
@@ -236,8 +236,8 @@
                     </TextBlock.Text>
                 </TextBlock>
 
-                <Button x:Name="btnNextPage" Content=">" Style="{StaticResource Button}" Height="25" Margin="5" ToolTip="Next page"></Button>
-                <Button x:Name="btnLastPage" Content=">>" Style="{StaticResource Button}" Height="25" Margin="5" ToolTip="Last page"></Button>
+                <Button x:Name="btnNextPage" Content=">" Style="{StaticResource RoundedButton}" Height="25" Margin="5" ToolTip="Next page"></Button>
+                <Button x:Name="btnLastPage" Content=">>" Style="{StaticResource RoundedButton}" Height="25" Margin="5" ToolTip="Last page"></Button>
                 <Button x:Name="btnRefreshBooksGrid" Style="{StaticResource ActionButton}" Content="Refresh" Height="26" Padding="5" ToolTip="Refresh books data grid" Width="50"></Button>
             </StackPanel>
 
