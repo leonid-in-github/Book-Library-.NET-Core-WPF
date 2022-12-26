@@ -233,6 +233,7 @@ namespace BookLibrary.UI.Pages
 
         private void cbShow_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            pageModel.CurrentPage = 1;
             LoadBooks();
         }
     }
