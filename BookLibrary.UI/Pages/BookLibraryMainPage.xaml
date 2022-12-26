@@ -229,6 +229,7 @@
 
                 <Button x:Name="btnNextPage" Content=">" Style="{StaticResource Button}" Height="25" Margin="5" ToolTip="Next page"></Button>
                 <Button x:Name="btnLastPage" Content=">>" Style="{StaticResource Button}" Height="25" Margin="5" ToolTip="Last page"></Button>
+                <Button x:Name="btnRefreshBooksGrid" Style="{StaticResource ActionButton}" Content="Refresh" Height="25" Margin="5" ToolTip="Refresh books grid data"></Button>
             </StackPanel>
 
         </Grid>

@@ -33,6 +33,7 @@ namespace BookLibrary.UI.Pages
             btnNextPage.Click += btnNextPage_Click;
             btnLastPage.Click += btnLastPage_Click;
             cbRecordsPerPage.SelectionChanged += cbRecordsPerPage_SelectionChanged;
+            btnRefreshBooksGrid.Click += btnRefreshBooksGrid_Click;
 
         }
 
@@ -107,6 +108,11 @@ namespace BookLibrary.UI.Pages
         private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
             pageModel.CurrentPage = pageModel.NumberOfPages;
+        }
+
+        private void btnRefreshBooksGrid_Click(object sender, RoutedEventArgs e)
+        {
+            LoadBooks();
         }
 
         private void tbCurrentPage_Text_Changed(object sender, TextChangedEventArgs e)
