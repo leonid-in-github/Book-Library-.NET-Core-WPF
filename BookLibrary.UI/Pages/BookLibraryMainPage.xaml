@@ -218,7 +218,7 @@
                 <Button x:Name="btnPreviousPage" Style="{StaticResource Button}" Content="&lt;" Height="25" Margin="5" ToolTip="Previous page"></Button>
 
                 <TextBlock Text="page"  VerticalAlignment="Center" Foreground="#FFFFD200" />
-                <TextBox x:Name="tbCurrentPage" Style="{StaticResource TextBox}" Text="{Binding CurrentPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="5" VerticalContentAlignment="Center" />
+                <TextBox x:Name="tbCurrentPage" Style="{StaticResource TextBox}" Text="{Binding CurrentPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="Current page" Height="25" Margin="5" VerticalContentAlignment="Center" />
                 <TextBlock VerticalAlignment="Center" Foreground="#FFFFD200">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="of {0}">
