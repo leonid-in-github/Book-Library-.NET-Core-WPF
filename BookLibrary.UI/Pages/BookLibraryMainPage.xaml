@@ -212,7 +212,7 @@
                     <sys:String>available</sys:String>
                     <sys:String>taked by user</sys:String>
                 </ComboBox>
-                <TextBlock Text="books per page" Foreground="#FFFFD200" VerticalAlignment="Center" Margin="0,5,5,5"/>
+                <TextBlock Text="books per page" Foreground="#FFFFD200" VerticalAlignment="Center" Margin="0,5,0,5"/>
                 <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" x:Name="cbRecordsPerPage" Foreground="#FFFFD200" Margin="5,5,0,5" Height="25"  VerticalContentAlignment="Center" SelectedValue="{Binding RecordsPerPage}">
                     <sys:Int32>1</sys:Int32>
                     <sys:Int32>2</sys:Int32>
