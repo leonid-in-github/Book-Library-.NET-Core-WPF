@@ -107,7 +107,7 @@
             </Setter>
         </Style>
     </bl:BookLibraryPage.Resources>
-    
+
     <Grid>
         <Grid.Background>
             <SolidColorBrush Color="Black" Opacity="0.5"/>
@@ -165,43 +165,43 @@
                     IsReadOnly="True"
                     RowBackground="Transparent"
                     Foreground="#FFFFD200" BorderBrush="{x:Null}" Margin="21,21,21,0" HorizontalGridLinesBrush="#FF1C1E4B" VerticalGridLinesBrush="#FF0E322A" FontSize="16" FontStyle="Normal" Padding="5,5,5,1" Grid.RowSpan="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}">
-                        <DataGrid.RowHeaderStyle>
-                            <Style TargetType="{x:Type DataGridRowHeader}">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="Foreground" Value="#FF00C900" />
-                                <Setter Property="HorizontalContentAlignment" Value="Center" />
-                                <Setter Property="VerticalContentAlignment" Value="Center" />
-                                <Setter Property="Padding" Value="5"/>
-                            </Style>
-                        </DataGrid.RowHeaderStyle>
-                        <DataGrid.ColumnHeaderStyle>
-                            <Style TargetType="{x:Type DataGridColumnHeader}">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="Foreground" Value="#FF00C900" />
-                                <Setter Property="HorizontalContentAlignment" Value="Center" />
-                                <Setter Property="VerticalContentAlignment" Value="Center" />
-                                <Setter Property="Padding" Value="5"/>
-                            </Style>
-                        </DataGrid.ColumnHeaderStyle>
-                        <DataGrid.CellStyle>
-                            <Style TargetType="DataGridCell">
-                                <Setter Property="Padding" Value="5"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type DataGridCell}">
-                                            <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                                                <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="DataGridCell.IsSelected" Value="True">
-                                        <Setter Property="Background" Value="#FF372E8C" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </DataGrid.CellStyle>
+                    <DataGrid.RowHeaderStyle>
+                        <Style TargetType="{x:Type DataGridRowHeader}">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Foreground" Value="#FF00C900" />
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                            <Setter Property="Padding" Value="5"/>
+                        </Style>
+                    </DataGrid.RowHeaderStyle>
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Foreground" Value="#FF00C900" />
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                            <Setter Property="Padding" Value="5"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Padding" Value="5"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                        <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#FF372E8C" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
                 </DataGrid>
 
             </Grid>
@@ -229,7 +229,7 @@
 
                 <Button x:Name="btnNextPage" Content=">" Style="{StaticResource Button}" Height="25" Margin="5" ToolTip="Next page"></Button>
                 <Button x:Name="btnLastPage" Content=">>" Style="{StaticResource Button}" Height="25" Margin="5" ToolTip="Last page"></Button>
-                <Button x:Name="btnRefreshBooksGrid" Style="{StaticResource ActionButton}" Content="Refresh" Height="25" Margin="5" ToolTip="Refresh books grid data"></Button>
+                <Button x:Name="btnRefreshBooksGrid" Style="{StaticResource ActionButton}" Content="Refresh" Height="26" Padding="5" ToolTip="Refresh books data grid" Width="50"></Button>
             </StackPanel>
 
         </Grid>
