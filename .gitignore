@@ -16,3 +16,4 @@ x64/
 .vs/
 
 BookLibrary.DataBase/obj/Debug/BookLibrary.DataBase.sqlproj.FileListAbsolute.txt
+/BookLibrary.UI/App_Data/dbWPFBookLibrary_log.ldf
