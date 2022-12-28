@@ -44,7 +44,7 @@
             <Label Content="{Binding Path=FirstName, Mode=OneWay}" Grid.Row="2" Grid.Column="1" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
             <Label Content="Last name: " Grid.Row="3" Grid.Column="0" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
             <Label Content="{Binding Path=LastName, Mode=OneWay}" Grid.Row="3" Grid.Column="1" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-            <Button x:Name="btnLogout" Content="Logout" Command="{Binding Path=Logout, Mode=OneWay}" HorizontalAlignment="Left" Height="26" Margin="204,0,0,10" Grid.Row="4" VerticalAlignment="Bottom" Width="120" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnLogout" Style="{StaticResource ActionButton}" Content="Logout" Command="{Binding Path=Logout, Mode=OneWay}" HorizontalAlignment="Left" Height="26" Margin="204,0,0,10" Grid.Row="4" VerticalAlignment="Bottom" Width="120" Grid.ColumnSpan="2"/>
             <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Left" Height="26" Margin="204,0,0,10" Grid.Row="5" VerticalAlignment="Bottom" Width="120" Grid.ColumnSpan="2"/>
             <Button x:Name="btnDeleteAccount" Content="Delete account" HorizontalAlignment="Left" Height="25" Margin="204,0,0,0" Grid.Row="6" VerticalAlignment="Center" Width="120" Background="#FFF0B6B6" Grid.ColumnSpan="2"/>
         </Grid>
