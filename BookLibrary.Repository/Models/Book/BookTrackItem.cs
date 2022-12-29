@@ -18,11 +18,11 @@ namespace BookLibrary.Repository.Models.Book
         {
             if (Action)
             {
-                return "Taked";
+                return "Took";
             }
             else
             {
-                return "Puted";
+                return "Put";
             }
         }
     }
