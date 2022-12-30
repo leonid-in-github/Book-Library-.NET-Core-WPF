@@ -27,9 +27,9 @@ namespace BookLibrary.UI.Pages
             if (book == null || _book == null)
                 NavigationService.Navigate(_previousPage);
 
-            tbBookName.Text = _book.Name;
-            tbBookAuthors.Text = _book.Authors;
-            dpBookDate.SelectedDate = _book.Year;
+            bookView.BookName = _book.Name;
+            bookView.BookAuthors = _book.Authors;
+            bookView.BookYear = _book.Year;
 
             btnBackward.Click += btnBackward_Click;
             btnEditBook.Click += btnUpdateBook_Click;
@@ -42,11 +42,11 @@ namespace BookLibrary.UI.Pages
 
         private void btnUpdateBook_Click(object sender, RoutedEventArgs e)
         {
-            if (tbBookName.Text != string.Empty && tbBookAuthors.Text != string.Empty && dpBookDate.SelectedDate != null)
+            if (!string.IsNullOrEmpty(bookView.BookName) && !string.IsNullOrEmpty(bookView.BookAuthors))
             {
-                _book.Name = tbBookName.Text;
-                _book.Authors = tbBookAuthors.Text;
-                _book.Year = dpBookDate.SelectedDate.Value;
+                _book.Name = bookView.BookName;
+                _book.Authors = bookView.BookAuthors;
+                _book.Year = bookView.BookYear;
                 DataStore.Books.UpdateBook(_book);
                 this.NavigationService.Navigated += NavigationService_Navigated;
                 NavigationService.Navigate(_previousPage);

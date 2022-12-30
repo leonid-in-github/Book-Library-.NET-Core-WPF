@@ -9,6 +9,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\BookView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\CircularProgressBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -44,6 +47,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\BookView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
     </Page>

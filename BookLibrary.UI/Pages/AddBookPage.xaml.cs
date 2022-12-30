@@ -1,4 +1,5 @@
 ﻿using BookLibrary.Repository.Models.Book;
+using Microsoft.IdentityModel.Tokens;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -26,17 +27,17 @@ namespace BookLibrary.UI.Pages
 
         private void AddBook()
         {
-            if (tbBookName.Text != string.Empty && tbBookAuthors.Text != string.Empty && dpBookDate.SelectedDate != null)
+            if (!string.IsNullOrEmpty(bookView.BookName) && !string.IsNullOrEmpty(bookView.BookAuthors))
             {
                 var book = new BookItem()
                 {
-                    Name = tbBookName.Text,
-                    Authors = tbBookAuthors.Text,
-                    Year = dpBookDate.SelectedDate.Value
+                    Name = bookView.BookName,
+                    Authors = bookView.BookAuthors,
+                    Year = bookView.BookYear
                 };
                 DataStore.Books.AddBook(book);
-                tbBookName.Text = string.Empty;
-                tbBookAuthors.Text = string.Empty;
+                bookView.BookName = string.Empty;
+                bookView.BookAuthors = string.Empty;
                 this.NavigationService.Navigated += NavigationService_Navigated;
                 NavigationService.Navigate(_previousPage);
             }

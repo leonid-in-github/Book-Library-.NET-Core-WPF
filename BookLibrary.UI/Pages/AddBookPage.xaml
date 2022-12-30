@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:bl="clr-namespace:BookLibrary.UI.Pages"
+      xmlns:ctr="clr-namespace:BookLibrary.UI.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddBookPage">
@@ -16,40 +17,10 @@
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Grid HorizontalAlignment="Center" Width="528" Height="300" VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1.5*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1.5*" />
-            </Grid.RowDefinitions>
-            <Label Content="Name:" Grid.Row="0" Grid.Column="0" Margin="0,0,0,3" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Label Content="Authors:" Grid.Row="1" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,0,57" Grid.RowSpan="2"/>
-            <Label Content="Year:" Grid.Row="2" Grid.Column="0" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <TextBox x:Name="tbBookName" Style="{StaticResource MyTextBox}" Grid.Column="1" Height="71" Margin="40,21,40,21" Text="" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-            </TextBox>
-            <TextBox x:Name="tbBookAuthors" Style="{StaticResource MyTextBox}" Grid.Column="1" Margin="40,10,40,10" Grid.Row="1" Text="" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-            </TextBox>
-            <DatePicker x:Name="dpBookDate" Grid.Column="1" Margin="40,0,40,5" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}">
-                <DatePicker.Resources>
-                    <Style TargetType="DatePickerTextBox">
-                        <Setter Property="Background">
-                            <Setter.Value>
-                                <SolidColorBrush Color="White" Opacity="0"/>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </DatePicker.Resources>
-                <DatePicker.Foreground>
-                    <SolidColorBrush Color="#FFFFD200"/>
-                </DatePicker.Foreground>
-            </DatePicker>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <ctr:BookView x:Name="bookView" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button x:Name="btnAddBook" Style="{StaticResource ActionButton}" Content="Add book" Grid.Row="3" HorizontalAlignment="Left" Margin="211,0,0,0" Width="106" Height="44" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
-        </Grid>
+        </StackPanel>
 
     </Grid>
 </bl:BookLibraryPage>
