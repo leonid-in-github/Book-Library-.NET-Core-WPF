@@ -1,8 +1,6 @@
 ﻿using BookLibrary.Repository.Models.Book;
 using BookLibrary.Repository.Repositories;
 using BookLibrary.Repository.Servicies;
-using BookLibrary.UI.Models.BooksModels;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -43,8 +41,8 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _book = value;
-                FilterVisibility = _book.TracksList.Count() > displayBookTrackItemsDefaultCount ? Visibility.Visible : Visibility.Hidden;
-                bookTracksView = CollectionViewSource.GetDefaultView(GetBookTrackItems(_book));
+                FilterVisibility = _book.TracksList.Count() >= displayBookTrackItemsDefaultCount ? Visibility.Visible : Visibility.Hidden;
+                bookTracksView = CollectionViewSource.GetDefaultView(_book.TracksList);
                 bookTracksView.Refresh();
                 OnPropertyChanged("Book");
             }
@@ -82,7 +80,7 @@ namespace BookLibrary.UI.ViewModels
 
         public void LoadBookTrack()
         {
-            Book = DataStore.Books.GetBookTrack(AppUser.GetInstance().AccountId, _book.BookId, "All");
+            Book = DataStore.Books.GetBookTrack(AppUser.GetInstance().AccountId, _book.BookId, _filter);
         }
 
         public void PutBook()
@@ -95,18 +93,6 @@ namespace BookLibrary.UI.ViewModels
         {
             DataStore.Books.TakeBook(AppUser.GetInstance().AccountId, _book.BookId);
             Book.BookAvailability = false;
-        }
-
-        private IEnumerable<BookTrackItem> GetBookTrackItems(BookTrackList book)
-        {
-            return _filter switch
-            {
-                "10" => book.TracksList.Take(10),
-                "25" => book.TracksList.Take(25),
-                "50" => book.TracksList.Take(50),
-                "all" => book.TracksList,
-                _ => book.TracksList
-            };
         }
     }
 }
