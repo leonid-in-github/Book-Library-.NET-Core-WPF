@@ -83,5 +83,11 @@ namespace BookLibrary.UI.Pages
                 e.Column.Header = "Action";
             }
         }
+
+        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            pageViewModel.LoadBookTrack();
+            BooksGrid.ItemsSource = pageViewModel.BookTracks;
+        }
     }
 }

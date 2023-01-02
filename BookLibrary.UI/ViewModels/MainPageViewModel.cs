@@ -27,7 +27,7 @@ namespace BookLibrary.UI.ViewModels
         private int _numberOfPages = 2;
         private int _recordsPerPage = 4;
         private int _booksTotalCount = 0;
-        private string _show = "all";
+        private string _filter = "all";
 
         public MainPageViewModel(Page previousPage)
         {
@@ -48,12 +48,12 @@ namespace BookLibrary.UI.ViewModels
                 book.ID.ToString().ToLower().Contains(_filterString.ToLower());
         }
 
-        public void LoadBooks(string searchString = "", int from = 0, int count = 10, string show = "all")
+        public void LoadBooks(string searchString = "", int from = 0, int count = 10, string filter = "all")
         {
             ShowPanelCommand.Execute(null);
             UserName = AppUser.GetInstance().Login;
             var books = new List<Book>();
-            switch (show)
+            switch (filter)
             {
                 case "all":
                     books = DataStore.Books.GetBooks(searchString, from, count).Select(book => new Book(book)).ToList();
@@ -75,16 +75,16 @@ namespace BookLibrary.UI.ViewModels
             HidePanelCommand.Execute(null);
         }
 
-        public string Show
+        public string Filter
         {
             get
             {
-                return _show;
+                return _filter;
             }
             set
             {
-                _show = value;
-                OnPropertyChanged("Show");
+                _filter = value;
+                OnPropertyChanged("Filter");
             }
         }
 

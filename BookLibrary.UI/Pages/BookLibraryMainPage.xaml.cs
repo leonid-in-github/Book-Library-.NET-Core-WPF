@@ -222,7 +222,7 @@ namespace BookLibrary.UI.Pages
             var recordsPerPage = pageModel.RecordsPerPage;
             var currentPage = pageNumber;
             var from = recordsPerPage * (currentPage - 1);
-            pageModel.LoadBooks(searchText, from, recordsPerPage, pageModel.Show);
+            pageModel.LoadBooks(searchText, from, recordsPerPage, pageModel.Filter);
         }
 
         private void CalculateNamberOfPages()
@@ -231,7 +231,7 @@ namespace BookLibrary.UI.Pages
             pageModel.NumberOfPages = (int)Math.Ceiling(pageCountDouble);
         }
 
-        private void cbShow_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             pageModel.CurrentPage = 1;
             LoadBooks();

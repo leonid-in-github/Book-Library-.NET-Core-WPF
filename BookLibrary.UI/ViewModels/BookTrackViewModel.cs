@@ -1,7 +1,10 @@
 ﻿using BookLibrary.Repository.Models.Book;
 using BookLibrary.Repository.Repositories;
 using BookLibrary.Repository.Servicies;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 
 namespace BookLibrary.UI.ViewModels
@@ -9,6 +12,8 @@ namespace BookLibrary.UI.ViewModels
     public class BookTrackViewModel : INotifyPropertyChanged
     {
         private IDataStore DataStore => RepositoryService.Get<IDataStore>();
+        private string _filter = "10";
+        private Visibility _filterVisibility = Visibility.Hidden;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
@@ -36,9 +41,36 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _book = value;
-                bookTracksView = CollectionViewSource.GetDefaultView(_book.TracksList);
+                var bookTrackItems = GetBookTrackItems(_book);
+                FilterVisibility = bookTrackItems.Count() >= 10 ? Visibility.Visible : Visibility.Hidden;
+                bookTracksView = CollectionViewSource.GetDefaultView(bookTrackItems);
                 bookTracksView.Refresh();
                 OnPropertyChanged("Book");
+            }
+        }
+        public string Filter
+        {
+            get
+            {
+                return _filter;
+            }
+            set
+            {
+                _filter = value;
+                OnPropertyChanged("Filter");
+            }
+        }
+
+        public Visibility FilterVisibility
+        {
+            get
+            {
+                return _filterVisibility;
+            }
+            set
+            {
+                _filterVisibility = value;
+                OnPropertyChanged("FilterVisibility");
             }
         }
 
@@ -62,6 +94,18 @@ namespace BookLibrary.UI.ViewModels
         {
             DataStore.Books.TakeBook(AppUser.GetInstance().AccountId, _book.BookId);
             Book.BookAvailability = false;
+        }
+
+        private IEnumerable<BookTrackItem> GetBookTrackItems(BookTrackList book)
+        {
+            return _filter switch
+            {
+                "10" => book.TracksList.Take(10),
+                "25" => book.TracksList.Take(25),
+                "50" => book.TracksList.Take(50),
+                "all" => book.TracksList,
+                _ => book.TracksList
+            };
         }
     }
 }
