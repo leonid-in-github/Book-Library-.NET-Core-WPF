@@ -1,6 +1,7 @@
 ﻿using BookLibrary.Repository.Models.Book;
 using BookLibrary.Repository.Repositories;
 using BookLibrary.Repository.Servicies;
+using BookLibrary.UI.Models.BooksModels;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace BookLibrary.UI.ViewModels
     public class BookTrackViewModel : INotifyPropertyChanged
     {
         private IDataStore DataStore => RepositoryService.Get<IDataStore>();
-        private string _filter = "10";
+        private const int displayBookTrackItemsDefaultCount = 10;
+        private string _filter = displayBookTrackItemsDefaultCount.ToString();
         private Visibility _filterVisibility = Visibility.Hidden;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -41,9 +43,8 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _book = value;
-                var bookTrackItems = GetBookTrackItems(_book);
-                FilterVisibility = bookTrackItems.Count() >= 10 ? Visibility.Visible : Visibility.Hidden;
-                bookTracksView = CollectionViewSource.GetDefaultView(bookTrackItems);
+                FilterVisibility = _book.TracksList.Count() > displayBookTrackItemsDefaultCount ? Visibility.Visible : Visibility.Hidden;
+                bookTracksView = CollectionViewSource.GetDefaultView(GetBookTrackItems(_book));
                 bookTracksView.Refresh();
                 OnPropertyChanged("Book");
             }
