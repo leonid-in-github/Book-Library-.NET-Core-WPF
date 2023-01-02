@@ -22,7 +22,7 @@
                 <SolidColorBrush Color="#FF2E2727" Opacity="0"/>
             </Label.Background>
         </Label>
-        <Grid HorizontalAlignment="Center" Width="528" Height="300" VerticalAlignment="Center" RenderTransformOrigin="0.501,0.498">
+        <Grid HorizontalAlignment="Center" Width="528" RenderTransformOrigin="0.501,0.498" Margin="0,0,0,75" Height="300" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -33,19 +33,19 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1.5*" />
-                <RowDefinition Height="1.5*" />
+                <RowDefinition Height="1*" />
                 <RowDefinition Height="0.75*" />
             </Grid.RowDefinitions>
             <Label Content="Login: " Grid.Row="0" Grid.Column="0" Margin="0,0,0,3" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" HorizontalAlignment="Stretch"/>
-            <Label Content="{Binding Path=Login, Mode=OneWay}" Grid.Row="0" Grid.Column="1" Margin="0,0,0,3" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+            <Label Content="{Binding Path=Login, Mode=OneWay}" Grid.Row="0" Grid.Column="1" Margin="0,2,0,1" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
             <Label Content="Email: " HorizontalAlignment="Center" Width="264" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Margin="0,40,0,2" Grid.RowSpan="2"/>
             <Label Content="{Binding Path=Email, Mode=OneWay}" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="0,40,0,2" Grid.Column="1" Grid.RowSpan="2"/>
             <Label Content="First name: " Grid.Row="1" Grid.Column="0" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Margin="0,40,0,40" Grid.RowSpan="3"/>
             <Label Content="{Binding Path=FirstName, Mode=OneWay}" Grid.Row="2" Grid.Column="1" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
             <Label Content="Last name: " Grid.Row="3" Grid.Column="0" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
             <Label Content="{Binding Path=LastName, Mode=OneWay}" Grid.Row="3" Grid.Column="1" Foreground="#FFFFD200" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-            <Button x:Name="btnLogout" Style="{StaticResource ActionButton}" Content="Logout" Command="{Binding Path=Logout, Mode=OneWay}" HorizontalAlignment="Left" Height="26" Margin="204,0,0,10" Grid.Row="4" VerticalAlignment="Bottom" Width="120" Grid.ColumnSpan="2"/>
-            <Button x:Name="btnChangePassword" Style="{StaticResource ActionButton}" Content="Change password" HorizontalAlignment="Left" Height="26" Margin="204,0,0,10" Grid.Row="5" VerticalAlignment="Bottom" Width="120" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnLogout" Style="{StaticResource ActionButton}" Content="Logout" Command="{Binding Path=Logout, Mode=OneWay}" HorizontalAlignment="Left" Height="25" Margin="204,0,0,0" Grid.Row="4" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnChangePassword" Style="{StaticResource ActionButton}" Content="Change password" HorizontalAlignment="Left" Height="25" Margin="204,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2"/>
             <Button x:Name="btnDeleteAccount" Style="{StaticResource RedActionButton}" Content="Delete account" HorizontalAlignment="Left" Height="25" Margin="204,0,0,0" Grid.Row="6" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
