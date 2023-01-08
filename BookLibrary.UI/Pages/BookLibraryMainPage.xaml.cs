@@ -122,7 +122,6 @@ namespace BookLibrary.UI.Pages
 
         private void cbRecordsPerPage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CalculateNamberOfPages();
             pageModel.CurrentPage = 1;
             LoadBooks();
             CalculateNamberOfPages();
@@ -235,6 +234,7 @@ namespace BookLibrary.UI.Pages
         {
             pageModel.CurrentPage = 1;
             LoadBooks();
+            CalculateNamberOfPages();
         }
     }
 }

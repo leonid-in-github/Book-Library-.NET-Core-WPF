@@ -96,6 +96,49 @@ namespace BookLibrary.Repository.Repositories
             }
         }
 
+        public int GetBooksByUserTotalCount(int userId, string searchString = "")
+        {
+            var inID = new SqlParameter
+            {
+                ParameterName = "AccountId",
+                Value = userId,
+                DbType = System.Data.DbType.Int32,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var searchStringParameter = new SqlParameter
+            {
+                ParameterName = "SearchString",
+                Value = searchString,
+                DbType = System.Data.DbType.String,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var sqlParameters = new SqlParameter[] { inID, searchStringParameter };
+            var sqlString = "EXECUTE GetBooksByAccountTotalCount @AccountId, @SearchString";
+            using (var dbContext = new BookLibraryContext())
+            {
+                var result = dbContext.Database.SqlQueryRaw<int>(sqlString, sqlParameters).AsEnumerable<int>().FirstOrDefault();
+                return result;
+            }
+        }
+
+        public int GetBooksAvaliableTotalCount(string searchString = "")
+        {
+            var searchStringParameter = new SqlParameter
+            {
+                ParameterName = "SearchString",
+                Value = searchString,
+                DbType = System.Data.DbType.String,
+                Direction = System.Data.ParameterDirection.Input
+            };
+            var sqlParameters = new SqlParameter[] { searchStringParameter };
+            var sqlString = "EXECUTE GetBooksAvaliableTotalCount @SearchString";
+            using (var dbContext = new BookLibraryContext())
+            {
+                var result = dbContext.Database.SqlQueryRaw<int>(sqlString, sqlParameters).AsEnumerable<int>().FirstOrDefault();
+                return result;
+            }
+        }
+
         public List<BookItem> GetAvaliableBooks(string searchString = "", int from = 0, int count = 10)
         {
             var searchStringParameter = new SqlParameter

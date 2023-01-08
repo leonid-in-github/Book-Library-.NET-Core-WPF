@@ -57,15 +57,18 @@ namespace BookLibrary.UI.ViewModels
             {
                 case "all":
                     books = DataStore.Books.GetBooks(searchString, from, count).Select(book => new Book(book)).ToList();
+                    BooksTotalCount = DataStore.Books.GetBooksTotalCount(searchString);
                     break;
                 case "available":
                     books = DataStore.Books.GetAvaliableBooks(searchString, from, count).Select(book => new Book(book)).ToList();
+                    BooksTotalCount = DataStore.Books.GetBooksAvaliableTotalCount(searchString);
                     break;
                 case "taken by user":
                     books = DataStore.Books.GetBooksByUser(AppUser.GetInstance().AccountId, searchString, from, count).Select(book => new Book(book)).ToList();
+                    BooksTotalCount = DataStore.Books.GetBooksByUserTotalCount(AppUser.GetInstance().AccountId, searchString);
                     break;
             }
-            BooksTotalCount = DataStore.Books.GetBooksTotalCount(searchString);
+            
             _booksView = CollectionViewSource.GetDefaultView(books);
             _booksView.Filter = BooksFilter;
             _booksView.SortDescriptions.Add(
