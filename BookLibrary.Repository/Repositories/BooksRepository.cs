@@ -121,7 +121,7 @@ namespace BookLibrary.Repository.Repositories
             }
         }
 
-        public int GetBooksAvaliableTotalCount(string searchString = "")
+        public int GetAvaliableBooksTotalCount(string searchString = "")
         {
             var searchStringParameter = new SqlParameter
             {

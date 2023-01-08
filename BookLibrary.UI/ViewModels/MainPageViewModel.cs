@@ -61,7 +61,7 @@ namespace BookLibrary.UI.ViewModels
                     break;
                 case "available":
                     books = DataStore.Books.GetAvaliableBooks(searchString, from, count).Select(book => new Book(book)).ToList();
-                    BooksTotalCount = DataStore.Books.GetBooksAvaliableTotalCount(searchString);
+                    BooksTotalCount = DataStore.Books.GetAvaliableBooksTotalCount(searchString);
                     break;
                 case "taken by user":
                     books = DataStore.Books.GetBooksByUser(AppUser.GetInstance().AccountId, searchString, from, count).Select(book => new Book(book)).ToList();
