@@ -76,9 +76,9 @@
             </Grid>
             <Grid x:Name="RegistrationGrid" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="435" Width="417">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="114*" />
-                    <ColumnDefinition Width="193*" />
-                    <ColumnDefinition Width="92*"/>
+                    <ColumnDefinition Width="119*" />
+                    <ColumnDefinition Width="179*" />
+                    <ColumnDefinition Width="119*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
@@ -90,20 +90,20 @@
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1.5*" />
                 </Grid.RowDefinitions>
-                <Label x:Name="Message" Content="Registration" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="52" Margin="19,12,0,0" VerticalAlignment="Top" Width="361" FontSize="24" Foreground="#FFFFD100" Background="{x:Null}" RenderTransformOrigin="0.512,0.51" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-                <Label Content="Login: " Style="{StaticResource BlueLabel}" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.514,0.508" Height="25"  Width="120"  Grid.Row="1" Foreground="#FFFFD100" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="21,0,180,0"/>
-                <TextBox x:Name="tbLogin" Text="" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-                <TextBox x:Name="tbFirstName" Text="" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-                <TextBox x:Name="tbLastName" Text="" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-                <TextBox x:Name="tbEmail" Text="" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-                <Label Content="Password: " Style="{StaticResource BlueLabel}" Grid.Column="0" Grid.Row="2" Height="25" Width="120" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.509,0.546" Foreground="#FFFFD100" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="21,0,180,0"/>
-                <PasswordBox x:Name="pbPassword" Grid.Column="1" Grid.Row="2" PasswordChar="*" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-                <PasswordBox x:Name="pbConfirmPassword" Grid.Column="1" Grid.Row="3" PasswordChar="*" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="242" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-                <Button x:Name="btnRegister" Content="Register" HorizontalAlignment="Left" Height="32" Margin="27,18,0,0" VerticalAlignment="Top" Width="118" Grid.Row="7" Grid.Column="1" Background="#FFDBFDD9" BorderBrush="#FF17FF00"/>
-                <Label Content="Confirm passsword: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="25" Grid.Row="3" VerticalAlignment="Center" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="21,0,0,0"/>
-                <Label Content="First name: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="24" Grid.Row="4" VerticalAlignment="Center" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="21,0,0,0"/>
-                <Label Content="Last name: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="25" Grid.Row="5" VerticalAlignment="Center" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="21,0,0,0"/>
-                <Label Content="Email: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" Height="25" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="21,0,0,0"/>
+                <Label x:Name="Message" Content="Registration" HorizontalContentAlignment="Center" Height="52" Margin="28,12,28,0" VerticalAlignment="Top" FontSize="24" Foreground="#FFFFD100" Background="{x:Null}" RenderTransformOrigin="0.512,0.51" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                <Label Content="Login: " Style="{StaticResource BlueLabel}" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.514,0.508" Height="25"  Grid.Row="1" Foreground="#FFFFD100" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,0,0" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="tbLogin" Text="" Grid.Column="1" Grid.Row="1" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,28,0" HorizontalAlignment="Right" Width="242"/>
+                <TextBox x:Name="tbFirstName" Text="" Grid.Column="1" Grid.Row="4" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,28,0"/>
+                <TextBox x:Name="tbLastName" Text="" Grid.Column="1" Grid.Row="5" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,28,0"/>
+                <TextBox x:Name="tbEmail" Text="" Grid.Column="1" Grid.Row="6" Height="25" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,28,0"/>
+                <Label Content="Password: " Style="{StaticResource BlueLabel}" Grid.Column="0" Grid.Row="2" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.509,0.546" Foreground="#FFFFD100" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,0,0" HorizontalAlignment="Left" Width="119"/>
+                <PasswordBox x:Name="pbPassword" Grid.Column="1" Grid.Row="2" PasswordChar="*" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,28,0"/>
+                <PasswordBox x:Name="pbConfirmPassword" Grid.Column="1" Grid.Row="3" PasswordChar="*" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,28,0"/>
+                <Button x:Name="btnRegister" Content="Register" Height="32" Margin="31,18,30,0" VerticalAlignment="Top" Grid.Row="7" Grid.Column="1" Background="#FFDBFDD9" BorderBrush="#FF17FF00"/>
+                <Label Content="Confirm passsword: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="25" Grid.Row="3" VerticalAlignment="Center" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,0,0"/>
+                <Label Content="First name: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="24" Grid.Row="4" VerticalAlignment="Center" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,0,0"/>
+                <Label Content="Last name: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="25" Grid.Row="5" VerticalAlignment="Center" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,0,0"/>
+                <Label Content="Email: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" Height="25" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,0,0"/>
             </Grid>
         </Grid>
 
