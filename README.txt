@@ -1,1 +1,1 @@
-Run as administrator in Visual Studio or Rider.
+Run solution as administrator in Visual Studio or Rider.
