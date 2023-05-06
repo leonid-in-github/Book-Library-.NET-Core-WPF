@@ -14,7 +14,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-        private readonly IDataStorage DataStore = new BookLibraryRepository();
+        private readonly IBookLibraryStorage DataStore = new BookLibraryRepository();
 
         private string _userName;
         private ICollectionView _booksView;

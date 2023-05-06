@@ -9,7 +9,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class UserCabinetViewModel
     {
-        private readonly IDataStorage DataStore = new BookLibraryRepository();
+        private readonly IBookLibraryStorage DataStore = new BookLibraryRepository();
 
         public UserCabinetViewModel()
         {
