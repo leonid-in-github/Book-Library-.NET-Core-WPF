@@ -1,11 +1,11 @@
-﻿using BookLibrary.Repository.Contexts;
-using BookLibrary.Repository.Models.Book;
+﻿using BookLibrary.Storage.Contexts;
+using BookLibrary.Storage.Models.Book;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BookLibrary.Repository.Repositories
+namespace BookLibrary.Storage.Repositories
 {
     public class BooksRepository
     {

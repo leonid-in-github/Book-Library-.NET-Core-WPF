@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BookLibrary.Repository.Models.Book
+namespace BookLibrary.Storage.Models.Book
 {
     public class BookTrackList
     {

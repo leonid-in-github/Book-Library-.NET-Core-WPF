@@ -1,5 +1,4 @@
-﻿using BookLibrary.Repository.Repositories;
-using BookLibrary.Repository.Servicies;
+﻿using BookLibrary.Storage;
 using System.Windows;
 
 namespace BookLibrary.UI
@@ -14,7 +13,7 @@ namespace BookLibrary.UI
             var _contentRootPath = System.AppDomain.CurrentDomain.BaseDirectory;
             var dbConnectionString = BookLibrary.UI.Properties.Settings.Default["ConnectionString"].ToString();
             dbConnectionString = dbConnectionString.Replace("%CONTENTROOTPATH%", _contentRootPath);
-            RepositoryService.Register<BookLibraryRepository>(dbConnectionString);
+            StorageParameters.ConnectionString = dbConnectionString;
         }
     }
 }

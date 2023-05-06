@@ -1,6 +1,6 @@
-﻿using BookLibrary.Repository.Models.Account;
-using BookLibrary.Repository.Repositories;
-using BookLibrary.Repository.Servicies;
+﻿using BookLibrary.Storage;
+using BookLibrary.Storage.Models.Account;
+using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Windows;
 using System.Windows;
@@ -10,7 +10,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class UserCabinetViewModel
     {
-        private IDataStore DataStore => RepositoryService.Get<IDataStore>();
+        private readonly IDataStorage DataStore = new BookLibraryRepository();
 
         public UserCabinetViewModel()
         {

@@ -1,14 +1,10 @@
-﻿using BookLibrary.Repository.Models.Book;
-using BookLibrary.Repository.Repositories;
-using BookLibrary.Repository.Servicies;
+﻿using BookLibrary.Storage.Models.Book;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookLibrary.Repository.Contexts
+namespace BookLibrary.Storage.Contexts
 {
     public class BookLibraryContext : DbContext
     {
-        private string CONNECTIONSTRING => RepositoryService.ConnectionString<BookLibraryRepository>();
-
         public BookLibraryContext()
         : base()
         { }
@@ -24,7 +20,7 @@ namespace BookLibrary.Repository.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(CONNECTIONSTRING);
+            optionsBuilder.UseSqlServer(StorageParameters.ConnectionString);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using BookLibrary.Repository.Models.Book;
+﻿using BookLibrary.Storage.Models.Book;
 using BookLibrary.UI.ViewModels;
 using System.Windows;
 using System.Windows.Controls;

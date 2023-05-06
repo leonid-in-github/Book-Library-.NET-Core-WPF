@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BookLibrary.Repository.Models.Book
+namespace BookLibrary.Storage.Models.Book
 {
     public class BookItem
     {

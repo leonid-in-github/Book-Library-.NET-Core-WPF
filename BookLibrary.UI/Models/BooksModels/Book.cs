@@ -1,4 +1,4 @@
-﻿using BookLibrary.Repository.Models.Book;
+﻿using BookLibrary.Storage.Models.Book;
 
 namespace BookLibrary.UI.Models.BooksModels
 {

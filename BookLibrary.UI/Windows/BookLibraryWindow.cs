@@ -1,5 +1,5 @@
-﻿using BookLibrary.Repository.Repositories;
-using BookLibrary.Repository.Servicies;
+﻿using BookLibrary.Storage;
+using BookLibrary.Storage.Repositories;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -9,7 +9,7 @@ namespace BookLibrary.UI.Windows
 {
     public partial class BookLibraryWindow : Window
     {
-        protected IDataStore DataStore => RepositoryService.Get<IDataStore>();
+        protected readonly IDataStorage DataStore = new BookLibraryRepository();
 
         public BookLibraryWindow() : base()
         {

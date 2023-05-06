@@ -1,4 +1,4 @@
-﻿namespace BookLibrary.Repository.Models.Account
+﻿namespace BookLibrary.Storage.Models.Account
 {
     public class DisplayUserModel
     {

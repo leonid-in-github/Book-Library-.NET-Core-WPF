@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BookLibrary.Repository.Exceptions
+namespace BookLibrary.Storage.Exceptions
 {
     [Serializable]
     public class SessionExpirationConflictException : Exception

@@ -1,6 +1,6 @@
-﻿using BookLibrary.Repository.Models.Book;
-using BookLibrary.Repository.Repositories;
-using BookLibrary.Repository.Servicies;
+﻿using BookLibrary.Storage;
+using BookLibrary.Storage.Models.Book;
+using BookLibrary.Storage.Repositories;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -10,7 +10,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class BookTrackViewModel : INotifyPropertyChanged
     {
-        private IDataStore DataStore => RepositoryService.Get<IDataStore>();
+        private readonly IDataStorage DataStore = new BookLibraryRepository();
         private const int displayBookTrackItemsDefaultCount = 10;
         private string _filter = displayBookTrackItemsDefaultCount.ToString();
         private Visibility _filterVisibility = Visibility.Hidden;

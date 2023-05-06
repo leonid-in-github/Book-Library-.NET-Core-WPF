@@ -1,5 +1,5 @@
-﻿using BookLibrary.Repository.Repositories;
-using BookLibrary.Repository.Servicies;
+﻿using BookLibrary.Storage;
+using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Models.BooksModels;
@@ -15,7 +15,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-        private IDataStore DataStore => RepositoryService.Get<IDataStore>();
+        private readonly IDataStorage DataStore = new BookLibraryRepository();
 
         private string _userName;
         private ICollectionView _booksView;

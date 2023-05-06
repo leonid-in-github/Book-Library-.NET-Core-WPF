@@ -1,11 +1,11 @@
-﻿using BookLibrary.Repository.Repositories;
-using BookLibrary.Repository.Servicies;
+﻿using BookLibrary.Storage;
+using BookLibrary.Storage.Repositories;
 using System.Windows.Controls;
 
 namespace BookLibrary.UI.Pages
 {
     public class BookLibraryPage : Page
     {
-        protected IDataStore DataStore => RepositoryService.Get<IDataStore>();
+        protected readonly IDataStorage DataStore = new BookLibraryRepository();
     }
 }

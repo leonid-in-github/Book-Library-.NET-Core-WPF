@@ -1,9 +1,9 @@
-﻿using BookLibrary.Repository.Contexts;
+﻿using BookLibrary.Storage.Contexts;
 using System.Threading.Tasks;
 
-namespace BookLibrary.Repository.Repositories
+namespace BookLibrary.Storage.Repositories
 {
-    public class BookLibraryRepository : IDataStore, IDataStoreCreatable
+    public class BookLibraryRepository : IDataStorage, IDataStorageCreatable
     {
         public BookLibraryRepository()
         {
