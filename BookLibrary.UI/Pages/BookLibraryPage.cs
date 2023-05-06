@@ -5,6 +5,6 @@ namespace BookLibrary.UI.Pages
 {
     public class BookLibraryPage : Page
     {
-        protected readonly IBookLibraryStorage DataStore = new BookLibraryRepository();
+        protected readonly IBookLibraryRepository DataStore = new BookLibraryRepository();
     }
 }

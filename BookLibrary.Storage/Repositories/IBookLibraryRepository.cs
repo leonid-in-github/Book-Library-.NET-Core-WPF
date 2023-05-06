@@ -1,6 +1,6 @@
 ﻿namespace BookLibrary.Storage.Repositories
 {
-    public interface IBookLibraryStorage
+    public interface IBookLibraryRepository
     {
         AccountRepository Account { get; }
 

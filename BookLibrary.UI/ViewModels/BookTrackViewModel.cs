@@ -9,7 +9,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class BookTrackViewModel : INotifyPropertyChanged
     {
-        private readonly IBookLibraryStorage DataStore = new BookLibraryRepository();
+        private readonly IBookLibraryRepository DataStore = new BookLibraryRepository();
         private const int displayBookTrackItemsDefaultCount = 10;
         private string _filter = displayBookTrackItemsDefaultCount.ToString();
         private Visibility _filterVisibility = Visibility.Hidden;

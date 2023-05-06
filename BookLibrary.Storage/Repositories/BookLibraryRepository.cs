@@ -1,6 +1,6 @@
 ﻿namespace BookLibrary.Storage.Repositories
 {
-    public class BookLibraryRepository : IBookLibraryStorage
+    public class BookLibraryRepository : IBookLibraryRepository
     {
         public BookLibraryRepository()
         {

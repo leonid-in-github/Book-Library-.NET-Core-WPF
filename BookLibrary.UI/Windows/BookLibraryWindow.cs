@@ -8,7 +8,7 @@ namespace BookLibrary.UI.Windows
 {
     public partial class BookLibraryWindow : Window
     {
-        protected readonly IBookLibraryStorage DataStore = new BookLibraryRepository();
+        protected readonly IBookLibraryRepository DataStore = new BookLibraryRepository();
 
         public BookLibraryWindow() : base()
         {
