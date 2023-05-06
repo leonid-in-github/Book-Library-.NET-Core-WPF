@@ -1,5 +1,4 @@
-﻿using BookLibrary.Storage;
-using BookLibrary.Storage.Repositories;
+﻿using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Models.BooksModels;
@@ -68,7 +67,7 @@ namespace BookLibrary.UI.ViewModels
                     BooksTotalCount = DataStore.Books.GetBooksByUserTotalCount(AppUser.GetInstance().AccountId, searchString);
                     break;
             }
-            
+
             _booksView = CollectionViewSource.GetDefaultView(books);
             _booksView.Filter = BooksFilter;
             _booksView.SortDescriptions.Add(
