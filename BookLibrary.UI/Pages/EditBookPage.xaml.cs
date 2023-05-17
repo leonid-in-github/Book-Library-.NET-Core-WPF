@@ -12,9 +12,9 @@ namespace BookLibrary.UI.Pages
     {
         private Page _previousPage;
 
-        private BookItem _book;
+        private Book _book;
 
-        public EditBookPage(Page previousPage, BookItem book)
+        public EditBookPage(Page previousPage, Book book)
         {
             InitializeComponent();
 

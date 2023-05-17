@@ -46,9 +46,9 @@ namespace BookLibrary.UI.Pages
 
         private void btnEditBook_Click(object sender, RoutedEventArgs e)
         {
-            var book = BooksGrid.SelectedItem as Book;
+            var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
-            var editBook = new BookItem()
+            var editBook = new Storage.Models.Book.Book()
             {
                 ID = book.ID
             };
@@ -57,7 +57,7 @@ namespace BookLibrary.UI.Pages
 
         private void btnTrackBook_Click(object sender, RoutedEventArgs e)
         {
-            var book = BooksGrid.SelectedItem as Book;
+            var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
             var trackBook = DataStore.Books.GetBookTrack(AppUser.GetInstance().AccountId, book.ID, "All");
             NavigationService.Navigate(new BookTrackPage(this, trackBook));
@@ -72,7 +72,7 @@ namespace BookLibrary.UI.Pages
                 var booksGridEnumerator = BooksGrid.SelectedItems.GetEnumerator();
                 while (booksGridEnumerator.MoveNext())
                 {
-                    var bookId = (booksGridEnumerator.Current as Book)?.ID;
+                    var bookId = (booksGridEnumerator.Current as Models.BooksModels.Book)?.ID;
                     if (bookId != null)
                     {
                         DataStore.Books.DeleteBook((int)bookId);

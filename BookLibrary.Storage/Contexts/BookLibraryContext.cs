@@ -13,10 +13,10 @@ namespace BookLibrary.Storage.Contexts
         : base(options)
         { }
 
-        public virtual DbSet<BookItem> GetBook { get; set; }
-        public virtual DbSet<BookItem> GetBooksAvaliableDistinct { get; set; }
-        public virtual DbSet<BookItem> GetBooksDistinct { get; set; }
-        public virtual DbSet<BookTrackItem> GetBookTrack { get; set; }
+        public virtual DbSet<Book> GetBook { get; set; }
+        public virtual DbSet<Book> GetBooksAvaliableDistinct { get; set; }
+        public virtual DbSet<Book> GetBooksDistinct { get; set; }
+        public virtual DbSet<BookTrack> GetBookTrack { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -28,7 +28,7 @@ namespace BookLibrary.UI.Pages
         {
             if (!string.IsNullOrEmpty(bookView.BookName) && !string.IsNullOrEmpty(bookView.BookAuthors))
             {
-                var book = new BookItem()
+                var book = new Book()
                 {
                     Name = bookView.BookName,
                     Authors = bookView.BookAuthors,

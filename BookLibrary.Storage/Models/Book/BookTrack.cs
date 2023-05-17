@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BookLibrary.Repository.Models.Book;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookLibrary.Storage.Models.Book
 {
-    public class BookTrackItem
+    public class BookTrack
     {
         [Key]
         public int BookId { get; set; }
@@ -12,17 +13,17 @@ namespace BookLibrary.Storage.Models.Book
         public string Email { get; set; }
         public DateTime ActionTime { get; set; }
         public bool Action { get; set; }
-        public string ActionString => GetActionString();
+        public string ActionString => GetBookAction().ToString();
 
-        private string GetActionString()
+        private BookAction GetBookAction()
         {
             if (Action)
             {
-                return "Took";
+                return BookAction.Took;
             }
             else
             {
-                return "Put";
+                return BookAction.Put;
             }
         }
     }

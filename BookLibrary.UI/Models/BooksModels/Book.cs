@@ -10,7 +10,7 @@ namespace BookLibrary.UI.Models.BooksModels
         public string Year { get; set; }
         public string Availability { get; set; }
 
-        public Book(BookItem bookitem)
+        public Book(Storage.Models.Book.Book bookitem)
         {
             ID = bookitem.ID;
             Name = bookitem.Name;

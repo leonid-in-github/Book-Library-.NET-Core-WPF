@@ -9,7 +9,7 @@ namespace BookLibrary.Storage.Repositories
 {
     public class BooksRepository
     {
-        public BookItem GetBook(int bookId)
+        public Book GetBook(int bookId)
         {
             using (var dbContext = new BookLibraryContext())
             {
@@ -26,11 +26,11 @@ namespace BookLibrary.Storage.Repositories
             }
         }
 
-        public List<BookItem> GetBooks(string spName, SqlParameter[] pArr)
+        public List<Book> GetBooks(string spName, SqlParameter[] pArr)
         {
             using (var dbContext = new BookLibraryContext())
             {
-                List<BookItem> booksResult;
+                List<Book> booksResult;
                 if (pArr == null)
                 {
                     booksResult = dbContext.GetBook.FromSqlRaw(string.Format("EXECUTE {0}", spName)).ToList();
@@ -39,7 +39,7 @@ namespace BookLibrary.Storage.Repositories
                 {
                     booksResult = dbContext.GetBook.FromSqlRaw(string.Format("EXECUTE {0}", spName), pArr).ToList();
                 }
-                var booksList = new List<BookItem>();
+                var booksList = new List<Book>();
 
                 foreach (var book in booksResult)
                 {
@@ -50,7 +50,7 @@ namespace BookLibrary.Storage.Repositories
             }
         }
 
-        public List<BookItem> GetBooks(string searchString = "", int from = 0, int count = 10)
+        public List<Book> GetBooks(string searchString = "", int from = 0, int count = 10)
         {
             var searchStringParameter = new SqlParameter
             {
@@ -139,7 +139,7 @@ namespace BookLibrary.Storage.Repositories
             }
         }
 
-        public List<BookItem> GetAvaliableBooks(string searchString = "", int from = 0, int count = 10)
+        public List<Book> GetAvaliableBooks(string searchString = "", int from = 0, int count = 10)
         {
             var searchStringParameter = new SqlParameter
             {
@@ -166,7 +166,7 @@ namespace BookLibrary.Storage.Repositories
             return GetBooks("GetBooksAvaliable @SearchString, @From, @Count", sqlParameters);
         }
 
-        public List<BookItem> GetBooksByUser(int userId, string searchString = "", int from = 0, int count = 10)
+        public List<Book> GetBooksByUser(int userId, string searchString = "", int from = 0, int count = 10)
         {
             var inID = new SqlParameter
             {
@@ -217,7 +217,7 @@ namespace BookLibrary.Storage.Repositories
             return;
         }
 
-        public void AddBook(BookItem book)
+        public void AddBook(Book book)
         {
             var inName = new SqlParameter
             {
@@ -255,7 +255,7 @@ namespace BookLibrary.Storage.Repositories
             return;
         }
 
-        public void UpdateBook(BookItem book)
+        public void UpdateBook(Book book)
         {
             var inID = new SqlParameter
             {

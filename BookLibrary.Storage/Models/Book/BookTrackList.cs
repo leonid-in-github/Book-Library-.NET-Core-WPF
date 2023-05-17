@@ -7,13 +7,13 @@ namespace BookLibrary.Storage.Models.Book
     {
         public BookTrackList()
         {
-            TracksList = new List<BookTrackItem>();
+            TracksList = new List<BookTrack>();
         }
 
         public int? BookId { get; set; }
         public String BookName { get; set; }
         public bool? BookAvailability { get; set; }
         public bool CanBePuted { get; set; }
-        public List<BookTrackItem> TracksList { get; set; }
+        public List<BookTrack> TracksList { get; set; }
     }
 }

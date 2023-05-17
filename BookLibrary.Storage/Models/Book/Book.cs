@@ -2,7 +2,7 @@
 
 namespace BookLibrary.Storage.Models.Book
 {
-    public class BookItem
+    public class Book
     {
         public int? ID { get; set; }
         public string Name { get; set; }
