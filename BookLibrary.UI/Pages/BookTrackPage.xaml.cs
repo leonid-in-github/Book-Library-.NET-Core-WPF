@@ -70,7 +70,7 @@ namespace BookLibrary.UI.Pages
 
         private void BooksGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.Column.Header.ToString() == "BookId" || e.Column.Header.ToString() == "Action" || e.Column.Header.ToString() == "BookName")
+            if (e.Column.Header.ToString() == "BookId" || e.Column.Header.ToString() == "BookName")
             {
                 e.Cancel = true;
             }
@@ -78,7 +78,7 @@ namespace BookLibrary.UI.Pages
             {
                 e.Column.Header = "Date";
             }
-            if (e.Column.Header.ToString() == "ActionString")
+            if (e.Column.Header.ToString() == "Action")
             {
                 e.Column.Header = "Action";
             }
