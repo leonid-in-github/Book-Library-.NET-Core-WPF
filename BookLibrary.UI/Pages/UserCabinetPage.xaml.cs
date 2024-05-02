@@ -8,7 +8,7 @@ namespace BookLibrary.UI.Pages
     /// <summary>
     /// Interaction logic for UserCabinetPage.xaml
     /// </summary>
-    public partial class UserCabinetPage : BookLibraryPage
+    public partial class UserCabinetPage : Page
     {
         private Page _previousPage;
 

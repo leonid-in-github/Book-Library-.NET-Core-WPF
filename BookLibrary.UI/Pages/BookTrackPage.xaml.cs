@@ -6,7 +6,7 @@ using System.Windows.Navigation;
 
 namespace BookLibrary.UI.Pages
 {
-    public partial class BookTrackPage : BookLibraryPage
+    public partial class BookTrackPage : Page
     {
         private Page _previousPage;
 
@@ -43,15 +43,15 @@ namespace BookLibrary.UI.Pages
             NavigationService.Navigate(_previousPage);
         }
 
-        private void btnActionBook_Click(object sender, RoutedEventArgs e)
+        private async void btnActionBook_Click(object sender, RoutedEventArgs e)
         {
 
             if (!(bool)pageViewModel.Book.BookAvailability)
             {
                 if (pageViewModel != null)
                 {
-                    pageViewModel.PutBook();
-                    pageViewModel.LoadBookTrack();
+                    await pageViewModel.PutBook();
+                    await pageViewModel.LoadBookTrack();
                     BooksGrid.ItemsSource = pageViewModel.BookTracks;
                 }
                 btnActionBook.Content = "Take book";
@@ -60,8 +60,8 @@ namespace BookLibrary.UI.Pages
             {
                 if (pageViewModel != null)
                 {
-                    pageViewModel.TakeBook();
-                    pageViewModel.LoadBookTrack();
+                    await pageViewModel.TakeBook();
+                    await pageViewModel.LoadBookTrack();
                     BooksGrid.ItemsSource = pageViewModel.BookTracks;
                 }
                 btnActionBook.Content = "Put book";
@@ -84,9 +84,9 @@ namespace BookLibrary.UI.Pages
             }
         }
 
-        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            pageViewModel.LoadBookTrack();
+            await pageViewModel.LoadBookTrack();
             BooksGrid.ItemsSource = pageViewModel.BookTracks;
         }
     }

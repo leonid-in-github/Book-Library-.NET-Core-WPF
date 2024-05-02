@@ -1,388 +1,281 @@
-﻿using BookLibrary.Storage.Contexts;
+﻿using BookLibrary.Repository.Models.Book;
+using BookLibrary.Repository.Models.Records.Book;
+using BookLibrary.Repository.Repositories;
+using BookLibrary.Storage.Contexts;
 using BookLibrary.Storage.Models.Book;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookLibrary.Storage.Repositories
 {
-    public class BooksRepository
+    public class BooksRepository : IBooksRepository
     {
-        public Book GetBook(int bookId)
+        public Task<Book> GetBook(int bookId)
         {
-            using (var dbContext = new BookLibraryContext())
+            using var dbContext = new BookLibraryContext();
+            var booksQuery = dbContext.Books.Where(book => book.ID == bookId);
+            var books = SelectBooksFromBookRecords(dbContext, booksQuery);
+            return Task.FromResult(books.FirstOrDefault());
+        }
+
+        public Task<List<Book>> GetBooks(string searchString = "", bool onlyAvailable = false, int userId = -1, int from = 0, int count = 10)
+        {
+            using var dbContext = new BookLibraryContext();
+            return Task.FromResult(BuildGetBooksQuery(dbContext, searchString, onlyAvailable, userId, from, count).ToList());
+        }
+
+        public Task<List<Book>> GetAvaliableBooks(string searchString = "", int from = 0, int count = 10)
+        {
+            return GetBooks(searchString, true, -1, from, count);
+        }
+
+        public Task<List<Book>> GetBooksByUser(int userId, string searchString = "", int from = 0, int count = 10)
+        {
+            return GetBooks(searchString, false, userId, from, count);
+        }
+
+        public Task<int> GetBooksTotalCount(string searchString = "")
+        {
+            using var dbContext = new BookLibraryContext();
+            return Task.FromResult(BuildGetBooksQuery(dbContext, searchString).Count());
+        }
+
+        public Task<int> GetBooksByUserTotalCount(int userId, string searchString = "")
+        {
+            using var dbContext = new BookLibraryContext();
+            return Task.FromResult(BuildGetBooksQuery(dbContext, searchString, false, userId).Count());
+        }
+
+        public Task<int> GetAvaliableBooksTotalCount(string searchString = "")
+        {
+            using var dbContext = new BookLibraryContext();
+            return Task.FromResult(BuildGetBooksQuery(dbContext, searchString, true).Count());
+        }
+
+
+        public Task DeleteBook(int bookId)
+        {
+            using var dbContext = new BookLibraryContext();
+            var bookRecord = dbContext.Books.FirstOrDefault(book => book.ID == bookId);
+            if (bookRecord != null)
             {
-                var inID = new SqlParameter
-                {
-                    ParameterName = "BookID",
-                    Value = bookId,
-                    DbType = System.Data.DbType.Int32,
-                    Direction = System.Data.ParameterDirection.Input
-                };
-                var books = dbContext.GetBook.FromSqlRaw("EXECUTE GetBook @BookID", inID).ToList();
-                var book = books.FirstOrDefault();
-                return book;
+                dbContext.Books.Remove(bookRecord);
+                dbContext.SaveChanges();
             }
+
+            return Task.CompletedTask;
         }
 
-        public List<Book> GetBooks(string spName, SqlParameter[] pArr)
+        public Task AddBook(Book book)
         {
-            using (var dbContext = new BookLibraryContext())
+            using var dbContext = new BookLibraryContext();
+            using var transaction = dbContext.Database.BeginTransaction();
+
+            var bookRecord = BookRecord.FromDomain(book);
+            dbContext.Books.Add(bookRecord);
+            dbContext.SaveChanges();
+
+            SaveBookAuthors(dbContext, book.Authors, bookRecord.ID);
+
+            transaction.Commit();
+
+            return Task.CompletedTask;
+        }
+
+        public Task UpdateBook(Book book)
+        {
+            using var dbContext = new BookLibraryContext();
+            using var transaction = dbContext.Database.BeginTransaction();
+
+            var bookRecord = dbContext.Books.FirstOrDefault(record => record.ID == book.ID);
+            if (bookRecord is null)
             {
-                List<Book> booksResult;
-                if (pArr == null)
-                {
-                    booksResult = dbContext.GetBook.FromSqlRaw(string.Format("EXECUTE {0}", spName)).ToList();
-                }
-                else
-                {
-                    booksResult = dbContext.GetBook.FromSqlRaw(string.Format("EXECUTE {0}", spName), pArr).ToList();
-                }
-                var booksList = new List<Book>();
-
-                foreach (var book in booksResult)
-                {
-                    booksList.Add(book);
-                }
-
-                return booksList;
+                AddBook(book);
+                return Task.CompletedTask;
             }
+
+            bookRecord.Name = book.Name;
+            bookRecord.Year = book.Year;
+            bookRecord.Availability = book.Availability ?? true;
+            dbContext.BooksAuthors.RemoveRange(dbContext.BooksAuthors.Where(record => record.BookId == book.ID));
+            dbContext.SaveChanges();
+
+            SaveBookAuthors(dbContext, book.Authors, bookRecord.ID);
+
+            transaction.Commit();
+
+            return Task.CompletedTask;
         }
 
-        public List<Book> GetBooks(string searchString = "", int from = 0, int count = 10)
-        {
-            var searchStringParameter = new SqlParameter
-            {
-                ParameterName = "SearchString",
-                Value = searchString,
-                DbType = System.Data.DbType.String,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var fromParameter = new SqlParameter
-            {
-                ParameterName = "From",
-                Value = from,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var countParameter = new SqlParameter
-            {
-                ParameterName = "Count",
-                Value = count,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var sqlParameters = new SqlParameter[] { searchStringParameter, fromParameter, countParameter };
-
-            return GetBooks("GetBooks @SearchString, @From, @Count", sqlParameters);
-        }
-
-        public int GetBooksTotalCount(string searchString = "")
-        {
-            var searchStringParameter = new SqlParameter
-            {
-                ParameterName = "SearchString",
-                Value = searchString,
-                DbType = System.Data.DbType.String,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var sqlParameters = new SqlParameter[] { searchStringParameter };
-            var sqlString = "EXECUTE GetBooksTotalCount @SearchString";
-            using (var dbContext = new BookLibraryContext())
-            {
-                var result = dbContext.Database.SqlQueryRaw<int>(sqlString, sqlParameters).AsEnumerable<int>().FirstOrDefault();
-                return result;
-            }
-        }
-
-        public int GetBooksByUserTotalCount(int userId, string searchString = "")
-        {
-            var inID = new SqlParameter
-            {
-                ParameterName = "AccountId",
-                Value = userId,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var searchStringParameter = new SqlParameter
-            {
-                ParameterName = "SearchString",
-                Value = searchString,
-                DbType = System.Data.DbType.String,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var sqlParameters = new SqlParameter[] { inID, searchStringParameter };
-            var sqlString = "EXECUTE GetBooksByAccountTotalCount @AccountId, @SearchString";
-            using (var dbContext = new BookLibraryContext())
-            {
-                var result = dbContext.Database.SqlQueryRaw<int>(sqlString, sqlParameters).AsEnumerable<int>().FirstOrDefault();
-                return result;
-            }
-        }
-
-        public int GetAvaliableBooksTotalCount(string searchString = "")
-        {
-            var searchStringParameter = new SqlParameter
-            {
-                ParameterName = "SearchString",
-                Value = searchString,
-                DbType = System.Data.DbType.String,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var sqlParameters = new SqlParameter[] { searchStringParameter };
-            var sqlString = "EXECUTE GetBooksAvaliableTotalCount @SearchString";
-            using (var dbContext = new BookLibraryContext())
-            {
-                var result = dbContext.Database.SqlQueryRaw<int>(sqlString, sqlParameters).AsEnumerable<int>().FirstOrDefault();
-                return result;
-            }
-        }
-
-        public List<Book> GetAvaliableBooks(string searchString = "", int from = 0, int count = 10)
-        {
-            var searchStringParameter = new SqlParameter
-            {
-                ParameterName = "SearchString",
-                Value = searchString,
-                DbType = System.Data.DbType.String,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var fromParameter = new SqlParameter
-            {
-                ParameterName = "From",
-                Value = from,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var countParameter = new SqlParameter
-            {
-                ParameterName = "Count",
-                Value = count,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var sqlParameters = new SqlParameter[] { searchStringParameter, fromParameter, countParameter };
-            return GetBooks("GetBooksAvaliable @SearchString, @From, @Count", sqlParameters);
-        }
-
-        public List<Book> GetBooksByUser(int userId, string searchString = "", int from = 0, int count = 10)
-        {
-            var inID = new SqlParameter
-            {
-                ParameterName = "AccountId",
-                Value = userId,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var searchStringParameter = new SqlParameter
-            {
-                ParameterName = "SearchString",
-                Value = searchString,
-                DbType = System.Data.DbType.String,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var fromParameter = new SqlParameter
-            {
-                ParameterName = "From",
-                Value = from,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var countParameter = new SqlParameter
-            {
-                ParameterName = "Count",
-                Value = count,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var sqlParameters = new SqlParameter[] { inID, searchStringParameter, fromParameter, countParameter };
-            return GetBooks("GetBooksByAccount @AccountId, @SearchString, @From, @Count", new SqlParameter[] { inID, searchStringParameter, fromParameter, countParameter });
-        }
-
-        public void DeleteBook(int bookId)
-        {
-            var inID = new SqlParameter
-            {
-                ParameterName = "ID",
-                Value = bookId,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var sql = "exec DeleteBook @ID";
-            using (var dbContext = new BookLibraryContext())
-            {
-                _ = dbContext.Database.ExecuteSqlRaw(sql, inID);
-            }
-            return;
-        }
-
-        public void AddBook(Book book)
-        {
-            var inName = new SqlParameter
-            {
-                ParameterName = "Name",
-                Value = book.Name,
-                DbType = System.Data.DbType.String,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var inAuthors = new SqlParameter
-            {
-                ParameterName = "Authors",
-                Value = book.Authors,
-                DbType = System.Data.DbType.String,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var inYear = new SqlParameter
-            {
-                ParameterName = "Year",
-                Value = book.Year,
-                DbType = System.Data.DbType.DateTime,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var inQuantity = new SqlParameter
-            {
-                ParameterName = "Quantity",
-                Value = 1,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var sql = "exec AddBook @Name, @Authors, @Year, @Quantity";
-            using (var dbContext = new BookLibraryContext())
-            {
-                _ = dbContext.Database.ExecuteSqlRaw(sql, inName, inAuthors, inYear, inQuantity);
-            }
-            return;
-        }
-
-        public void UpdateBook(Book book)
-        {
-            var inID = new SqlParameter
-            {
-                ParameterName = "ID",
-                Value = book.ID,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var inNewName = new SqlParameter
-            {
-                ParameterName = "NewName",
-                Value = book.Name,
-                DbType = System.Data.DbType.String,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var inNewAuthors = new SqlParameter
-            {
-                ParameterName = "NewAuthors",
-                Value = book.Authors,
-                DbType = System.Data.DbType.String,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var inNewYear = new SqlParameter
-            {
-                ParameterName = "NewYear",
-                Value = book.Year,
-                DbType = System.Data.DbType.DateTime,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var sql = "exec UpdateBook @ID, @NewName, @NewAuthors, @NewYear";
-            using (var dbContext = new BookLibraryContext())
-            {
-                _ = dbContext.Database.ExecuteSqlRaw(sql, inID, inNewName, inNewAuthors, inNewYear);
-            }
-            return;
-        }
-
-        public BookTrackList GetBookTrack(int accountId, int? bookId, string tracksCount)
+        public Task<BookTrackList> GetBookTrack(int accountId, int bookId, string tracksCount)
         {
             var result = new BookTrackList();
-            using (var dbContext = new BookLibraryContext())
+            using var dbContext = new BookLibraryContext();
+            var bookRecord = dbContext.Books.FirstOrDefault(record => record.ID == bookId);
+
+            result.BookId = bookRecord?.ID ?? 0;
+            result.BookName = bookRecord?.Name;
+            result.BookAvailability = bookRecord?.Availability;
+
+            var bookTookTracks = dbContext.BookTracking.Where(record => record.BookId == bookId && record.Action == BookAction.Took.ToString());
+            var lastBookTookTrack = bookTookTracks.FirstOrDefault(record => record.ActionTime == bookTookTracks.Max(track => track.ActionTime));
+            result.CanBePuted = accountId == lastBookTookTrack?.AccountId;
+
+            var accountRecord = dbContext.Accounts.FirstOrDefault(record => record.ID == accountId);
+            if (accountRecord != null)
             {
-                var book = dbContext.GetBook.FromSqlRaw("EXECUTE GetBook {0}", bookId).ToList().FirstOrDefault();
-
-                result.BookId = book?.ID;
-                result.BookName = book?.Name;
-                result.BookAvailability = book?.Availability;
-
-                var inAccountId = new SqlParameter
+                var profileRecord = dbContext.Profiles.FirstOrDefault(record => record.ID == accountRecord.ProfileId);
+                if (profileRecord != null)
                 {
-                    ParameterName = "AccountId",
-                    Value = accountId,
-                    DbType = System.Data.DbType.Int32,
-                    Direction = System.Data.ParameterDirection.Input
-                };
-                var inBookId = new SqlParameter
-                {
-                    ParameterName = "BookId",
-                    Value = bookId,
-                    DbType = System.Data.DbType.Int32,
-                    Direction = System.Data.ParameterDirection.Input
-                };
-                var outResult = new SqlParameter
-                {
-                    ParameterName = "Result",
-                    DbType = System.Data.DbType.Boolean,
-                    Direction = System.Data.ParameterDirection.Output
-                };
+                    var tracksQuery = dbContext.BookTracking.Where(record => record.BookId == bookId).OrderByDescending(record => record.ActionTime);
+                    if (tracksCount != "All")
+                    {
+                        tracksQuery = tracksQuery.Take(int.Parse(tracksCount)).OrderByDescending(record => record.ActionTime);
+                    }
 
-                var sql = "exec CanPutBook @AccountId, @BookId, @Result OUT";
-                _ = dbContext.Database.ExecuteSqlRaw(sql, inAccountId, inBookId, outResult);
-
-                if (!bool.TryParse(outResult.Value.ToString(), out bool canBePuted)) return result;
-                result.CanBePuted = canBePuted;
-
-                inBookId = new SqlParameter
-                {
-                    ParameterName = "BookID",
-                    Value = bookId,
-                    DbType = System.Data.DbType.Int32,
-                    Direction = System.Data.ParameterDirection.Input
-                };
-
-                var inTracksCount = new SqlParameter
-                {
-                    ParameterName = "TracksCount",
-                    Value = tracksCount.ToString(),
-                    DbType = System.Data.DbType.String,
-                    Direction = System.Data.ParameterDirection.Input
-                };
-                result.TracksList = dbContext.GetBookTrack.FromSqlRaw("EXECUTE GetBookTrack @BookID, @TracksCount", inBookId, inTracksCount).AsNoTracking().ToList();
+                    result.TracksList = tracksQuery.Select(bookTrack => BookTrack.FromPersistence(
+                        bookId,
+                        bookRecord.Name,
+                        accountRecord.Login,
+                        profileRecord.Email,
+                        bookTrack.ActionTime,
+                        bookTrack.Action
+                    )).ToList();
+                }
             }
-            return result;
+
+            return Task.FromResult(result);
         }
 
-        public void ActionBook(string action, int accountId, int? bookId)
+        public Task DoBookAction(BookAction action, int accountId, int bookId)
         {
-            var inAccountId = new SqlParameter
+            using var dbContext = new BookLibraryContext();
+            using var transaction = dbContext.Database.BeginTransaction();
+
+            var accountRecord = dbContext.Accounts.FirstOrDefault(record => record.ID == accountId);
+            if (accountRecord != null)
             {
-                ParameterName = "AccountId",
-                Value = accountId,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var inBookId = new SqlParameter
-            {
-                ParameterName = "BookId",
-                Value = bookId,
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var sql = string.Format("exec {0} @AccountId, @BookId", action);
-            using (var dbContext = new BookLibraryContext())
-            {
-                _ = dbContext.Database.ExecuteSqlRaw(sql, inAccountId, inBookId);
+                var bookRecord = dbContext.Books.FirstOrDefault(record => record.ID == bookId);
+                if (bookRecord != null)
+                {
+                    switch (action)
+                    {
+                        case BookAction.Took:
+                            bookRecord.Availability = false;
+                            break;
+                        case BookAction.Put:
+                            bookRecord.Availability = true;
+                            break;
+                        default:
+                            throw new NotSupportedException($"Action {action} is not supported");
+                    }
+
+                    var bookTrackingRecord = new BookTrackingRecord
+                    {
+                        AccountId = accountId,
+                        Action = action.ToString(),
+                        ActionTime = DateTime.UtcNow,
+                        BookId = bookId
+                    };
+                    dbContext.BookTracking.Add(bookTrackingRecord);
+
+                    dbContext.SaveChanges();
+                    transaction.Commit();
+                }
             }
-            return;
+            return Task.CompletedTask;
         }
 
-        public void TakeBook(int accountId, int? bookId)
+        public Task TakeBook(int accountId, int bookId)
         {
-            ActionBook("TakeBook", accountId, bookId);
+            return DoBookAction(BookAction.Took, accountId, bookId);
         }
 
-        public void PutBook(int accountId, int? bookId)
+        public Task PutBook(int accountId, int bookId)
         {
-            ActionBook("PutBook", accountId, bookId);
+            return DoBookAction(BookAction.Put, accountId, bookId);
         }
+
+        #region Private
+
+        private IQueryable<Book> BuildGetBooksQuery(BookLibraryContext dbContext, string searchString = "", bool onlyAvailable = false, int userId = -1, int from = 0, int count = 10)
+        {
+            IQueryable<BookRecord> booksQuery = dbContext.Books;
+            if (userId > -1)
+            {
+                var bookTracks = dbContext.BookTracking
+                    .Where(bookTrack => bookTrack.AccountId == userId && bookTrack.Action == BookAction.Took.ToString())
+                    .GroupBy(bookTrack => bookTrack.BookId).Select(bookTrackGroup => new
+                    {
+                        BookId = bookTrackGroup.Key,
+                        ActionTime = bookTrackGroup.Max(bookTrack => bookTrack.ActionTime)
+                    }).OrderBy(bookTrack => bookTrack.ActionTime);
+                booksQuery = booksQuery.Where(book => !book.Availability).Join(bookTracks, book => book.ID, bookTrack => bookTrack.BookId, (book, bookTrack) => book);
+            }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var bookIdsByAuthor = dbContext.Authors.Where(author => author.Name.Contains(searchString)).Join(
+                        dbContext.BooksAuthors,
+                        author => author.ID,
+                        bookAuthor => bookAuthor.AuthorId,
+                        (author, bookAuthor) => bookAuthor)
+                    .Select(bookAuthor => bookAuthor.BookId);
+                booksQuery = booksQuery.Where(book => book.Name.Contains(searchString) || book.Year.ToString().Contains(searchString) || bookIdsByAuthor.Contains(book.ID));
+            }
+
+            if (onlyAvailable)
+            {
+                booksQuery = booksQuery.Where(book => book.Availability);
+            }
+
+            booksQuery = booksQuery.Skip(from).Take(count);
+            var books = SelectBooksFromBookRecords(dbContext, booksQuery);
+
+            return books;
+        }
+
+        private IQueryable<Book> SelectBooksFromBookRecords(BookLibraryContext dbContext, IQueryable<BookRecord> bookRecords)
+        {
+            var books = bookRecords.Select(book => Book.FromPersistence(
+                book.ID,
+                book.Name,
+                dbContext.Authors.Join(
+                    dbContext.BooksAuthors.Where(bookAuthor => bookAuthor.BookId == book.ID),
+                    author => author.ID,
+                    bookAuthor => bookAuthor.AuthorId,
+                    (author, bookAuthor) => author)
+                .Select(authorRecord => authorRecord.Name).ToList(),
+                book.Year,
+                book.Availability
+            ));
+            return books;
+        }
+
+        private void SaveBookAuthors(BookLibraryContext dbContext, IEnumerable<string> authors, int bookId)
+        {
+            if (authors is not null)
+            {
+                foreach (var author in authors)
+                {
+                    var authorRecord = dbContext.Authors.FirstOrDefault(record => record.Name == author);
+                    if (authorRecord is null)
+                    {
+                        dbContext.Authors.Add(new AuthorRecord { Name = author });
+                        dbContext.SaveChanges();
+                        authorRecord = dbContext.Authors.FirstOrDefault(record => record.Name == author);
+                    }
+
+                    dbContext.BooksAuthors.Add(new BookAuthorRecord { AuthorId = authorRecord.ID, BookId = bookId });
+                    dbContext.SaveChanges();
+                }
+            }
+        }
+
+        #endregion
     }
+
 }

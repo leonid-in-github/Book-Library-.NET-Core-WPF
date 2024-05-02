@@ -8,8 +8,6 @@ namespace BookLibrary.UI.Windows
 {
     public partial class BookLibraryWindow : Window
     {
-        protected readonly IBookLibraryRepository DataStore = new BookLibraryRepository();
-
         public BookLibraryWindow() : base()
         {
             Icon = (BitmapSource)new ImageSourceConverter()

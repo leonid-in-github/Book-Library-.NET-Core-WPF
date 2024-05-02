@@ -1,9 +1,12 @@
-﻿using BookLibrary.UI.HelperClasses;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Storage.Repositories;
+using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Pages;
 using BookLibrary.UI.Windows;
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace BookLibrary.UI
@@ -13,6 +16,7 @@ namespace BookLibrary.UI
     /// </summary>
     public partial class MainWindow : BookLibraryWindow
     {
+        private readonly IAccountRepository accountRepository = new AccountRepository();
         private readonly LoginWindow loginWindow = new LoginWindow();
 
         public ICommand NavigateUserCabinet { get; }
@@ -27,7 +31,7 @@ namespace BookLibrary.UI
 
             DataContext = this;
 
-            LoadMainWindow();
+            LoadMainWindow().GetAwaiter().GetResult();
 
             NavigateUserCabinet = new NavigateUserCabinetCommand(MainFrame);
 
@@ -37,7 +41,7 @@ namespace BookLibrary.UI
             Closing += MainWindow_Closing;
         }
 
-        private void LoadMainWindow()
+        private async Task LoadMainWindow()
         {
             if (String.IsNullOrEmpty(LastSession.Login) || String.IsNullOrEmpty(LastSession.Password))
             {
@@ -46,7 +50,7 @@ namespace BookLibrary.UI
             }
             else
             {
-                var actualAccountId = DataStore.Account.Login(LastSession.Login, LastSession.Password);
+                var actualAccountId = await accountRepository.Login(LastSession.Login, LastSession.Password);
 
                 if (actualAccountId > 0)
                 {

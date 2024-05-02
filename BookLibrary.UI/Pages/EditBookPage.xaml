@@ -1,4 +1,4 @@
-﻿<bl:BookLibraryPage x:Class="BookLibrary.UI.Pages.EditBookPage"
+﻿<Page x:Class="BookLibrary.UI.Pages.EditBookPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -24,4 +24,4 @@
             </Button>
         </StackPanel>
     </Grid>
-</bl:BookLibraryPage>
+</Page>

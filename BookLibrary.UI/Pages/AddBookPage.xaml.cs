@@ -1,4 +1,7 @@
-﻿using BookLibrary.Storage.Models.Book;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Storage.Models.Book;
+using BookLibrary.Storage.Repositories;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -8,8 +11,10 @@ namespace BookLibrary.UI.Pages
     /// <summary>
     /// Interaction logic for AddBookPage.xaml
     /// </summary>
-    public partial class AddBookPage : BookLibraryPage
+    public partial class AddBookPage : Page
     {
+        private readonly IBooksRepository booksRepository = new BooksRepository();
+
         private Page _previousPage;
 
         public AddBookPage(Page previousPage)
@@ -24,17 +29,12 @@ namespace BookLibrary.UI.Pages
             btnAddBook.Click += btnAddBook_Click;
         }
 
-        private void AddBook()
+        private async Task AddBook()
         {
             if (!string.IsNullOrEmpty(bookView.BookName) && !string.IsNullOrEmpty(bookView.BookAuthors))
             {
-                var book = new Book()
-                {
-                    Name = bookView.BookName,
-                    Authors = bookView.BookAuthors,
-                    Year = bookView.BookYear
-                };
-                DataStore.Books.AddBook(book);
+                var book = new Book(bookView.BookName, bookView.BookAuthors.Split(","), bookView.BookYear, true);
+                await booksRepository.AddBook(book);
                 bookView.BookName = string.Empty;
                 bookView.BookAuthors = string.Empty;
                 this.NavigationService.Navigated += NavigationService_Navigated;
@@ -61,9 +61,9 @@ namespace BookLibrary.UI.Pages
             NavigationService.Navigate(_previousPage);
         }
 
-        private void btnAddBook_Click(object sender, RoutedEventArgs e)
+        private async void btnAddBook_Click(object sender, RoutedEventArgs e)
         {
-            AddBook();
+            await AddBook();
         }
     }
 }

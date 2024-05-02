@@ -1,7 +1,9 @@
-﻿using BookLibrary.Storage.Models.Book;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Storage.Models.Book;
 using BookLibrary.Storage.Repositories;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
@@ -9,7 +11,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class BookTrackViewModel : INotifyPropertyChanged
     {
-        private readonly IBookLibraryRepository DataStore = new BookLibraryRepository();
+        private readonly IBooksRepository booksRepository = new BooksRepository();
         private const int displayBookTrackItemsDefaultCount = 10;
         private string _filter = displayBookTrackItemsDefaultCount.ToString();
         private Visibility _filterVisibility = Visibility.Hidden;
@@ -77,20 +79,20 @@ namespace BookLibrary.UI.ViewModels
             get { return bookTracksView; }
         }
 
-        public void LoadBookTrack()
+        public async Task LoadBookTrack()
         {
-            Book = DataStore.Books.GetBookTrack(AppUser.GetInstance().AccountId, _book.BookId, _filter);
+            Book = await booksRepository.GetBookTrack(AppUser.GetInstance().AccountId, _book.BookId, _filter);
         }
 
-        public void PutBook()
+        public async Task PutBook()
         {
-            DataStore.Books.PutBook(AppUser.GetInstance().AccountId, _book.BookId);
+            await booksRepository.PutBook(AppUser.GetInstance().AccountId, _book.BookId);
             Book.BookAvailability = true;
         }
 
-        public void TakeBook()
+        public async Task TakeBook()
         {
-            DataStore.Books.TakeBook(AppUser.GetInstance().AccountId, _book.BookId);
+            await booksRepository.TakeBook(AppUser.GetInstance().AccountId, _book.BookId);
             Book.BookAvailability = false;
         }
     }

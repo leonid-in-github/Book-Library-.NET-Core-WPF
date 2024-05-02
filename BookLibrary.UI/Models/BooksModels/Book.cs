@@ -14,7 +14,7 @@ namespace BookLibrary.UI.Models.BooksModels
         {
             ID = bookitem.ID;
             Name = bookitem.Name;
-            Authors = bookitem.Authors;
+            Authors = string.Join(", ", bookitem.Authors);
             Year = bookitem.Year.Year.ToString();
             Availability = (bool)bookitem.Availability ? "Available" : "Not available";
         }

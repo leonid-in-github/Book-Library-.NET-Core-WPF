@@ -1,4 +1,5 @@
-﻿using BookLibrary.Storage.Models.Account;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Storage.Models.Account;
 using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Windows;
@@ -9,11 +10,11 @@ namespace BookLibrary.UI.ViewModels
 {
     public class UserCabinetViewModel
     {
-        private readonly IBookLibraryRepository DataStore = new BookLibraryRepository();
+        private readonly IAccountRepository accountRepository = new AccountRepository();
 
         public UserCabinetViewModel()
         {
-            _user = DataStore.Account.GetUser(AppUser.GetInstance().AccountId);
+            _user = accountRepository.GetUser(AppUser.GetInstance().AccountId).GetAwaiter().GetResult();
             foreach (Window window in Application.Current.Windows)
             {
                 if (window is LoginWindow)
@@ -24,7 +25,7 @@ namespace BookLibrary.UI.ViewModels
             }
         }
 
-        private DisplayUserModel _user;
+        private User _user;
 
         public string FirstName
         {

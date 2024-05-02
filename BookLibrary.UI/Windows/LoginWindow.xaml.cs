@@ -1,7 +1,10 @@
-﻿using BookLibrary.UI.HelperClasses;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Storage.Repositories;
+using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.Pages;
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -13,6 +16,8 @@ namespace BookLibrary.UI.Windows
     /// </summary>
     public partial class LoginWindow : BookLibraryWindow
     {
+        private readonly IAccountRepository accountRepository = new AccountRepository();
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -41,14 +46,14 @@ namespace BookLibrary.UI.Windows
             }
         }
 
-        private void Login()
+        private async Task Login()
         {
             var login = tbLogin.Text;
             tbLogin.Text = string.Empty;
             var password = tbPassword.Password;
             tbPassword.Password = string.Empty;
 
-            var actualAccountId = DataStore.Account.Login(login, password);
+            var actualAccountId = await accountRepository.Login(login, password);
 
             if (actualAccountId > 0)
             {
@@ -77,9 +82,9 @@ namespace BookLibrary.UI.Windows
             registrationWindow.Show();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Login();
+            await Login();
         }
 
         private void btnRegistration_Click(object sender, RoutedEventArgs e)

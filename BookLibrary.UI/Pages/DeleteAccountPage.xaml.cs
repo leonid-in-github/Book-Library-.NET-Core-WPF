@@ -1,4 +1,6 @@
-﻿using BookLibrary.UI.HelperClasses;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Storage.Repositories;
+using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.Windows;
 using System;
 using System.Windows;
@@ -10,8 +12,10 @@ namespace BookLibrary.UI.Pages
     /// <summary>
     /// Interaction logic for DeleteAccountPage.xaml
     /// </summary>
-    public partial class DeleteAccountPage : BookLibraryPage
+    public partial class DeleteAccountPage : Page
     {
+        private readonly IAccountRepository accountRepository = new AccountRepository();
+
         private Page _previousPage;
 
         public DeleteAccountPage(Page previousPage)
@@ -28,9 +32,9 @@ namespace BookLibrary.UI.Pages
             NavigationService.Navigate(_previousPage);
         }
 
-        private void btnDeleteAccount_Click(object sender, RoutedEventArgs e)
+        private async void btnDeleteAccount_Click(object sender, RoutedEventArgs e)
         {
-            if (DataStore.Account.DeleteAccount(AppUser.GetInstance().AccountId, pbPassword.Password))
+            if (await accountRepository.DeleteAccount(AppUser.GetInstance().AccountId, pbPassword.Password))
             {
                 WindowsNavigation.MainWindow?.Hide();
                 ResetSession();

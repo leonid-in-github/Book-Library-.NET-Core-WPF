@@ -1,4 +1,5 @@
-﻿using BookLibrary.Storage.Repositories;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Models.BooksModels;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -14,7 +16,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-        private readonly IBookLibraryRepository DataStore = new BookLibraryRepository();
+        private readonly IBooksRepository booksRepository = new BooksRepository();
 
         private string _userName;
         private ICollectionView _booksView;
@@ -47,7 +49,7 @@ namespace BookLibrary.UI.ViewModels
                 book.ID.ToString().ToLower().Contains(_filterString.ToLower());
         }
 
-        public void LoadBooks(string searchString = "", int from = 0, int count = 10, string filter = "all")
+        public async Task LoadBooks(string searchString = "", int from = 0, int count = 10, string filter = "all")
         {
             ShowPanelCommand.Execute(null);
             UserName = AppUser.GetInstance().Login;
@@ -55,16 +57,16 @@ namespace BookLibrary.UI.ViewModels
             switch (filter)
             {
                 case "all":
-                    books = DataStore.Books.GetBooks(searchString, from, count).Select(book => new Book(book)).ToList();
-                    BooksTotalCount = DataStore.Books.GetBooksTotalCount(searchString);
+                    books = (await booksRepository.GetBooks(searchString, false, -1, from, count)).Select(book => new Book(book)).ToList();
+                    BooksTotalCount = await booksRepository.GetBooksTotalCount(searchString);
                     break;
                 case "available":
-                    books = DataStore.Books.GetAvaliableBooks(searchString, from, count).Select(book => new Book(book)).ToList();
-                    BooksTotalCount = DataStore.Books.GetAvaliableBooksTotalCount(searchString);
+                    books = (await booksRepository.GetAvaliableBooks(searchString, from, count)).Select(book => new Book(book)).ToList();
+                    BooksTotalCount = await booksRepository.GetAvaliableBooksTotalCount(searchString);
                     break;
                 case "taken by user":
-                    books = DataStore.Books.GetBooksByUser(AppUser.GetInstance().AccountId, searchString, from, count).Select(book => new Book(book)).ToList();
-                    BooksTotalCount = DataStore.Books.GetBooksByUserTotalCount(AppUser.GetInstance().AccountId, searchString);
+                    books = (await booksRepository.GetBooksByUser(AppUser.GetInstance().AccountId, searchString, from, count)).Select(book => new Book(book)).ToList();
+                    BooksTotalCount = await booksRepository.GetBooksByUserTotalCount(AppUser.GetInstance().AccountId, searchString);
                     break;
             }
 

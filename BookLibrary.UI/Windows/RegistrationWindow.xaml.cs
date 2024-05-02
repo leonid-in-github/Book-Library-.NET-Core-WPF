@@ -1,4 +1,7 @@
-﻿using System.ComponentModel;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Storage.Repositories;
+using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -10,6 +13,8 @@ namespace BookLibrary.UI.Windows
     /// </summary>
     public partial class RegistrationWindow : BookLibraryWindow
     {
+        private readonly IAccountRepository accountRepository = new AccountRepository();
+
         private Window _loginWindow;
 
         public RegistrationWindow(Window loginWindow)
@@ -30,7 +35,7 @@ namespace BookLibrary.UI.Windows
             this.Closing += RegistrationWindow_Closing;
         }
 
-        private void Register()
+        private async Task Register()
         {
             if (!ValidateEmptyInputData())
             {
@@ -44,7 +49,7 @@ namespace BookLibrary.UI.Windows
                 RegistrationGrid.Background = RegistrationGridAlertBackground;
                 return;
             }
-            if (DataStore.Account.Register(tbLogin.Text, pbPassword.Password, tbFirstName.Text, tbLastName.Text, tbEmail.Text) <= 0)
+            if (await accountRepository.Register(tbLogin.Text, pbPassword.Password, tbFirstName.Text, tbLastName.Text, tbEmail.Text) <= 0)
             {
                 Message.Content = "Registration data base error";
                 RegistrationGrid.Background = RegistrationGridAlertBackground;
@@ -53,9 +58,9 @@ namespace BookLibrary.UI.Windows
             this.Close();
         }
 
-        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            Register();
+            await Register();
         }
 
         private void RegistrationWindow_Closing(object sender, CancelEventArgs e)

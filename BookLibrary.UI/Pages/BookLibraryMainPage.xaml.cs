@@ -1,4 +1,6 @@
-﻿using BookLibrary.Storage.Models.Book;
+﻿using BookLibrary.Repository.Repositories;
+using BookLibrary.Storage.Models.Book;
+using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.Models.BooksModels;
 using BookLibrary.UI.ViewModels;
 using System;
@@ -11,8 +13,10 @@ namespace BookLibrary.UI.Pages
     /// <summary>
     /// Interaction logic for BookLibraryMainPage.xaml
     /// </summary>
-    public partial class BookLibraryMainPage : BookLibraryPage
+    public partial class BookLibraryMainPage : Page
     {
+        private readonly IBooksRepository booksRepository = new BooksRepository();
+
         public BookLibraryMainPage()
         {
             InitializeComponent();
@@ -48,23 +52,20 @@ namespace BookLibrary.UI.Pages
         {
             var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
-            var editBook = new Storage.Models.Book.Book()
-            {
-                ID = book.ID
-            };
+            var editBook = Storage.Models.Book.Book.FromPersistence(book.ID ?? 0, book.Name, book.Authors.Split(","), DateTime.Parse($"01/01/{book.Year}"), book.Availability == "Available");
             NavigationService.Navigate(new EditBookPage(this, editBook));
         }
 
-        private void btnTrackBook_Click(object sender, RoutedEventArgs e)
+        private async void btnTrackBook_Click(object sender, RoutedEventArgs e)
         {
             var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
-            var trackBook = DataStore.Books.GetBookTrack(AppUser.GetInstance().AccountId, book.ID, "All");
+            var trackBook = await booksRepository.GetBookTrack(AppUser.GetInstance().AccountId, book.ID ?? 0, "All");
             NavigationService.Navigate(new BookTrackPage(this, trackBook));
         }
 
 
-        private void btnDeleteBook_Click(object sender, RoutedEventArgs e)
+        private async void btnDeleteBook_Click(object sender, RoutedEventArgs e)
         {
             var messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
@@ -75,7 +76,7 @@ namespace BookLibrary.UI.Pages
                     var bookId = (booksGridEnumerator.Current as Models.BooksModels.Book)?.ID;
                     if (bookId != null)
                     {
-                        DataStore.Books.DeleteBook((int)bookId);
+                        await booksRepository.DeleteBook((int)bookId);
                     }
                 }
                 LoadBooks();
@@ -215,13 +216,13 @@ namespace BookLibrary.UI.Pages
             LoadBooksPage(pageModel.CurrentPage);
         }
 
-        public void LoadBooksPage(int pageNumber)
+        public async void LoadBooksPage(int pageNumber)
         {
             var searchText = tbSearch.Text;
             var recordsPerPage = pageModel.RecordsPerPage;
             var currentPage = pageNumber;
             var from = recordsPerPage * (currentPage - 1);
-            pageModel.LoadBooks(searchText, from, recordsPerPage, pageModel.Filter);
+            await pageModel.LoadBooks(searchText, from, recordsPerPage, pageModel.Filter);
         }
 
         private void CalculateNamberOfPages()
