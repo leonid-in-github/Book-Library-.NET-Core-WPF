@@ -23,7 +23,7 @@ namespace BookLibrary.Storage.Models.Book
         {
             ID = id;
             Name = name;
-            Authors = authors.Select(author => author.Trim());
+            Authors = authors.Where(author => !string.IsNullOrEmpty(author)).Select(author => author.Trim());
             Year = year;
             Availability = availability;
         }

@@ -136,11 +136,35 @@ namespace BookLibrary.Storage.Repositories
                         tracksQuery = tracksQuery.Take(int.Parse(tracksCount)).OrderByDescending(record => record.ActionTime);
                     }
 
-                    result.TracksList = tracksQuery.Select(bookTrack => BookTrack.FromPersistence(
+                    var tracksQueryJoinAccounts = tracksQuery.Join(
+                        dbContext.Accounts,
+                        track => track.AccountId,
+                        account => account.ID,
+                        (track, account) => new {
+                            account.Login,
+                            account.ProfileId,
+                            track.ActionTime,
+                            track.Action
+                        }
+                        ).OrderByDescending(record => record.ActionTime);
+
+                    var tracksQueryJoinAccountsJoinProfiles = tracksQueryJoinAccounts.Join(
+                        dbContext.Profiles,
+                        track => track.ProfileId,
+                        profile => profile.ID,
+                        (track, profile) => new {
+                            track.Login,
+                            profile.Email,
+                            track.ActionTime,
+                            track.Action
+                        }
+                        ).OrderByDescending(record => record.ActionTime);
+
+                    result.TracksList = tracksQueryJoinAccountsJoinProfiles.Select(bookTrack => BookTrack.FromPersistence(
                         bookId,
                         bookRecord.Name,
-                        accountRecord.Login,
-                        profileRecord.Email,
+                        bookTrack.Login,
+                        bookTrack.Email,
                         bookTrack.ActionTime,
                         bookTrack.Action
                     )).ToList();
@@ -269,8 +293,12 @@ namespace BookLibrary.Storage.Repositories
                         authorRecord = dbContext.Authors.FirstOrDefault(record => record.Name == author);
                     }
 
-                    dbContext.BooksAuthors.Add(new BookAuthorRecord { AuthorId = authorRecord.ID, BookId = bookId });
-                    dbContext.SaveChanges();
+                    var booksAuthorsRecord = dbContext.BooksAuthors.FirstOrDefault(record => record.AuthorId == authorRecord.ID && record.BookId == bookId);
+                    if (booksAuthorsRecord is null)
+                    {
+                        dbContext.BooksAuthors.Add(new BookAuthorRecord { AuthorId = authorRecord.ID, BookId = bookId });
+                        dbContext.SaveChanges();
+                    }
                 }
             }
         }
