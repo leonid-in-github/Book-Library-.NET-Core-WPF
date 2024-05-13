@@ -38,6 +38,7 @@ namespace BookLibrary.UI.Pages
             btnLastPage.Click += btnLastPage_Click;
             cbRecordsPerPage.SelectionChanged += cbRecordsPerPage_SelectionChanged;
             btnRefreshBooksGrid.Click += btnRefreshBooksGrid_Click;
+            Loaded += OnLoaded;
 
         }
 
@@ -236,6 +237,13 @@ namespace BookLibrary.UI.Pages
             pageModel.CurrentPage = 1;
             LoadBooks();
             CalculateNamberOfPages();
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            CalculateNamberOfPages();
+            pageModel.CurrentPage = 1;
+            LoadBooks();
         }
     }
 }

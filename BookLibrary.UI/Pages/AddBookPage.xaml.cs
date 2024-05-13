@@ -37,7 +37,7 @@ namespace BookLibrary.UI.Pages
                 await booksRepository.AddBook(book);
                 bookView.BookName = string.Empty;
                 bookView.BookAuthors = string.Empty;
-                this.NavigationService.Navigated += NavigationService_Navigated;
+                NavigationService.Navigated += NavigationService_Navigated;
                 NavigationService.Navigate(_previousPage);
             }
         }
