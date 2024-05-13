@@ -15,13 +15,9 @@ namespace BookLibrary.UI.Pages
     {
         private readonly IBooksRepository booksRepository = new BooksRepository();
 
-        private Page _previousPage;
-
-        public AddBookPage(Page previousPage)
+        public AddBookPage()
         {
             InitializeComponent();
-
-            _previousPage = previousPage;
 
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
 
@@ -38,7 +34,7 @@ namespace BookLibrary.UI.Pages
                 bookView.BookName = string.Empty;
                 bookView.BookAuthors = string.Empty;
                 NavigationService.Navigated += NavigationService_Navigated;
-                NavigationService.Navigate(_previousPage);
+                NavigationService.GoBack();
             }
         }
 
@@ -58,7 +54,7 @@ namespace BookLibrary.UI.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(_previousPage);
+            NavigationService.GoBack();
         }
 
         private async void btnAddBook_Click(object sender, RoutedEventArgs e)

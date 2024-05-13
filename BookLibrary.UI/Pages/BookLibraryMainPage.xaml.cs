@@ -21,7 +21,7 @@ namespace BookLibrary.UI.Pages
         {
             InitializeComponent();
 
-            DataContext = pageModel = new MainPageViewModel(this);
+            DataContext = pageModel = new MainPageViewModel();
 
             BooksGrid.SelectionChanged += Datagrid_Row_Click;
             BooksGrid.AutoGeneratingColumn += Datagrid_AutoGeneratingColumn;
@@ -46,7 +46,7 @@ namespace BookLibrary.UI.Pages
 
         private void btnAddBook_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddBookPage(this));
+            NavigationService.Navigate(new AddBookPage());
         }
 
         private void btnEditBook_Click(object sender, RoutedEventArgs e)
@@ -54,7 +54,7 @@ namespace BookLibrary.UI.Pages
             var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
             var editBook = Storage.Models.Book.Book.FromPersistence(book.ID ?? 0, book.Name, book.Authors.Split(","), DateTime.Parse($"01/01/{book.Year}"), book.Availability == "Available");
-            NavigationService.Navigate(new EditBookPage(this, editBook));
+            NavigationService.Navigate(new EditBookPage(editBook));
         }
 
         private async void btnTrackBook_Click(object sender, RoutedEventArgs e)
@@ -62,7 +62,7 @@ namespace BookLibrary.UI.Pages
             var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
             var trackBook = await booksRepository.GetBookTrack(AppUser.GetInstance().AccountId, book.ID ?? 0, "All");
-            NavigationService.Navigate(new BookTrackPage(this, trackBook));
+            NavigationService.Navigate(new BookTrackPage(trackBook));
         }
 
 
@@ -114,6 +114,7 @@ namespace BookLibrary.UI.Pages
 
         private void btnRefreshBooksGrid_Click(object sender, RoutedEventArgs e)
         {
+            CalculateNamberOfPages();
             LoadBooks();
         }
 
@@ -242,8 +243,6 @@ namespace BookLibrary.UI.Pages
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             CalculateNamberOfPages();
-            pageModel.CurrentPage = 1;
-            LoadBooks();
         }
     }
 }

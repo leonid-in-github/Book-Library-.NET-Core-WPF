@@ -8,14 +8,11 @@ namespace BookLibrary.UI.Pages
 {
     public partial class BookTrackPage : Page
     {
-        private Page _previousPage;
-
         private BookTrackViewModel pageViewModel;
 
-        public BookTrackPage(Page previousPage, BookTrackList book)
+        public BookTrackPage(BookTrackList book)
         {
             InitializeComponent();
-            _previousPage = previousPage;
 
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
             btnBackward.Click += btnBackward_Click;
@@ -40,7 +37,7 @@ namespace BookLibrary.UI.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(_previousPage);
+            NavigationService.GoBack();
         }
 
         private async void btnActionBook_Click(object sender, RoutedEventArgs e)

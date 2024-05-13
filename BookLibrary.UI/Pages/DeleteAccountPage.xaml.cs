@@ -16,20 +16,17 @@ namespace BookLibrary.UI.Pages
     {
         private readonly IAccountRepository accountRepository = new AccountRepository();
 
-        private Page _previousPage;
-
-        public DeleteAccountPage(Page previousPage)
+        public DeleteAccountPage()
         {
             InitializeComponent();
             SetupPage();
-            _previousPage = previousPage;
 
             btnDeleteAccount.Click += btnDeleteAccount_Click;
         }
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(_previousPage);
+            NavigationService.GoBack();
         }
 
         private async void btnDeleteAccount_Click(object sender, RoutedEventArgs e)

@@ -30,9 +30,9 @@ namespace BookLibrary.UI.ViewModels
         private int _booksTotalCount = 0;
         private string _filter = "all";
 
-        public MainPageViewModel(Page previousPage)
+        public MainPageViewModel()
         {
-            NavigateUserCabinet = new NavigateUserCabinetCommand(previousPage);
+            NavigateUserCabinet = new NavigateUserCabinetCommand();
         }
 
         private bool BooksFilter(object item)

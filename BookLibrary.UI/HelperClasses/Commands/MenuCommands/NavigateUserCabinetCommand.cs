@@ -20,16 +20,16 @@ namespace BookLibrary.UI.HelperClasses.Commands
         {
             _executeMethod = new Action(() =>
             {
-                mainFrame.Navigate(new UserCabinetPage((Page)mainFrame.Content));
+                mainFrame.Navigate(new UserCabinetPage());
             });
         }
 
 
-        public NavigateUserCabinetCommand(Page previousPage)
+        public NavigateUserCabinetCommand()
         {
             _executeMethod = new Action(() =>
             {
-                WindowsNavigation.MainWindow?.MainFrame.Navigate(new UserCabinetPage(previousPage));
+                WindowsNavigation.MainWindow?.MainFrame.Navigate(new UserCabinetPage());
             });
         }
 

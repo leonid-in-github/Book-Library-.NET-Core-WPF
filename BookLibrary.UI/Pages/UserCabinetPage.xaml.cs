@@ -10,13 +10,9 @@ namespace BookLibrary.UI.Pages
     /// </summary>
     public partial class UserCabinetPage : Page
     {
-        private Page _previousPage;
-
-        public UserCabinetPage(Page previousPage)
+        public UserCabinetPage()
         {
             InitializeComponent();
-
-            _previousPage = previousPage;
 
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
 
@@ -29,17 +25,17 @@ namespace BookLibrary.UI.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(_previousPage);
+            NavigationService.GoBack();
         }
 
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ChangePasswordPage(this));
+            NavigationService.Navigate(new ChangePasswordPage());
         }
 
         private void btnDeleteAccount_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DeleteAccountPage(this));
+            NavigationService.Navigate(new DeleteAccountPage());
         }
     }
 }

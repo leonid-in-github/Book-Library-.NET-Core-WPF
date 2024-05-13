@@ -13,22 +13,19 @@ namespace BookLibrary.UI.Pages
     public partial class EditBookPage : Page
     {
         private readonly IBooksRepository booksRepository = new BooksRepository();
-        private Page _previousPage;
 
         private Book _book;
 
-        public EditBookPage(Page previousPage, Book book)
+        public EditBookPage(Book book)
         {
             InitializeComponent();
-
-            _previousPage = previousPage;
 
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
 
             _book = booksRepository.GetBook((int)book.ID).GetAwaiter().GetResult();
 
             if (book == null || _book == null)
-                NavigationService.Navigate(_previousPage);
+                NavigationService.GoBack();
 
             bookView.BookName = _book.Name;
             bookView.BookAuthors = string.Join(", ", _book.Authors);
@@ -40,7 +37,7 @@ namespace BookLibrary.UI.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(_previousPage);
+            NavigationService.GoBack();
         }
 
         private async void btnUpdateBook_Click(object sender, RoutedEventArgs e)
@@ -52,7 +49,7 @@ namespace BookLibrary.UI.Pages
                 _book.Year = bookView.BookYear;
                 await booksRepository.UpdateBook(_book);
                 this.NavigationService.Navigated += NavigationService_Navigated;
-                NavigationService.Navigate(_previousPage);
+                NavigationService.GoBack();
             }
         }
 

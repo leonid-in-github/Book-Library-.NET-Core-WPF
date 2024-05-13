@@ -12,13 +12,11 @@ namespace BookLibrary.UI.Pages
     public partial class ChangePasswordPage : Page
     {
         private readonly IAccountRepository accountRepository = new AccountRepository();
-        private Page _previousPage;
 
-        public ChangePasswordPage(Page previousPage)
+        public ChangePasswordPage()
         {
             InitializeComponent();
 
-            _previousPage = previousPage;
             btnBackward.Background = PagesPropertiesProvider.BackwardImage;
             btnBackward.Click += btnBackward_Click;
             btnChangePassword.Click += btnChangePassword_Click;
@@ -26,7 +24,7 @@ namespace BookLibrary.UI.Pages
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(_previousPage);
+            NavigationService.GoBack();
         }
 
         private async void btnChangePassword_Click(object sender, RoutedEventArgs e)
@@ -36,7 +34,7 @@ namespace BookLibrary.UI.Pages
                 if (await accountRepository.ChangeAccountPassword(AppUser.GetInstance().AccountId, pbPassword.Password, pbNewPassword.Password))
                 {
                     MessageBox.Show("Password changed", "Book Library Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                    NavigationService.Navigate(_previousPage);
+                    NavigationService.GoBack();
                 }
                 lblMasage.Content = "Can't change password with this password";
             }
