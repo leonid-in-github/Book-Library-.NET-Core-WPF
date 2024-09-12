@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BookLibrary.Repository.Models.Records.Account
+namespace BookLibrary.Storage.Models.Records.Account
 {
     public class ProfileRecord
     {

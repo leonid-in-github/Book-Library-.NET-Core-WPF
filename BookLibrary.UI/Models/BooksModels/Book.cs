@@ -1,6 +1,4 @@
-﻿using BookLibrary.Storage.Models.Book;
-
-namespace BookLibrary.UI.Models.BooksModels
+﻿namespace BookLibrary.UI.Models.BooksModels
 {
     public class Book
     {

@@ -1,7 +1,6 @@
-﻿using BookLibrary.Repository.Models.Records.Account;
-using BookLibrary.Repository.Repositories;
-using BookLibrary.Storage.Contexts;
+﻿using BookLibrary.Storage.Contexts;
 using BookLibrary.Storage.Models.Account;
+using BookLibrary.Storage.Models.Records.Account;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;

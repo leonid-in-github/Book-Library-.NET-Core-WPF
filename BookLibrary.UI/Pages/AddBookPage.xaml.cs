@@ -1,5 +1,4 @@
-﻿using BookLibrary.Repository.Repositories;
-using BookLibrary.Storage.Models.Book;
+﻿using BookLibrary.Storage.Models.Book;
 using BookLibrary.Storage.Repositories;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,7 +12,7 @@ namespace BookLibrary.UI.Pages
     /// </summary>
     public partial class AddBookPage : Page
     {
-        private readonly IBooksRepository booksRepository = new BooksRepository();
+        private readonly BooksRepository booksRepository = new();
 
         public AddBookPage()
         {
@@ -40,11 +39,9 @@ namespace BookLibrary.UI.Pages
 
         private void NavigationService_Navigated(object sender, NavigationEventArgs e)
         {
-            var frame = sender as Frame;
-            if (frame != null)
+            if (sender is Frame frame)
             {
-                var page = frame.NavigationService.Content as BookLibraryMainPage;
-                if (page != null)
+                if (frame.NavigationService.Content is BookLibraryMainPage page)
                 {
                     page.LoadBooksPage(1);
                 }

@@ -1,8 +1,6 @@
-﻿using BookLibrary.Repository.Models.Book;
-using BookLibrary.Repository.Models.Records.Book;
-using BookLibrary.Repository.Repositories;
-using BookLibrary.Storage.Contexts;
+﻿using BookLibrary.Storage.Contexts;
 using BookLibrary.Storage.Models.Book;
+using BookLibrary.Storage.Models.Records.Book;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -27,7 +25,7 @@ namespace BookLibrary.Storage.Repositories
             return Task.FromResult(BuildGetBooksQuery(dbContext, searchString, onlyAvailable, userId, from, count).ToList());
         }
 
-        public Task<List<Book>> GetAvaliableBooks(string searchString = "", int from = 0, int count = 10)
+        public Task<List<Book>> GetAvailableBooks(string searchString = "", int from = 0, int count = 10)
         {
             return GetBooks(searchString, true, -1, from, count);
         }
@@ -49,7 +47,7 @@ namespace BookLibrary.Storage.Repositories
             return Task.FromResult(BuildGetBooksQuery(dbContext, searchString, false, userId).Count());
         }
 
-        public Task<int> GetAvaliableBooksTotalCount(string searchString = "")
+        public Task<int> GetAvailableBooksTotalCount(string searchString = "")
         {
             using var dbContext = new BookLibraryContext();
             return Task.FromResult(BuildGetBooksQuery(dbContext, searchString, true).Count());
@@ -140,7 +138,8 @@ namespace BookLibrary.Storage.Repositories
                         dbContext.Accounts,
                         track => track.AccountId,
                         account => account.ID,
-                        (track, account) => new {
+                        (track, account) => new
+                        {
                             account.Login,
                             account.ProfileId,
                             track.ActionTime,
@@ -152,7 +151,8 @@ namespace BookLibrary.Storage.Repositories
                         dbContext.Profiles,
                         track => track.ProfileId,
                         profile => profile.ID,
-                        (track, profile) => new {
+                        (track, profile) => new
+                        {
                             track.Login,
                             profile.Email,
                             track.ActionTime,

@@ -1,5 +1,4 @@
-﻿using BookLibrary.Repository.Repositories;
-using BookLibrary.Storage.Repositories;
+﻿using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Pages;
@@ -16,8 +15,8 @@ namespace BookLibrary.UI
     /// </summary>
     public partial class MainWindow : BookLibraryWindow
     {
-        private readonly IAccountRepository accountRepository = new AccountRepository();
-        private readonly LoginWindow loginWindow = new LoginWindow();
+        private readonly AccountRepository accountRepository = new();
+        private readonly LoginWindow loginWindow = new();
 
         public ICommand NavigateUserCabinet { get; }
 

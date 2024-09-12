@@ -1,5 +1,5 @@
-﻿using BookLibrary.Repository.Models.Records.Account;
-using BookLibrary.Repository.Models.Records.Book;
+﻿using BookLibrary.Storage.Models.Records.Account;
+using BookLibrary.Storage.Models.Records.Book;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookLibrary.Storage.Contexts

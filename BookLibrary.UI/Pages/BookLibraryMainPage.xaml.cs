@@ -1,7 +1,4 @@
-﻿using BookLibrary.Repository.Repositories;
-using BookLibrary.Storage.Models.Book;
-using BookLibrary.Storage.Repositories;
-using BookLibrary.UI.Models.BooksModels;
+﻿using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.ViewModels;
 using System;
 using System.Windows;

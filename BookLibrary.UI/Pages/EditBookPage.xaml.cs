@@ -1,5 +1,4 @@
-﻿using BookLibrary.Repository.Repositories;
-using BookLibrary.Storage.Models.Book;
+﻿using BookLibrary.Storage.Models.Book;
 using BookLibrary.Storage.Repositories;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,11 +54,9 @@ namespace BookLibrary.UI.Pages
 
         private void NavigationService_Navigated(object sender, NavigationEventArgs e)
         {
-            var frame = sender as Frame;
-            if (frame != null)
+            if (sender is Frame frame)
             {
-                var page = frame.NavigationService?.Content as BookLibraryMainPage;
-                if (page != null)
+                if (frame.NavigationService?.Content is BookLibraryMainPage page)
                 {
                     page.LoadBooks();
                 }

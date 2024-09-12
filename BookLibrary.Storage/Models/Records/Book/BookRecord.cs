@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BookLibrary.Repository.Models.Records.Book
+namespace BookLibrary.Storage.Models.Records.Book
 {
     public class BookRecord
     {

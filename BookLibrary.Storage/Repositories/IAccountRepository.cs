@@ -1,7 +1,7 @@
 ﻿using BookLibrary.Storage.Models.Account;
 using System.Threading.Tasks;
 
-namespace BookLibrary.Repository.Repositories
+namespace BookLibrary.Storage.Repositories
 {
     public interface IAccountRepository
     {

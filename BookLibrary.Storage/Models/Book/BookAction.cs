@@ -1,4 +1,4 @@
-﻿namespace BookLibrary.Repository.Models.Book
+﻿namespace BookLibrary.Storage.Models.Book
 {
     public enum BookAction
     {

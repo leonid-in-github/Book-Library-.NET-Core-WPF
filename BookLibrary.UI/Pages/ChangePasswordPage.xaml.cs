@@ -1,5 +1,4 @@
-﻿using BookLibrary.Repository.Repositories;
-using BookLibrary.Storage.Repositories;
+﻿using BookLibrary.Storage.Repositories;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;

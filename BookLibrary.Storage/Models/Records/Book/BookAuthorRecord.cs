@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace BookLibrary.Repository.Models.Records.Book
+namespace BookLibrary.Storage.Models.Records.Book
 {
     [PrimaryKey(nameof(BookId), nameof(AuthorId))]
     public class BookAuthorRecord

@@ -1,5 +1,4 @@
-﻿using BookLibrary.Repository.Repositories;
-using BookLibrary.Storage.Repositories;
+﻿using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.HelperClasses;
 using BookLibrary.UI.HelperClasses.Commands;
 using BookLibrary.UI.Models.BooksModels;
@@ -8,7 +7,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -16,7 +14,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-        private readonly IBooksRepository booksRepository = new BooksRepository();
+        private readonly BooksRepository booksRepository = new();
 
         private string _userName;
         private ICollectionView _booksView;
@@ -61,8 +59,8 @@ namespace BookLibrary.UI.ViewModels
                     BooksTotalCount = await booksRepository.GetBooksTotalCount(searchString);
                     break;
                 case "available":
-                    books = (await booksRepository.GetAvaliableBooks(searchString, from, count)).Select(book => new Book(book)).ToList();
-                    BooksTotalCount = await booksRepository.GetAvaliableBooksTotalCount(searchString);
+                    books = (await booksRepository.GetAvailableBooks(searchString, from, count)).Select(book => new Book(book)).ToList();
+                    BooksTotalCount = await booksRepository.GetAvailableBooksTotalCount(searchString);
                     break;
                 case "taken by user":
                     books = (await booksRepository.GetBooksByUser(AppUser.GetInstance().AccountId, searchString, from, count)).Select(book => new Book(book)).ToList();
