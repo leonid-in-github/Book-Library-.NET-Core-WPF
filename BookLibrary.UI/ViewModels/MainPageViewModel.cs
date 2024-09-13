@@ -1,6 +1,6 @@
 ﻿using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.HelperClasses;
-using BookLibrary.UI.HelperClasses.Commands;
+using BookLibrary.UI.HelperClasses.Commands.MenuCommands;
 using BookLibrary.UI.Models.BooksModels;
 using System;
 using System.Collections.Generic;
@@ -36,15 +36,15 @@ namespace BookLibrary.UI.ViewModels
         private bool BooksFilter(object item)
         {
             var book = item as Book;
-            return book.Name.ToString().ToLower().Contains(_filterString.ToLower())
+            return book.Name.ToString().Contains(_filterString, StringComparison.CurrentCultureIgnoreCase)
                 ||
-                book.Authors.ToString().ToLower().Contains(_filterString.ToLower())
+                book.Authors.ToString().Contains(_filterString, StringComparison.CurrentCultureIgnoreCase)
                 ||
                 book.Year.Contains(_filterString)
                 ||
-                book.Availability.ToString().ToLower().Contains(_filterString.ToLower())
+                book.Availability.ToString().Contains(_filterString, StringComparison.CurrentCultureIgnoreCase)
                 ||
-                book.ID.ToString().ToLower().Contains(_filterString.ToLower());
+                book.ID.ToString().Contains(_filterString, StringComparison.CurrentCultureIgnoreCase);
         }
 
         public async Task LoadBooks(string searchString = "", int from = 0, int count = 10, string filter = "all")
@@ -73,7 +73,7 @@ namespace BookLibrary.UI.ViewModels
             _booksView.SortDescriptions.Add(
                 new SortDescription("ID", ListSortDirection.Descending));
             _booksView.Refresh();
-            OnPropertyChanged("Books");
+            OnPropertyChanged(nameof(Books));
             HidePanelCommand.Execute(null);
         }
 
@@ -86,7 +86,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _filter = value;
-                OnPropertyChanged("Filter");
+                OnPropertyChanged(nameof(Filter));
             }
         }
 
@@ -99,7 +99,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _booksTotalCount = value;
-                OnPropertyChanged("BooksTotalCount");
+                OnPropertyChanged(nameof(BooksTotalCount));
             }
         }
 
@@ -112,7 +112,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _currentPage = value;
-                OnPropertyChanged("CurrentPage");
+                OnPropertyChanged(nameof(CurrentPage));
             }
         }
 
@@ -125,7 +125,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _numberOfPages = value;
-                OnPropertyChanged("NumberOfPages");
+                OnPropertyChanged(nameof(NumberOfPages));
             }
         }
 
@@ -138,7 +138,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _recordsPerPage = value;
-                OnPropertyChanged("RecordsPerPage");
+                OnPropertyChanged(nameof(RecordsPerPage));
             }
         }
 
@@ -151,7 +151,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _userName = value;
-                OnPropertyChanged("UserName");
+                OnPropertyChanged(nameof(UserName));
             }
         }
 
@@ -164,7 +164,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _booksView = value;
-                OnPropertyChanged("Books");
+                OnPropertyChanged(nameof(Books));
             }
         }
 
@@ -174,7 +174,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _filterString = value;
-                OnPropertyChanged("FilterString");
+                OnPropertyChanged(nameof(FilterString));
                 _booksView.Refresh();
             }
         }
@@ -188,7 +188,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _panelLoading = value;
-                OnPropertyChanged("PanelLoading");
+                OnPropertyChanged(nameof(PanelLoading));
             }
         }
 
@@ -201,7 +201,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _panelMainMessage = value;
-                OnPropertyChanged("PanelMainMessage");
+                OnPropertyChanged(nameof(PanelMainMessage));
             }
         }
 
@@ -214,7 +214,7 @@ namespace BookLibrary.UI.ViewModels
             set
             {
                 _panelSubMessage = value;
-                OnPropertyChanged("PanelSubMessage");
+                OnPropertyChanged(nameof(PanelSubMessage));
             }
         }
 

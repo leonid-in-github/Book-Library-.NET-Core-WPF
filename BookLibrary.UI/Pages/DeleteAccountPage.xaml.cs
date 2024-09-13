@@ -20,15 +20,15 @@ namespace BookLibrary.UI.Pages
             InitializeComponent();
             SetupPage();
 
-            btnDeleteAccount.Click += btnDeleteAccount_Click;
+            BtnDeleteAccount.Click += BtnDeleteAccount_Click;
         }
 
-        private void btnBackward_Click(object sender, RoutedEventArgs e)
+        private void BtnBackward_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
-        private async void btnDeleteAccount_Click(object sender, RoutedEventArgs e)
+        private async void BtnDeleteAccount_Click(object sender, RoutedEventArgs e)
         {
             if (await accountRepository.DeleteAccount(AppUser.GetInstance().AccountId, pbPassword.Password))
             {
@@ -49,8 +49,8 @@ namespace BookLibrary.UI.Pages
 
         private void SetupPage()
         {
-            btnBackward.Background = PagesPropertiesProvider.BackwardImage;
-            btnBackward.Click += btnBackward_Click;
+            BtnBackward.Background = PagesPropertiesProvider.BackwardImage;
+            BtnBackward.Click += BtnBackward_Click;
         }
 
         private void ShowLoginWindow()

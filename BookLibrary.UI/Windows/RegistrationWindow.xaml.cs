@@ -22,7 +22,7 @@ namespace BookLibrary.UI.Windows
 
             _loginWindow = loginWindow;
 
-            btnRegister.Click += btnRegister_Click;
+            BtnRegister.Click += BtnRegister_Click;
 
             tbLogin.KeyUp += TextBox_KeyUp;
             tbFirstName.KeyUp += TextBox_KeyUp;
@@ -57,7 +57,7 @@ namespace BookLibrary.UI.Windows
             this.Close();
         }
 
-        private async void btnRegister_Click(object sender, RoutedEventArgs e)
+        private async void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
             await Register();
         }
@@ -71,7 +71,7 @@ namespace BookLibrary.UI.Windows
         {
             if (e.Key == Key.Enter)
             {
-                btnRegister_Click(sender, e);
+                BtnRegister_Click(sender, e);
             }
             e.Handled = true;
         }
@@ -105,7 +105,7 @@ namespace BookLibrary.UI.Windows
             }
             return false;
         }
-        protected new void btnClose_Click(object sender, RoutedEventArgs e)
+        protected new void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }

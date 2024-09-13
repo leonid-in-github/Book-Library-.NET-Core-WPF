@@ -22,9 +22,8 @@ namespace BookLibrary.UI.HelperClasses
                 for (var i = handlers.Count - 1; i >= 0; i--)
                 {
                     var reference = handlers[i];
-                    var handler = reference.Target as EventHandler;
 
-                    if (handler == null)
+                    if (reference.Target is not EventHandler handler)
                     {
                         handlers.RemoveAt(i);
                     }
@@ -50,11 +49,7 @@ namespace BookLibrary.UI.HelperClasses
         /// <param name="handler">The handler.</param>
         public static void AddWeakReferenceHandler(ref List<WeakReference> handlers, EventHandler handler)
         {
-            if (handlers == null)
-            {
-                handlers = new List<WeakReference>();
-            }
-
+            handlers ??= [];
             handlers.Add(new WeakReference(handler));
         }
 
@@ -70,9 +65,8 @@ namespace BookLibrary.UI.HelperClasses
                 for (var i = handlers.Count - 1; i >= 0; i--)
                 {
                     var reference = handlers[i];
-                    var existingHandler = reference.Target as EventHandler;
 
-                    if ((existingHandler == null) || (existingHandler == handler))
+                    if ((reference.Target is not EventHandler existingHandler) || (existingHandler == handler))
                     {
                         handlers.RemoveAt(i);
                     }

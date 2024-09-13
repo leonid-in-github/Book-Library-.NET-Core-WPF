@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
-namespace BookLibrary.UI.HelperClasses.Commands
+namespace BookLibrary.UI.HelperClasses.Commands.MenuCommands
 {
     public class ExitCommand : ICommand
     {
         #region Fields
 
         private readonly Action _executeMethod;
-        private readonly Func<bool> _canExecuteMethod;
         private List<WeakReference> _canExecuteChangedHandlers;
 
         #endregion
@@ -32,32 +31,16 @@ namespace BookLibrary.UI.HelperClasses.Commands
             }
         }
 
-        bool ICommand.CanExecute(object parameter)
-        {
-            return CanExecute();
-        }
+        bool ICommand.CanExecute(object parameter) => true;
 
         void ICommand.Execute(object parameter)
         {
             Execute();
         }
 
-        public bool CanExecute()
-        {
-            if (_canExecuteMethod != null)
-            {
-                return _canExecuteMethod();
-            }
-
-            return true;
-        }
-
         public void Execute()
         {
-            if (_executeMethod != null)
-            {
-                _executeMethod();
-            }
+            _executeMethod?.Invoke();
         }
     }
 }

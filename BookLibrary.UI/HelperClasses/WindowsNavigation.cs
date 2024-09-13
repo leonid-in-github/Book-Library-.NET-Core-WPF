@@ -8,7 +8,7 @@ namespace BookLibrary.UI.HelperClasses
         {
             get
             {
-                return App.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                return System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
             }
         }
     }

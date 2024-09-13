@@ -88,7 +88,7 @@
         <!--<Path Data="M0,44.956 L312.00641,44.956" Height="1" Margin="0,0.25,0,0" Stretch="Fill" DockPanel.Dock="Top" Stroke="Black" />
         <Path Data="M0,44.956 L312.00641,44.956" Height="1" Margin="0,0.25,0,0" Stretch="Fill" DockPanel.Dock="Top" Stroke="#FF2F2F2F" />-->
 
-        <Button x:Name="btnClose"
+        <Button x:Name="BtnClose"
             DockPanel.Dock="Right"
             Style="{StaticResource closeButton}"
             ToolTip="Close"

@@ -18,10 +18,10 @@ namespace BookLibrary.UI.Pages
         {
             InitializeComponent();
 
-            btnBackward.Background = PagesPropertiesProvider.BackwardImage;
+            BtnBackward.Background = PagesPropertiesProvider.BackwardImage;
 
-            btnBackward.Click += btnBackward_Click;
-            btnAddBook.Click += btnAddBook_Click;
+            BtnBackward.Click += BtnBackward_Click;
+            BtnAddBook.Click += BtnAddBook_Click;
         }
 
         private async Task AddBook()
@@ -49,12 +49,12 @@ namespace BookLibrary.UI.Pages
             }
         }
 
-        private void btnBackward_Click(object sender, RoutedEventArgs e)
+        private void BtnBackward_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
-        private async void btnAddBook_Click(object sender, RoutedEventArgs e)
+        private async void BtnAddBook_Click(object sender, RoutedEventArgs e)
         {
             await AddBook();
         }

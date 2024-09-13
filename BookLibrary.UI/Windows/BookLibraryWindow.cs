@@ -21,12 +21,12 @@ namespace BookLibrary.UI.Windows
             }
         }
 
-        protected void btnMinimize_Click(object sender, RoutedEventArgs e)
+        protected void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
-        protected void btnClose_Click(object sender, RoutedEventArgs e)
+        protected void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }

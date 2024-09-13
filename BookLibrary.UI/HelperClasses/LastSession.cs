@@ -11,7 +11,7 @@
 
             set
             {
-                Properties.Settings.Default["Login"] = value;
+                Properties.Settings.Default[nameof(Login)] = value;
                 Properties.Settings.Default.Save();
             }
         }
@@ -25,7 +25,7 @@
 
             set
             {
-                Properties.Settings.Default["Password"] = value;
+                Properties.Settings.Default[nameof(Password)] = value;
                 Properties.Settings.Default.Save();
             }
         }
@@ -39,7 +39,7 @@
 
             set
             {
-                Properties.Settings.Default["AccountId"] = value;
+                Properties.Settings.Default[nameof(AccountId)] = value;
                 Properties.Settings.Default.Save();
             }
         }

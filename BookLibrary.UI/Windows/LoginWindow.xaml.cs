@@ -21,8 +21,8 @@ namespace BookLibrary.UI.Windows
         {
             InitializeComponent();
 
-            btnLogin.Click += btnLogin_Click;
-            btnRegistration.Click += btnRegistration_Click;
+            BtnLogin.Click += BtnLogin_Click;
+            BtnRegistration.Click += BtnRegistration_Click;
             tbLogin.KeyUp += TextBox_KeyUp;
             tbPassword.KeyUp += TextBox_KeyUp;
 
@@ -81,12 +81,12 @@ namespace BookLibrary.UI.Windows
             registrationWindow.Show();
         }
 
-        private async void btnLogin_Click(object sender, RoutedEventArgs e)
+        private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             await Login();
         }
 
-        private void btnRegistration_Click(object sender, RoutedEventArgs e)
+        private void BtnRegistration_Click(object sender, RoutedEventArgs e)
         {
             Registration();
         }
@@ -110,7 +110,7 @@ namespace BookLibrary.UI.Windows
         {
             if (e.Key == Key.Enter)
             {
-                btnLogin_Click(sender, e);
+                BtnLogin_Click(sender, e);
             }
             e.Handled = true;
         }

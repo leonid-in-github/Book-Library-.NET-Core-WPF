@@ -1,6 +1,6 @@
 ﻿using BookLibrary.Storage.Repositories;
 using BookLibrary.UI.HelperClasses;
-using BookLibrary.UI.HelperClasses.Commands;
+using BookLibrary.UI.HelperClasses.Commands.MenuCommands;
 using BookLibrary.UI.Pages;
 using BookLibrary.UI.Windows;
 using System;

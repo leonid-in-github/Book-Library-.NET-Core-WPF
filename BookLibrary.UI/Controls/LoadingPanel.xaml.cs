@@ -48,10 +48,7 @@ namespace BookLibrary.UI.Controls
 
         private void OnCloseClick(object sender, RoutedEventArgs e)
         {
-            if (ClosePanelCommand != null)
-            {
-                ClosePanelCommand.Execute(null);
-            }
+            ClosePanelCommand?.Execute(null);
         }
     }
 }

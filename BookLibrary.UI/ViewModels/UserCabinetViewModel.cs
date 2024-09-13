@@ -1,6 +1,6 @@
 ﻿using BookLibrary.Storage.Models.Account;
 using BookLibrary.Storage.Repositories;
-using BookLibrary.UI.HelperClasses.Commands;
+using BookLibrary.UI.HelperClasses.Commands.MenuCommands;
 using BookLibrary.UI.Windows;
 using System.Windows;
 using System.Windows.Input;
@@ -9,7 +9,7 @@ namespace BookLibrary.UI.ViewModels
 {
     public class UserCabinetViewModel
     {
-        private readonly IAccountRepository accountRepository = new AccountRepository();
+        private readonly AccountRepository accountRepository = new();
 
         public UserCabinetViewModel()
         {
@@ -24,7 +24,7 @@ namespace BookLibrary.UI.ViewModels
             }
         }
 
-        private User _user;
+        private readonly User _user;
 
         public string FirstName
         {

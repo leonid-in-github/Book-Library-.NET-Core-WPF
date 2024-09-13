@@ -53,7 +53,7 @@
                            Grid.Column="0"
                            VerticalAlignment="Center"
                            Margin="10,0,0,0"/>
-                <Button x:Name="btnMinimize"
+                <Button x:Name="BtnMinimize"
                         Style="{StaticResource MinimizeWindowButton}"
                         BorderThickness="0"
                         Content="-"
@@ -62,8 +62,8 @@
                         FontFamily="Montserrat"
                         Cursor="Hand"
                         Grid.Column="1"
-                        Click="btnMinimize_Click"/>
-                <Button x:Name="btnClose"
+                        Click="BtnMinimize_Click"/>
+                <Button x:Name="BtnClose"
                         Style="{StaticResource CloseWindowButton}"
                         BorderThickness="0"
                         Content="X"
@@ -72,7 +72,7 @@
                         FontFamily="Montserrat"
                         Cursor="Hand"
                         Grid.Column="2"
-                        Click="btnClose_Click"/>
+                        Click="BtnClose_Click"/>
             </Grid>
             <Grid x:Name="RegistrationGrid" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="435" Width="417">
                 <Grid.ColumnDefinitions>
@@ -99,7 +99,7 @@
                 <Label Content="Password: " Style="{StaticResource BlueLabel}" Grid.Column="0" Grid.Row="2" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.509,0.546" Foreground="#FFFFD100" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,0,0" HorizontalAlignment="Left" Width="119"/>
                 <PasswordBox x:Name="pbPassword" Grid.Column="1" Grid.Row="2" PasswordChar="*" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,28,0"/>
                 <PasswordBox x:Name="pbConfirmPassword" Grid.Column="1" Grid.Row="3" PasswordChar="*" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,28,0"/>
-                <Button x:Name="btnRegister" Content="Register" Height="32" Margin="31,18,30,0" VerticalAlignment="Top" Grid.Row="7" Grid.Column="1" Background="#FFDBFDD9" BorderBrush="#FF17FF00"/>
+                <Button x:Name="BtnRegister" Content="Register" Height="32" Margin="31,18,30,0" VerticalAlignment="Top" Grid.Row="7" Grid.Column="1" Background="#FFDBFDD9" BorderBrush="#FF17FF00"/>
                 <Label Content="Confirm passsword: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="25" Grid.Row="3" VerticalAlignment="Center" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,0,0"/>
                 <Label Content="First name: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="24" Grid.Row="4" VerticalAlignment="Center" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,0,0"/>
                 <Label Content="Last name: " Style="{StaticResource BlueLabel}" HorizontalAlignment="Left" Height="25" Grid.Row="5" VerticalAlignment="Center" Width="120" Foreground="#FFFFD200" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="28,0,0,0"/>

@@ -16,17 +16,17 @@ namespace BookLibrary.UI.Pages
         {
             InitializeComponent();
 
-            btnBackward.Background = PagesPropertiesProvider.BackwardImage;
-            btnBackward.Click += btnBackward_Click;
-            btnChangePassword.Click += btnChangePassword_Click;
+            BtnBackward.Background = PagesPropertiesProvider.BackwardImage;
+            BtnBackward.Click += BtnBackward_Click;
+            BtnChangePassword.Click += BtnChangePassword_Click;
         }
 
-        private void btnBackward_Click(object sender, RoutedEventArgs e)
+        private void BtnBackward_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
-        private async void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        private async void BtnChangePassword_Click(object sender, RoutedEventArgs e)
         {
             if (string.Compare(pbNewPassword.Password, pbConfirmPassword.Password) == 0)
             {

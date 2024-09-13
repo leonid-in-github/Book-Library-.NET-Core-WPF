@@ -53,7 +53,7 @@
                            Grid.Column="0"
                            VerticalAlignment="Center"
                            Margin="10,0,0,0"/>
-                <Button x:Name="btnMinimize"
+                <Button x:Name="BtnMinimize"
                         Style="{StaticResource MinimizeWindowButton}"
                         BorderThickness="0"
                         Content="-"
@@ -62,8 +62,8 @@
                         FontFamily="Montserrat"
                         Cursor="Hand"
                         Grid.Column="1"
-                        Click="btnMinimize_Click"/>
-                <Button x:Name="btnClose"
+                        Click="BtnMinimize_Click"/>
+                <Button x:Name="BtnClose"
                         Style="{StaticResource CloseWindowButton}"
                         BorderThickness="0"
                         Content="X"
@@ -72,7 +72,7 @@
                         FontFamily="Montserrat"
                         Cursor="Hand"
                         Grid.Column="2"
-                        Click="btnClose_Click"/>
+                        Click="BtnClose_Click"/>
             </Grid>
             <Grid x:Name="LoginGrid" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="250" Width="400">
 
@@ -93,8 +93,8 @@
                 <Label Content="Password: " Style="{StaticResource BlueLabel}" Grid.Column="0" Grid.Row="2" Height="25" Margin="30,0,286,0" VerticalAlignment="Center" HorizontalContentAlignment="Right" RenderTransformOrigin="0.509,0.546" Foreground="#FFFFD100" Grid.ColumnSpan="2">
                 </Label>
                 <PasswordBox x:Name="tbPassword" Grid.Column="1" Grid.Row="2" PasswordChar="*" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="25,0,30,0"/>
-                <Button x:Name="btnLogin" Content="Login" Height="32" Margin="52,51,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FFDBFDD9" BorderBrush="#FF17FF00" HorizontalAlignment="Left" Width="118"/>
-                <Button x:Name="btnRegistration" Content="Registration" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="52,36,0,0" Grid.Row="3" VerticalAlignment="Top" Width="118" Background="#FFFDFFCC"/>
+                <Button x:Name="BtnLogin" Content="Login" Height="32" Margin="52,51,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FFDBFDD9" BorderBrush="#FF17FF00" HorizontalAlignment="Left" Width="118"/>
+                <Button x:Name="BtnRegistration" Content="Registration" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="52,36,0,0" Grid.Row="3" VerticalAlignment="Top" Width="118" Background="#FFFDFFCC"/>
             </Grid>
         </Grid>
 

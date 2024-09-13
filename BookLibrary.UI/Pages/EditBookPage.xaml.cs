@@ -19,7 +19,7 @@ namespace BookLibrary.UI.Pages
         {
             InitializeComponent();
 
-            btnBackward.Background = PagesPropertiesProvider.BackwardImage;
+            BtnBackward.Background = PagesPropertiesProvider.BackwardImage;
 
             _book = booksRepository.GetBook((int)book.ID).GetAwaiter().GetResult();
 
@@ -30,16 +30,16 @@ namespace BookLibrary.UI.Pages
             bookView.BookAuthors = string.Join(", ", _book.Authors);
             bookView.BookYear = _book.Year;
 
-            btnBackward.Click += btnBackward_Click;
-            btnEditBook.Click += btnUpdateBook_Click;
+            BtnBackward.Click += BtnBackward_Click;
+            BtnEditBook.Click += BtnUpdateBook_Click;
         }
 
-        private void btnBackward_Click(object sender, RoutedEventArgs e)
+        private void BtnBackward_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
-        private async void btnUpdateBook_Click(object sender, RoutedEventArgs e)
+        private async void BtnUpdateBook_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(bookView.BookName) && !string.IsNullOrEmpty(bookView.BookAuthors))
             {

@@ -31,10 +31,7 @@ namespace BookLibrary.UI.HelperClasses
         /// <param name="canExecuteMethod">The can execute method.</param>
         public DelegateCommand(Action executeMethod, Func<bool> canExecuteMethod)
         {
-            if (executeMethod == null)
-            {
-                throw new ArgumentNullException("executeMethod");
-            }
+            ArgumentNullException.ThrowIfNull(executeMethod);
 
             _executeMethod = executeMethod;
             _canExecuteMethod = canExecuteMethod;
@@ -105,14 +102,11 @@ namespace BookLibrary.UI.HelperClasses
         /// </summary>
         public void Execute()
         {
-            if (_executeMethod != null)
-            {
-                _executeMethod();
-            }
+            _executeMethod?.Invoke();
         }
 
         /// <summary>
-        /// Raises the CanExecuteChaged event
+        /// Raises the CanExecuteChanged event
         /// </summary>
         public void RaiseCanExecuteChanged()
         {

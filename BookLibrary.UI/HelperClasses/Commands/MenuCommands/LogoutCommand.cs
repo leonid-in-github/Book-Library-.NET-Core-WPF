@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
-namespace BookLibrary.UI.HelperClasses.Commands
+namespace BookLibrary.UI.HelperClasses.Commands.MenuCommands
 {
     public class LogoutCommand : ICommand
     {
         #region Fields
 
         private readonly Action _executeMethod;
-        private readonly Func<bool> _canExecuteMethod;
         private List<WeakReference> _canExecuteChangedHandlers;
 
         private readonly Window _loginWindow;
@@ -40,35 +39,19 @@ namespace BookLibrary.UI.HelperClasses.Commands
             }
         }
 
-        bool ICommand.CanExecute(object parameter)
-        {
-            return CanExecute();
-        }
+        bool ICommand.CanExecute(object parameter) => true;
 
         void ICommand.Execute(object parameter)
         {
             Execute();
         }
 
-        public bool CanExecute()
-        {
-            if (_canExecuteMethod != null)
-            {
-                return _canExecuteMethod();
-            }
-
-            return true;
-        }
-
         public void Execute()
         {
-            if (_executeMethod != null)
-            {
-                _executeMethod();
-            }
+            _executeMethod?.Invoke();
         }
 
-        private void ResetSession()
+        private static void ResetSession()
         {
             AppUser.SetInstance(string.Empty, string.Empty, 0);
             Properties.Settings.Default["Login"] = string.Empty;

@@ -14,33 +14,33 @@ namespace BookLibrary.UI.Pages
         {
             InitializeComponent();
 
-            btnBackward.Background = PagesPropertiesProvider.BackwardImage;
-            btnBackward.Click += btnBackward_Click;
-            btnActionBook.Click += btnActionBook_Click;
+            BtnBackward.Background = PagesPropertiesProvider.BackwardImage;
+            BtnBackward.Click += BtnBackward_Click;
+            BtnActionBook.Click += BtnActionBook_Click;
             BooksGrid.AutoGeneratingColumn += BooksGrid_AutoGeneratingColumn;
 
             if ((bool)book.BookAvailability)
             {
-                btnActionBook.Content = "Take book";
+                BtnActionBook.Content = "Take book";
             }
             else
             {
                 if (!book.CanBePuted)
                 {
-                    btnActionBook.Visibility = Visibility.Hidden;
+                    BtnActionBook.Visibility = Visibility.Hidden;
                 }
-                btnActionBook.Content = "Put book";
+                BtnActionBook.Content = "Put book";
             }
 
             DataContext = pageViewModel = new BookTrackViewModel(book);
         }
 
-        private void btnBackward_Click(object sender, RoutedEventArgs e)
+        private void BtnBackward_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
-        private async void btnActionBook_Click(object sender, RoutedEventArgs e)
+        private async void BtnActionBook_Click(object sender, RoutedEventArgs e)
         {
 
             if (!(bool)pageViewModel.Book.BookAvailability)
@@ -51,7 +51,7 @@ namespace BookLibrary.UI.Pages
                     await pageViewModel.LoadBookTrack();
                     BooksGrid.ItemsSource = pageViewModel.BookTracks;
                 }
-                btnActionBook.Content = "Take book";
+                BtnActionBook.Content = "Take book";
             }
             else
             {
@@ -61,7 +61,7 @@ namespace BookLibrary.UI.Pages
                     await pageViewModel.LoadBookTrack();
                     BooksGrid.ItemsSource = pageViewModel.BookTracks;
                 }
-                btnActionBook.Content = "Put book";
+                BtnActionBook.Content = "Put book";
             }
         }
 

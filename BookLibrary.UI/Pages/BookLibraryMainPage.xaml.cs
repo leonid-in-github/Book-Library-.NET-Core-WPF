@@ -24,29 +24,29 @@ namespace BookLibrary.UI.Pages
             BooksGrid.AutoGeneratingColumn += Datagrid_AutoGeneratingColumn;
             tbSearch.TextChanged += Search_Text_Changed;
             tbFilter.TextChanged += Filter_Text_Changed;
-            btnAddBook.Click += btnAddBook_Click;
-            btnEditBook.Click += btnEditBook_Click;
-            btnTrackBook.Click += btnTrackBook_Click;
-            btnDeleteBook.Click += btnDeleteBook_Click;
-            btnFirstPage.Click += btnFirstPage_Click;
-            btnPreviousPage.Click += btnPreviousPage_Click;
+            BtnAddBook.Click += BtnAddBook_Click;
+            BtnEditBook.Click += BtnEditBook_Click;
+            BtnTrackBook.Click += BtnTrackBook_Click;
+            BtnDeleteBook.Click += BtnDeleteBook_Click;
+            BtnFirstPage.Click += BtnFirstPage_Click;
+            BtnPreviousPage.Click += BtnPreviousPage_Click;
             tbCurrentPage.TextChanged += tbCurrentPage_Text_Changed;
-            btnNextPage.Click += btnNextPage_Click;
-            btnLastPage.Click += btnLastPage_Click;
+            BtnNextPage.Click += BtnNextPage_Click;
+            BtnLastPage.Click += BtnLastPage_Click;
             cbRecordsPerPage.SelectionChanged += cbRecordsPerPage_SelectionChanged;
-            btnRefreshBooksGrid.Click += btnRefreshBooksGrid_Click;
+            BtnRefreshBooksGrid.Click += BtnRefreshBooksGrid_Click;
             Loaded += OnLoaded;
 
         }
 
         public MainPageViewModel pageModel { get; set; }
 
-        private void btnAddBook_Click(object sender, RoutedEventArgs e)
+        private void BtnAddBook_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddBookPage());
         }
 
-        private void btnEditBook_Click(object sender, RoutedEventArgs e)
+        private void BtnEditBook_Click(object sender, RoutedEventArgs e)
         {
             var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
@@ -54,7 +54,7 @@ namespace BookLibrary.UI.Pages
             NavigationService.Navigate(new EditBookPage(editBook));
         }
 
-        private async void btnTrackBook_Click(object sender, RoutedEventArgs e)
+        private async void BtnTrackBook_Click(object sender, RoutedEventArgs e)
         {
             var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
@@ -63,7 +63,7 @@ namespace BookLibrary.UI.Pages
         }
 
 
-        private async void btnDeleteBook_Click(object sender, RoutedEventArgs e)
+        private async void BtnDeleteBook_Click(object sender, RoutedEventArgs e)
         {
             var messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
@@ -81,12 +81,12 @@ namespace BookLibrary.UI.Pages
             }
         }
 
-        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
+        private void BtnFirstPage_Click(object sender, RoutedEventArgs e)
         {
             pageModel.CurrentPage = 1;
         }
 
-        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        private void BtnPreviousPage_Click(object sender, RoutedEventArgs e)
         {
             var currentPage = pageModel.CurrentPage - 1;
             if (currentPage > 0)
@@ -95,7 +95,7 @@ namespace BookLibrary.UI.Pages
             }
         }
 
-        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        private void BtnNextPage_Click(object sender, RoutedEventArgs e)
         {
             var currentPage = pageModel.CurrentPage + 1;
             if (currentPage <= pageModel.NumberOfPages)
@@ -104,12 +104,12 @@ namespace BookLibrary.UI.Pages
             }
         }
 
-        private void btnLastPage_Click(object sender, RoutedEventArgs e)
+        private void BtnLastPage_Click(object sender, RoutedEventArgs e)
         {
             pageModel.CurrentPage = pageModel.NumberOfPages;
         }
 
-        private void btnRefreshBooksGrid_Click(object sender, RoutedEventArgs e)
+        private void BtnRefreshBooksGrid_Click(object sender, RoutedEventArgs e)
         {
             CalculateNamberOfPages();
             LoadBooks();
@@ -129,22 +129,22 @@ namespace BookLibrary.UI.Pages
 
         private void Datagrid_Row_Click(object sender, SelectionChangedEventArgs e)
         {
-            if (btnEditBook.IsEnabled == false || btnDeleteBook.IsEnabled == false || btnTrackBook.IsEnabled == false)
+            if (BtnEditBook.IsEnabled == false || BtnDeleteBook.IsEnabled == false || BtnTrackBook.IsEnabled == false)
             {
-                btnEditBook.IsEnabled = true;
-                btnTrackBook.IsEnabled = true;
-                btnDeleteBook.IsEnabled = true;
+                BtnEditBook.IsEnabled = true;
+                BtnTrackBook.IsEnabled = true;
+                BtnDeleteBook.IsEnabled = true;
             }
             if (BooksGrid.SelectedItems.Count == 0)
             {
-                btnEditBook.IsEnabled = false;
-                btnTrackBook.IsEnabled = false;
-                btnDeleteBook.IsEnabled = false;
+                BtnEditBook.IsEnabled = false;
+                BtnTrackBook.IsEnabled = false;
+                BtnDeleteBook.IsEnabled = false;
             }
             if (BooksGrid.SelectedItems.Count > 1)
             {
-                btnEditBook.IsEnabled = false;
-                btnTrackBook.IsEnabled = false;
+                BtnEditBook.IsEnabled = false;
+                BtnTrackBook.IsEnabled = false;
             }
         }
 

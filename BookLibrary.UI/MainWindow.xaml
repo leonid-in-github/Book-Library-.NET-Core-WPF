@@ -55,7 +55,7 @@
                            Grid.Column="0"
                            VerticalAlignment="Center"
                            Margin="10,0,0,0"/>
-                <Button x:Name="btnMinimize"
+                <Button x:Name="BtnMinimize"
                         Style="{StaticResource MinimizeWindowButton}"
                         BorderThickness="0"
                         Content="-"
@@ -64,8 +64,8 @@
                         FontFamily="Montserrat"
                         Cursor="Hand"
                         Grid.Column="1"
-                        Click="btnMinimize_Click"/>
-                <Button x:Name="btnClose"
+                        Click="BtnMinimize_Click"/>
+                <Button x:Name="BtnClose"
                         Style="{StaticResource CloseWindowButton}"
                         BorderThickness="0"
                         Content="X"
@@ -74,7 +74,7 @@
                         FontFamily="Montserrat"
                         Cursor="Hand"
                         Grid.Column="2"
-                        Click="btnClose_Click"/>
+                        Click="BtnClose_Click"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>

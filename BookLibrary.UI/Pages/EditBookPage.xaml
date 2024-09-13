@@ -13,14 +13,14 @@
         <Grid.Background>
             <SolidColorBrush Color="Black" Opacity="0.5"/>
         </Grid.Background>
-        <Button x:Name="btnBackward" Style="{StaticResource ActionButton}" Content="" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="43" BorderBrush="{x:Null}">
+        <Button x:Name="BtnBackward" Style="{StaticResource ActionButton}" Content="" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="43" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
         </Button>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <ctr:BookView x:Name="bookView" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button x:Name="btnEditBook" Style="{StaticResource ActionButton}" Content="Edit book" Grid.Row="3" HorizontalAlignment="Left" Margin="211,0,0,0" Width="106" Height="43" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+            <Button x:Name="BtnEditBook" Style="{StaticResource ActionButton}" Content="Edit book" Grid.Row="3" HorizontalAlignment="Left" Margin="211,0,0,0" Width="106" Height="43" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
             </Button>
         </StackPanel>
     </Grid>

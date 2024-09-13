@@ -17,10 +17,7 @@ namespace BookLibrary.UI
 
         public static AppUser GetInstance()
         {
-            if (_instance == null)
-            {
-                _instance = new AppUser();
-            }
+            _instance ??= new AppUser();
             return _instance;
         }
 

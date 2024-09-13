@@ -23,11 +23,8 @@ namespace BookLibrary.UI.Controls
             {
                 if (this.Child != value)
                 {
-                    if (this.Child != null)
-                    {
-                        // Restore original clipping
-                        this.Child.SetValue(UIElement.ClipProperty, _oldClip);
-                    }
+                    // Restore original clipping
+                    this.Child?.SetValue(UIElement.ClipProperty, _oldClip);
 
                     if (value != null)
                     {
@@ -35,7 +32,7 @@ namespace BookLibrary.UI.Controls
                     }
                     else
                     {
-                        // If we dont set it to null we could leak a Geometry object
+                        // If we don't set it to null we could leak a Geometry object
                         _oldClip = null;
                     }
 
@@ -55,7 +52,7 @@ namespace BookLibrary.UI.Controls
             }
         }
 
-        private RectangleGeometry _clipRect = new RectangleGeometry();
+        private readonly RectangleGeometry _clipRect = new();
         private object _oldClip;
     }
 }
