@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookLibrary.Storage.Models.Records.Book
 {
     public class AuthorRecord
     {
         [Key]
-        public int ID { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }

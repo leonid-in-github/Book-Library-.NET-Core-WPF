@@ -21,7 +21,7 @@ namespace BookLibrary.UI.Pages
 
             BtnBackward.Background = PagesPropertiesProvider.BackwardImage;
 
-            _book = booksRepository.GetBook((int)book.ID).GetAwaiter().GetResult();
+            _book = booksRepository.GetBook(book.Id).GetAwaiter().GetResult();
 
             if (book == null || _book == null)
                 NavigationService.GoBack();

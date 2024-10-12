@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace BookLibrary.UI.Properties {
     
     
@@ -50,9 +52,9 @@ namespace BookLibrary.UI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int AccountId {
+        public Guid AccountId {
             get {
-                return ((int)(this["AccountId"]));
+                return ((Guid)(this["AccountId"]));
             }
             set {
                 this["AccountId"] = value;

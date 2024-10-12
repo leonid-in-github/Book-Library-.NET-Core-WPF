@@ -44,7 +44,7 @@ namespace BookLibrary.UI.ViewModels
                 ||
                 book.Availability.ToString().Contains(_filterString, StringComparison.CurrentCultureIgnoreCase)
                 ||
-                book.ID.ToString().Contains(_filterString, StringComparison.CurrentCultureIgnoreCase);
+                book.Id.ToString().Contains(_filterString, StringComparison.CurrentCultureIgnoreCase);
         }
 
         public async Task LoadBooks(string searchString = "", int from = 0, int count = 10, string filter = "all")
@@ -55,7 +55,7 @@ namespace BookLibrary.UI.ViewModels
             switch (filter)
             {
                 case "all":
-                    books = (await booksRepository.GetBooks(searchString, false, -1, from, count)).Select(book => new Book(book)).ToList();
+                    books = (await booksRepository.GetBooks(searchString, false, null, from, count)).Select(book => new Book(book)).ToList();
                     BooksTotalCount = await booksRepository.GetBooksTotalCount(searchString);
                     break;
                 case "available":
@@ -71,7 +71,7 @@ namespace BookLibrary.UI.ViewModels
             _booksView = CollectionViewSource.GetDefaultView(books);
             _booksView.Filter = BooksFilter;
             _booksView.SortDescriptions.Add(
-                new SortDescription("ID", ListSortDirection.Descending));
+                new SortDescription("Id", ListSortDirection.Descending));
             _booksView.Refresh();
             OnPropertyChanged(nameof(Books));
             HidePanelCommand.Execute(null);

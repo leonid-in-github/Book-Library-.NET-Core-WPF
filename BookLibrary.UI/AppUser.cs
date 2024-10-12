@@ -1,4 +1,5 @@
 ﻿using BookLibrary.UI.HelperClasses;
+using System;
 
 namespace BookLibrary.UI
 {
@@ -6,7 +7,7 @@ namespace BookLibrary.UI
     {
         private AppUser() { }
 
-        private AppUser(string login, string password, int accountId)
+        private AppUser(string login, string password, Guid accountId)
         {
             Login = login;
             Password = password;
@@ -21,14 +22,14 @@ namespace BookLibrary.UI
             return _instance;
         }
 
-        public static void SetInstance(string login, string password, int accountId)
+        public static void SetInstance(string login, string password, Guid accountId)
         {
             SetLastSessionUser(login, password, accountId);
             _instance = new AppUser(login, password, accountId);
             return;
         }
 
-        private static void SetLastSessionUser(string login, string password, int accountId)
+        private static void SetLastSessionUser(string login, string password, Guid accountId)
         {
             LastSession.Login = login;
             LastSession.Password = password;
@@ -39,6 +40,6 @@ namespace BookLibrary.UI
 
         public string Password { get; }
 
-        public int AccountId { get; }
+        public Guid AccountId { get; }
     }
 }

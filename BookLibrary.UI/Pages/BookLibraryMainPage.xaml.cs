@@ -20,8 +20,8 @@ namespace BookLibrary.UI.Pages
 
             DataContext = pageModel = new MainPageViewModel();
 
-            BooksGrid.SelectionChanged += Datagrid_Row_Click;
-            BooksGrid.AutoGeneratingColumn += Datagrid_AutoGeneratingColumn;
+            BooksGrid.SelectionChanged += DataGrid_Row_Click;
+            BooksGrid.AutoGeneratingColumn += DataGrid_AutoGeneratingColumn;
             tbSearch.TextChanged += Search_Text_Changed;
             tbFilter.TextChanged += Filter_Text_Changed;
             BtnAddBook.Click += BtnAddBook_Click;
@@ -50,7 +50,7 @@ namespace BookLibrary.UI.Pages
         {
             var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
-            var editBook = Storage.Models.Book.Book.FromPersistence(book.ID ?? 0, book.Name, book.Authors.Split(","), DateTime.Parse($"01/01/{book.Year}"), book.Availability == "Available");
+            var editBook = Storage.Models.Book.Book.FromPersistence(book.Id ?? Guid.NewGuid(), book.Name, book.Authors.Split(","), DateTime.Parse($"01/01/{book.Year}"), book.Availability == "Available");
             NavigationService.Navigate(new EditBookPage(editBook));
         }
 
@@ -58,7 +58,7 @@ namespace BookLibrary.UI.Pages
         {
             var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
-            var trackBook = await booksRepository.GetBookTrack(AppUser.GetInstance().AccountId, book.ID ?? 0, "All");
+            var trackBook = await booksRepository.GetBookTrack(AppUser.GetInstance().AccountId, book.Id ?? Guid.NewGuid(), "All");
             NavigationService.Navigate(new BookTrackPage(trackBook));
         }
 
@@ -71,10 +71,10 @@ namespace BookLibrary.UI.Pages
                 var booksGridEnumerator = BooksGrid.SelectedItems.GetEnumerator();
                 while (booksGridEnumerator.MoveNext())
                 {
-                    var bookId = (booksGridEnumerator.Current as Models.BooksModels.Book)?.ID;
+                    var bookId = (booksGridEnumerator.Current as Models.BooksModels.Book)?.Id;
                     if (bookId != null)
                     {
-                        await booksRepository.DeleteBook((int)bookId);
+                        await booksRepository.DeleteBook((Guid)bookId);
                     }
                 }
                 LoadBooks();
@@ -111,7 +111,7 @@ namespace BookLibrary.UI.Pages
 
         private void BtnRefreshBooksGrid_Click(object sender, RoutedEventArgs e)
         {
-            CalculateNamberOfPages();
+            CalculateNumberOfPages();
             LoadBooks();
         }
 
@@ -124,10 +124,10 @@ namespace BookLibrary.UI.Pages
         {
             pageModel.CurrentPage = 1;
             LoadBooks();
-            CalculateNamberOfPages();
+            CalculateNumberOfPages();
         }
 
-        private void Datagrid_Row_Click(object sender, SelectionChangedEventArgs e)
+        private void DataGrid_Row_Click(object sender, SelectionChangedEventArgs e)
         {
             if (BtnEditBook.IsEnabled == false || BtnDeleteBook.IsEnabled == false || BtnTrackBook.IsEnabled == false)
             {
@@ -150,7 +150,7 @@ namespace BookLibrary.UI.Pages
 
         private void Search_Text_Changed(object sender, TextChangedEventArgs e)
         {
-            CalculateNamberOfPages();
+            CalculateNumberOfPages();
             pageModel.CurrentPage = 1;
             LoadBooks();
         }
@@ -160,9 +160,9 @@ namespace BookLibrary.UI.Pages
             pageModel.FilterString = tbFilter.Text;
         }
 
-        private void Datagrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        private void DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.Column.Header.ToString() == "ID")
+            if (e.Column.Header.ToString() == "Id")
             {
                 e.Cancel = true;
             }
@@ -224,7 +224,7 @@ namespace BookLibrary.UI.Pages
             await pageModel.LoadBooks(searchText, from, recordsPerPage, pageModel.Filter);
         }
 
-        private void CalculateNamberOfPages()
+        private void CalculateNumberOfPages()
         {
             var pageCountDouble = (double)pageModel.BooksTotalCount / (double)pageModel.RecordsPerPage;
             pageModel.NumberOfPages = (int)Math.Ceiling(pageCountDouble);
@@ -234,12 +234,13 @@ namespace BookLibrary.UI.Pages
         {
             pageModel.CurrentPage = 1;
             LoadBooks();
-            CalculateNamberOfPages();
+            CalculateNumberOfPages();
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            CalculateNamberOfPages();
+            LoadBooks();
+            CalculateNumberOfPages();
         }
     }
 }

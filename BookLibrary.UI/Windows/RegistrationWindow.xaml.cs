@@ -48,13 +48,13 @@ namespace BookLibrary.UI.Windows
                 RegistrationGrid.Background = RegistrationGridAlertBackground;
                 return;
             }
-            if (await accountRepository.Register(tbLogin.Text, pbPassword.Password, tbFirstName.Text, tbLastName.Text, tbEmail.Text) <= 0)
+            if (await accountRepository.Register(tbLogin.Text, pbPassword.Password, tbFirstName.Text, tbLastName.Text, tbEmail.Text) is null)
             {
                 Message.Content = "Registration data base error";
                 RegistrationGrid.Background = RegistrationGridAlertBackground;
                 return;
             }
-            this.Close();
+            Close();
         }
 
         private async void BtnRegister_Click(object sender, RoutedEventArgs e)

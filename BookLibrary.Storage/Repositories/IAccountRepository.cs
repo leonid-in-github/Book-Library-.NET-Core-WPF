@@ -1,14 +1,15 @@
 ﻿using BookLibrary.Storage.Models.Account;
+using System;
 using System.Threading.Tasks;
 
 namespace BookLibrary.Storage.Repositories
 {
     public interface IAccountRepository
     {
-        Task<bool> ChangeAccountPassword(int accountId, string accountPassword, string newAccountPassword);
-        Task<bool> DeleteAccount(int accountId, string accountPassword);
-        Task<User> GetUser(int userId);
-        Task<int> Login(string login, string password);
-        Task<int> Register(string login, string password, string firstName, string lastName, string email);
+        Task<bool> ChangeAccountPassword(Guid accountId, string accountPassword, string newAccountPassword);
+        Task<bool> DeleteAccount(Guid accountId, string accountPassword);
+        Task<User> GetUser(Guid userId);
+        Task<Guid?> Login(string login, string password);
+        Task<Guid?> Register(string login, string password, string firstName, string lastName, string email);
     }
 }

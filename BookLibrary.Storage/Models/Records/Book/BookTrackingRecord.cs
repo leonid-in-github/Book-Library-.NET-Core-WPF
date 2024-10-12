@@ -6,9 +6,9 @@ namespace BookLibrary.Storage.Models.Records.Book
     public class BookTrackingRecord
     {
         [Key]
-        public int ID { get; set; }
-        public int BookId { get; set; }
-        public int AccountId { get; set; }
+        public Guid Id { get; set; }
+        public Guid BookId { get; set; }
+        public Guid AccountId { get; set; }
         public DateTime ActionTime { get; set; }
         public string Action { get; set; }
     }

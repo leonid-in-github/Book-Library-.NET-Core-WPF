@@ -51,9 +51,9 @@ namespace BookLibrary.UI
             {
                 var actualAccountId = await accountRepository.Login(LastSession.Login, LastSession.Password);
 
-                if (actualAccountId > 0)
+                if (actualAccountId is not null)
                 {
-                    AppUser.SetInstance(LastSession.Login, LastSession.Password, actualAccountId);
+                    AppUser.SetInstance(LastSession.Login, LastSession.Password, (Guid)actualAccountId);
                     MainFrame.Navigate(new BookLibraryMainPage());
                 }
                 else

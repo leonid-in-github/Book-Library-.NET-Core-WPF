@@ -1,4 +1,6 @@
-﻿namespace BookLibrary.UI.HelperClasses
+﻿using System;
+
+namespace BookLibrary.UI.HelperClasses
 {
     class LastSession
     {
@@ -30,7 +32,7 @@
             }
         }
 
-        internal static int AccountId
+        internal static Guid AccountId
         {
             get
             {

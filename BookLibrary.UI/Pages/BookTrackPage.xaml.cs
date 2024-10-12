@@ -25,7 +25,7 @@ namespace BookLibrary.UI.Pages
             }
             else
             {
-                if (!book.CanBePuted)
+                if (!book.CanBePutted)
                 {
                     BtnActionBook.Visibility = Visibility.Hidden;
                 }

@@ -54,9 +54,9 @@ namespace BookLibrary.UI.Windows
 
             var actualAccountId = await accountRepository.Login(login, password);
 
-            if (actualAccountId > 0)
+            if (actualAccountId is not null)
             {
-                AppUser.SetInstance(login, password, actualAccountId);
+                AppUser.SetInstance(login, password, (Guid)actualAccountId);
                 Hide();
                 var mainWindow = WindowsNavigation.MainWindow;
                 if (mainWindow != null)

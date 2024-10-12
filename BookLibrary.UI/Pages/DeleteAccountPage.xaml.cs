@@ -62,10 +62,10 @@ namespace BookLibrary.UI.Pages
 
         private void ResetSession()
         {
-            AppUser.SetInstance(string.Empty, string.Empty, 0);
+            AppUser.SetInstance(string.Empty, string.Empty, new Guid());
             Properties.Settings.Default["Login"] = string.Empty;
             Properties.Settings.Default["Password"] = string.Empty;
-            Properties.Settings.Default["AccountId"] = 0;
+            Properties.Settings.Default["AccountId"] = new Guid();
             Properties.Settings.Default.Save();
         }
 
