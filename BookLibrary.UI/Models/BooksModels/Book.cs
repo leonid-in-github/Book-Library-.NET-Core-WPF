@@ -8,7 +8,7 @@ namespace BookLibrary.UI.Models.BooksModels
         public string Name { get; set; }
         public string Authors { get; set; }
         public string Year { get; set; }
-        public string Availability { get; set; }
+        public bool Availability { get; set; }
 
         public Book(Storage.Models.Book.Book bookitem)
         {
@@ -16,7 +16,7 @@ namespace BookLibrary.UI.Models.BooksModels
             Name = bookitem.Name;
             Authors = string.Join(", ", bookitem.Authors);
             Year = bookitem.Year.Year.ToString();
-            Availability = (bool)bookitem.Availability ? "Available" : "Not available";
+            Availability = (bool)bookitem.Availability;
         }
     }
 }

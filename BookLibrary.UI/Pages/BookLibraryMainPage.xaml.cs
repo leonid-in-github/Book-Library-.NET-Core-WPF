@@ -50,7 +50,7 @@ namespace BookLibrary.UI.Pages
         {
             var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
-            var editBook = Storage.Models.Book.Book.FromPersistence(book.Id ?? Guid.NewGuid(), book.Name, book.Authors.Split(","), DateTime.Parse($"01/01/{book.Year}"), book.Availability == "Available");
+            var editBook = Storage.Models.Book.Book.FromPersistence(book.Id ?? Guid.NewGuid(), book.Name, book.Authors.Split(","), DateTime.Parse($"01/01/{book.Year}"), book.Availability);
             NavigationService.Navigate(new EditBookPage(editBook));
         }
 
@@ -168,7 +168,7 @@ namespace BookLibrary.UI.Pages
             }
             if (e.Column.Header.ToString() == "Name")
             {
-                e.Column.Width = 700;
+                e.Column.Width = 730;
                 var col = e.Column as DataGridTextColumn;
 
                 var style = new Style(typeof(TextBlock));
@@ -200,11 +200,12 @@ namespace BookLibrary.UI.Pages
             }
             if (e.Column.Header.ToString() == "Availability")
             {
-                var col = e.Column as DataGridTextColumn;
+                var col = e.Column as DataGridCheckBoxColumn;
 
-                var style = new Style(typeof(TextBlock));
-                style.Setters.Add(new Setter(TextBlock.TextWrappingProperty, TextWrapping.Wrap));
-                style.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center));
+                var style = new Style(typeof(CheckBox));
+                style.Setters.Add(new Setter(CheckBox.VerticalAlignmentProperty, VerticalAlignment.Center));
+                style.Setters.Add(new Setter(CheckBox.HorizontalAlignmentProperty, HorizontalAlignment.Center));
+                style.Setters.Add(new Setter(CheckBox.IsHitTestVisibleProperty, false));
 
                 col.ElementStyle = style;
             }
