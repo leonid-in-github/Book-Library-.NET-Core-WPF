@@ -97,7 +97,7 @@ namespace BookLibrary.Storage.Repositories
 
             bookRecord.Name = book.Name;
             bookRecord.Year = book.Year;
-            bookRecord.Availability = book.Availability ?? true;
+            bookRecord.IsAvailable = book.IsAvailable ?? true;
             dbContext.BooksAuthors.RemoveRange(dbContext.BooksAuthors.Where(record => record.BookId == book.Id));
             dbContext.SaveChanges();
 
@@ -116,7 +116,7 @@ namespace BookLibrary.Storage.Repositories
 
             result.BookId = bookRecord?.Id ?? Guid.NewGuid();
             result.BookName = bookRecord?.Name;
-            result.BookAvailability = bookRecord?.Availability;
+            result.IsBookAvailable = bookRecord?.IsAvailable;
 
             var bookTookTracks = dbContext.BookTracking.Where(record => record.BookId == bookId && record.Action == BookAction.Took.ToString());
             var lastBookTookTrack = bookTookTracks.FirstOrDefault(record => record.ActionTime == bookTookTracks.Max(track => track.ActionTime));
@@ -188,10 +188,10 @@ namespace BookLibrary.Storage.Repositories
                     switch (action)
                     {
                         case BookAction.Took:
-                            bookRecord.Availability = false;
+                            bookRecord.IsAvailable = false;
                             break;
                         case BookAction.Put:
-                            bookRecord.Availability = true;
+                            bookRecord.IsAvailable = true;
                             break;
                         default:
                             throw new NotSupportedException($"Action {action} is not supported");
@@ -237,7 +237,7 @@ namespace BookLibrary.Storage.Repositories
                         BookId = bookTrackGroup.Key,
                         ActionTime = bookTrackGroup.Max(bookTrack => bookTrack.ActionTime)
                     }).OrderBy(bookTrack => bookTrack.ActionTime);
-                booksQuery = booksQuery.Where(book => !book.Availability).Join(bookTracks, book => book.Id, bookTrack => bookTrack.BookId, (book, bookTrack) => book);
+                booksQuery = booksQuery.Where(book => !book.IsAvailable).Join(bookTracks, book => book.Id, bookTrack => bookTrack.BookId, (book, bookTrack) => book);
             }
 
             if (!string.IsNullOrEmpty(searchString))
@@ -253,7 +253,7 @@ namespace BookLibrary.Storage.Repositories
 
             if (onlyAvailable)
             {
-                booksQuery = booksQuery.Where(book => book.Availability);
+                booksQuery = booksQuery.Where(book => book.IsAvailable);
             }
 
             booksQuery = booksQuery.Skip(from).Take(count);
@@ -274,7 +274,7 @@ namespace BookLibrary.Storage.Repositories
                     (author, bookAuthor) => author)
                 .Select(authorRecord => authorRecord.Name).ToList(),
                 book.Year,
-                book.Availability
+                book.IsAvailable
             ));
             return books;
         }

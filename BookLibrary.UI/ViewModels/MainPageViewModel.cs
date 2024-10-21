@@ -42,7 +42,7 @@ namespace BookLibrary.UI.ViewModels
                 ||
                 book.Year.Contains(_filterString)
                 ||
-                book.Availability.ToString().Contains(_filterString, StringComparison.CurrentCultureIgnoreCase)
+                book.IsAvailable.ToString().Contains(_filterString, StringComparison.CurrentCultureIgnoreCase)
                 ||
                 book.Id.ToString().Contains(_filterString, StringComparison.CurrentCultureIgnoreCase);
         }

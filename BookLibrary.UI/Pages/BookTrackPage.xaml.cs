@@ -19,7 +19,7 @@ namespace BookLibrary.UI.Pages
             BtnActionBook.Click += BtnActionBook_Click;
             BooksGrid.AutoGeneratingColumn += BooksGrid_AutoGeneratingColumn;
 
-            if ((bool)book.BookAvailability)
+            if ((bool)book.IsBookAvailable)
             {
                 BtnActionBook.Content = "Take book";
             }
@@ -43,7 +43,7 @@ namespace BookLibrary.UI.Pages
         private async void BtnActionBook_Click(object sender, RoutedEventArgs e)
         {
 
-            if (!(bool)pageViewModel.Book.BookAvailability)
+            if (!(bool)pageViewModel.Book.IsBookAvailable)
             {
                 if (pageViewModel != null)
                 {

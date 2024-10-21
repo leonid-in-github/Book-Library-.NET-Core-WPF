@@ -50,7 +50,7 @@ namespace BookLibrary.UI.Pages
         {
             var book = BooksGrid.SelectedItem as Models.BooksModels.Book;
             if (book == null) return;
-            var editBook = Storage.Models.Book.Book.FromPersistence(book.Id ?? Guid.NewGuid(), book.Name, book.Authors.Split(","), DateTime.Parse($"01/01/{book.Year}"), book.Availability);
+            var editBook = Storage.Models.Book.Book.FromPersistence(book.Id ?? Guid.NewGuid(), book.Name, book.Authors.Split(","), DateTime.Parse($"01/01/{book.Year}"), book.IsAvailable);
             NavigationService.Navigate(new EditBookPage(editBook));
         }
 
@@ -198,7 +198,7 @@ namespace BookLibrary.UI.Pages
 
                 col.ElementStyle = style;
             }
-            if (e.Column.Header.ToString() == "Availability")
+            if (e.Column.Header.ToString() == "IsAvailable")
             {
                 var col = e.Column as DataGridCheckBoxColumn;
 
@@ -208,6 +208,7 @@ namespace BookLibrary.UI.Pages
                 style.Setters.Add(new Setter(CheckBox.IsHitTestVisibleProperty, false));
 
                 col.ElementStyle = style;
+                col.Header = "Is available";
             }
         }
 

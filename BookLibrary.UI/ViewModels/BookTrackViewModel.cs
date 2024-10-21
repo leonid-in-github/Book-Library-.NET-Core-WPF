@@ -86,13 +86,13 @@ namespace BookLibrary.UI.ViewModels
         public async Task PutBook()
         {
             await booksRepository.PutBook(AppUser.GetInstance().AccountId, _book.BookId);
-            Book.BookAvailability = true;
+            Book.IsBookAvailable = true;
         }
 
         public async Task TakeBook()
         {
             await booksRepository.TakeBook(AppUser.GetInstance().AccountId, _book.BookId);
-            Book.BookAvailability = false;
+            Book.IsBookAvailable = false;
         }
     }
 }
