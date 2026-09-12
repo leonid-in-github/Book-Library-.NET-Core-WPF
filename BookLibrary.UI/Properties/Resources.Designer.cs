@@ -63,19 +63,9 @@ namespace BookLibrary.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] background_image_0 {
+        public static byte[] background {
             get {
-                object obj = ResourceManager.GetObject("background_image_0", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] background_image_1 {
-            get {
-                object obj = ResourceManager.GetObject("background_image_1", resourceCulture);
+                object obj = ResourceManager.GetObject("background", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -11,7 +11,7 @@ namespace BookLibrary.UI.Pages
             {
                 var backgroundImage = new ImageBrush(
                     (BitmapSource)new ImageSourceConverter()
-                    .ConvertFrom(Properties.Resources.background_image_0)
+                    .ConvertFrom(Properties.Resources.background)
                     );
                 backgroundImage.Stretch = Stretch.UniformToFill;
                 return backgroundImage;
